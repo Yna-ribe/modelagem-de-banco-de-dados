@@ -1,0 +1,78 @@
+<!DOCTYPEhtml>
+<html>
+    <head>
+        <style>
+            table{
+            width:100%;
+            }
+            table,th,td{
+            border:1px solid rgb(0, 0, 0);
+            border-collapse:collapse;
+            }
+            th,td{
+            padding:15px;
+            text-align:left;
+            }
+            <!---impr--->
+            #t01 tr:nth-child(even){
+            background-color: grey;
+            }
+            #t01 tr:nth-child(odd){
+            background-color:#77a7e6;
+            }
+            #t01 th{
+            background-color:rgb(77, 31, 31);
+            color:white;
+            }
+        </style>
+        </head>
+        <body>
+            <h2>Estilos de Tabelas</h2>
+            <table>
+                <tr>
+                    <!--linha de cabeçalho-->
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                </tr>
+                <tr>
+                    <td>Jill</td>
+                    <td>Smith</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Eve</td>
+                    <td>Jackson</td>
+                    <td>94</td>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>80</td>
+                </tr>
+            </table>
+            <br>
+            <table id="t01">
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                </tr>
+                <tr>
+                    <td>Jill</td>
+                    <td>Smith</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Eve</td>
+                    <td>Jackson</td>
+                    <td>94</td>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>80</td>
+                </tr>
+            </table>
+    </body>
+</html>
