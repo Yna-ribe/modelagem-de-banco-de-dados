@@ -6,9 +6,19 @@ Sistema de Gestão de Informações – Mont Ararat Burger House
 Metadados
 Integrantes do Grupo (Nomes e RGMs): 
 – Gustavo Almeida de Lima, RGM: 48157899
-– Mariana Brito Farias, RGM: 
-– Ynaê Ribeiro da Silva, RGM: 
+– Mariana Brito Farias, RGM: 48134767
+– Ynaê Ribeiro da Silva, RGM: 47987111
 
+**Introdução**
+Modelagem de dados é o processo de criar uma representação visual de um sistema de informação para comunicar as conexões entre pontos e estruturas de dados, compreendendo profundamente o que foi projetado.
+
+A estrutura deste trabalho foi direcionada ao aprendizado ativo em razão de colocar em prática o que foi estudado em sala de aula, para melhor aproveitamento das aulas. Nesse cenário, uma empresa alimentícia desempenha um papel fundamental na ligação entre atingir qualidade e manter o custo-benefício dos pratos dispostos, tendo em vista o foco em agilidade e faturamento.
+
+Para realizar a análise da Mont Ararat, foi necessário reunir diversas informações através de pesquisas e entrevistas feitas na hamburgueria, onde podemos contar com a honestidade e imparcialidade dos funcionários e gerentes.
+
+Diante desse cenário, este trabalho tem como objetivo analisar as necessidades da organização para identificar suas entidades, métodos operacionais e as inter-relações entre seus dados.
+
+Declaramos, para os devidos fins, que as informações fornecidas pela Hamburgueria Mont Ararat Burger House foram protegidas a fim de assegurar a segurança de possíveis dados sensíveis coletados sobre a empresa.
 
 1. Caracterização da Organização
 Nome e Natureza da Organização:
