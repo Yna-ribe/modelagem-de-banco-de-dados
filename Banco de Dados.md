@@ -233,11 +233,11 @@ Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e port
 —------------------------------------------------------------------
 
 Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-Imagem anexada
+![Diagrama ER](imagens/Diagrama.png)
 
 <<<<<<< HEAD
 Diagrama Entidade-Relacionamento (DER)
-imagem anexada
+![Modelagem Conceitual](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Modelagem%20Conceitual.png?raw=true)
 
 ## 8. Justificativa Técnica
 *(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
