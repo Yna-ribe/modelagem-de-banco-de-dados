@@ -189,25 +189,35 @@ Regras de Negócio (regras que devem ser obedecidas pelo sistema)
 A FAZER AINDA :
 
 ========================================================================
+Dicionário de Dados Conceitual (Preliminar)
+1. Modelo conceitual
+Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Entidade                                      |Relaciona-se com     |Cardinalidade                                                                                            |                                       
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Funcionário                                   |Comanda        	     |1:N(Uma comanda é aberta por um funcionário.Um funcionário pode abrir várias comandas.)		       |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Mesas                                         |Comanda              |1:N(Uma mesa pode ter várias comandas ao longo do tempo. Cada comanda pertence a uma mesa.)              |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Comanda                                       |Pedido               |1:N(Uma comanda possui vários pedidos. Cada pedido pertence a uma comanda.)                              |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Funcionário                                   |Pedido               |1:N(Um funcionário registra/gera vários pedidos.Cada pedido é associado a um funcionário.)               |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Menu (Produto)                                |Pedido               |1:N(Um produto pode aparecer em vários pedidos. Cada item de pedido refere-se a um produto.)             |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Menu (Produto)				       |Ficha_Tecnica        |1:N(Um produto possui uma ou várias linhas na ficha técnica.)                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Ingredientes                                  |Ficha_Tecnica        |1:N(Um ingrediente pode compor vários produtos (via ficha técnica).)                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Comanda                                       |Pagamentos_Comanda   |1:N(Uma comanda pode ter um ou vários pagamentos.)                                                       |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Terminal(máquina que registra venda/pagamento)|Caixa                |1:N(Um terminal pode operar vários caixas (ao longo do tempo). Cada caixa está associada a um terminal.) |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-
-
-
-
-
-\#\# 5\. Dicionário de Dados Conceitual (Preliminar)  
-\*(vale 10% — Dimensão Procedimental)\*
-
-Para cada entidade identificada, liste:
-
-| Atributo | Descrição | Regra de negócio associada |  
-|----------|-----------|------------------------------|  
-| \*nome do atributo\* | \*o que ele representa\* | \*se houver alguma regra (obrigatoriedade, valores possíveis, etc.)\* |
-
-\*Mantenha o dicionário organizado e padronizado (mesmo formato de tabela para todas as entidades).\*
-
-\*\*Atenção à privacidade:\*\* se forem usados exemplos de valores para ilustrar os atributos, esses exemplos devem ser \*\*fictícios\*\* — não utilize dados reais de clientes, fiéis, beneficiários, doadores ou funcionários da organização (nomes, CPFs, contatos etc.), mesmo que tenham sido observados durante a pesquisa de campo. Os exemplos devem apenas ser \*\*coerentes com as operações reais\*\* observadas.
-
+Comanda é o “container” do consumo na Mesa, criada por um funcionário.
+Pedidos são itens (produto + quantidade) dentro da comanda, também associados ao funcionário que registrou.
+Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu.
+Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa)
 
 
 \#\# 8\. Justificativa Técnica  
