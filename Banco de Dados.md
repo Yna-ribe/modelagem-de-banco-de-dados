@@ -6,8 +6,8 @@
 
 * Integrantes do Grupo (Nomes e RGMs):   
 * – Gustavo Almeida de Lima, RGM: 48157899  
-* – Mariana Brito Farias, RGM:   
-* – Ynaê Ribeiro da Silva, RGM: 
+* – Mariana Brito Farias, RGM:48134767   
+* – Ynaê Ribeiro da Silva, RGM:47987111 
 
 **Introdução**
 Modelagem de dados é o processo de criar uma representação visual de um sistema de informação para comunicar as conexões entre pontos e estruturas de dados, compreendendo profundamente o que foi projetado.
@@ -99,7 +99,6 @@ A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo a
 5. **Fechamento de Conta e Recebimento Fracionado:** Consolidação do consumo, aplicação/isenção opcional da taxa de serviço de 10%, registros de pagamentos fracionados (N formas de pagamento) e encerramento da comanda com liberação da mesa.  
 6. **Controle Financeiro e Fechamento de Turno:** Apuração das entradas por meio de pagamento, registro de sangrias/suprimentos, conferência de divergências de caixa e fechamento do turno.  
 
->>>>>>> 384965902e11eff7b9aa5036b972bcce881b2cf8
 
 2. Processos de Negócio
 Principais Processos Mapeados
@@ -111,16 +110,10 @@ Fechamento de Conta e Recebimento Fracionado: Consolidação do consumo, aplica�
 Controle Financeiro e Fechamento de Turno: Apuração das entradas por meio de pagamento, registro de sangrias/suprimentos, conferência de divergências de caixa e fechamento do turno.
 
 
+—----------------------------------------------------------
 Evidência 01: Relatório do Fechamento de Turno do Caixa (Fita de Caixa) :
 Descrição: Relatório impresso de fechamento de caixa referente a um dia de movimento moderado, operado no terminal de Delivery.
 Impacto no BD: Demonstra a necessidade de registrar a divisão de formas de pagamento (Dinheiro, Cartão, Outros), a taxa de serviço de 10%, o fundo de reserva (R$ 150,00) e a apuração de diferenças no caixa na tabela
-
-
-
-
-
-—----------------------------------------------------------
-
 
 
 Evidência 02: Lista de Compras (Controle Manual de Estoque) :
@@ -155,82 +148,6 @@ Impacto no BD: Demonstra a necessidade da tabela Menu para estruturar os produto
 
 
 
-
-
-
-
-
-
->>>>>>> d8d5b1edefa8768d29ce37e6815524138f6c87b9
-- **Fluxogramas:** *represente visualmente pelo menos os processos-chave (imagens anexadas). Deve ficar claro o fluxo de cada processo e como eles se integram entre si.*
-
-—------------------------------------------------------------------------
-3. Requisitos do Sistema:
-
-<<<<<<< HEAD
-## 3. Requisitos do Sistema
-*(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
-
-### 3.1 Requisitos Funcionais
-*O que o sistema precisa FAZER (ex.: "o sistema deve permitir registrar uma venda").*
-
-### 3.2 Requisitos Não Funcionais
-*Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*
- 
----
-
-## 4. Regras de Negócio:
-
-Tabela: PROCESSO_NEGOCIO
-
-| Atributo           | Tipo físico  | Obrigatório | Significado e relevância                                                   |
-| ------------------ | ------------ | ----------- | -------------------------------------------------------------------------- |
-| **ID_PROCESSO**    | integer      | Sim (PK)    | Identificador único do processo de negócio.                                |
-| **NM_PROCESSO**    | varchar(150) | Sim         | Nome do processo realizado pelo estabelecimento.                           |
-| **DS_PROCESSO**    | text         | Sim         | Descrição das atividades e procedimentos realizados no processo.           |
-| **TP_TURNO**       | varchar(30)  | Não         | Identifica o período em que o processo ocorre, como manhã, tarde ou noite. |
-| **DS_ENTRADA**     | text         | Sim         | Informações, produtos ou solicitações necessárias para iniciar o processo. |
-| **DS_ATIVIDADES**  | text         | Sim         | Principais atividades executadas durante o processo.                       |
-| **DS_SAIDA**       | text         | Sim         | Resultado esperado após a conclusão do processo.                           |
-| **NM_RESPONSAVEL** | varchar(100) | Sim         | Funcionário ou setor responsável pela execução do processo.                |
-| **DS_CONTROLE**    | text         | Não         | Controles, conferências ou regras aplicadas durante o processo.            |
-| **DS_OBSERVACAO**  | text         | Não         | Informações adicionais ou particularidades do processo.                    |
-
-
-Dados para preencher os 6 processos
-| ID | Nome do processo                             | Turno | Responsável            | Descrição resumida                                                                                                                                |
-| -: | -------------------------------------------- | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  1 | Pré-preparo e Produção de Insumos            | Manhã | Cozinha                | Moagem de carnes de 180g e 120g, preparo de molhos, corte de vegetais e porcionamento.                                                            |
-|  2 | Abertura e Operação de Caixa                 | —     | Operador de caixa      | Abertura das sessões dos terminais Salão/Delivery, registro do fundo de reserva de R$ 150,00 e atribuição do operador.                            |
-|  3 | Atendimento de Salão e Gestão de Comandas    | —     | Garçom                 | Abertura de comanda vinculada à mesa, lançamento progressivo de itens e transferência entre mesas.                                                |
-|  4 | Produção na Cozinha                          | —     | Cozinha/Chapa/Montagem | Recebimento dos itens dos pedidos, preparação e montagem, considerando observações como ponto da carne e remoção de ingredientes.                 |
-|  5 | Fechamento de Conta e Recebimento Fracionado | —     | Caixa                  | Consolidação do consumo, aplicação ou isenção da taxa de serviço de 10%, recebimento em diferentes formas de pagamento e encerramento da comanda. |
-|  6 | Controle Financeiro e Fechamento de Turno    | —     | Caixa/Gerência         | Apuração das entradas por meio de pagamento, registro de sangrias e suprimentos, conferência de divergências e fechamento do turno.               |
-
----
-
-Dicionário de Dados Conceitual (Preliminar)
-1. Modelo conceitual
-Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.
-
-|Entidade |Relaciona-se com     |Cardinalidade |                                       
-|---------|---------------------|--------------|
-|\*Funcionário\* |\*Comanda\* |\*1:N(Uma comanda é aberta por um funcionário. Um funcionário pode abrir várias comandas.)\*|
-|\*Mesas\* |\*Comanda\* |\*1:N(Uma mesa pode ter várias comandas ao longo do tempo. Cada comanda pertence a uma mesa.)\* |
-|\*Comanda\*|\*Pedido\* |\*1:N(Uma comanda possui vários pedidos. Cada pedido pertence a uma comanda.)\*|
-|\*Funcionário\* |\*Pedido\* |\*1:N(Um funcionário registra/gera vários pedidos.Cada pedido é associado a um funcionário.)\*|
-|\*Menu (Produto)\* |\*Pedido\*|\*1:N(Um produto pode aparecer em vários pedidos. Cada item de pedido refere-se a um produto.)\* |
-|\*Menu (Produto)\*|\*Ficha_Tecnica\*|\*1:N(Um produto possui uma ou várias linhas na ficha técnica.)\*|
-|\*Ingredientes\*|\*Ficha_Tecnica\* |\*1:N(Um ingrediente pode compor vários produtos (via ficha técnica).)\* |
-|\*Comanda\*|\*Pagamentos_Comanda\* |\*1:N(Uma comanda pode ter um ou vários pagamentos.)\* |
-|\*Terminal(máquina que registra venda/pagamento)\*|\*Caixa\* |\*1:N(Um terminal pode operar vários caixas (ao longo do tempo). Cada caixa está associada a um terminal.)\* |
-
-
-Comanda é o “container” do consumo na Mesa, criada por um funcionário.
-Pedidos são itens (produto + quantidade) dentro da comanda, também associados ao funcionário que registrou.
-Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu.
-Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa).
-=======
 ### **3\. Requisitos Funcionais**
 
 Requisitos Funcionais (o que o sistema deve fazer?)
@@ -266,6 +183,60 @@ Regras de Negócio (regras que devem ser obedecidas pelo sistema)
 | **RN04** | Quitação Obliterante para Fechamento: Uma comanda só pode alterar seu status para "Fechada" se a soma de seus registros na tabela Pagamentos_Comanda for igual ou superior ao valor total final da comanda. | Alta | RF01, RF04 |
 | **RN05** | Operação de Caixa Vincular: Toda transação de pagamento deve obrigatoriamente estar associada a uma sessão de caixa com status_caixa = 'Aberto' e a um terminal ativo (Caixa_Salao ou Caixa_Delivery). | Alta | RF04, RF06 |
 | **RN06** | Apuração de Divergência de Caixa: No fechamento da sessão do caixa, o valor da diferença deve ser calculado automaticamente através da fórmula: [Diferença = saldo_final_informado - saldo_final_calculado]. | Alta | RF06 |
+—------------------------------------------------------------------------
+
+## 4. Regras de Negócio:
+
+Tabela: PROCESSO_NEGOCIO
+
+| Atributo           | Tipo físico  | Obrigatório | Significado e relevância                                                   |
+| ------------------ | ------------ | ----------- | -------------------------------------------------------------------------- |
+| **ID_PROCESSO**    | integer      | Sim (PK)    | Identificador único do processo de negócio.                                |
+| **NM_PROCESSO**    | varchar(150) | Sim         | Nome do processo realizado pelo estabelecimento.                           |
+| **DS_PROCESSO**    | text         | Sim         | Descrição das atividades e procedimentos realizados no processo.           |
+| **TP_TURNO**       | varchar(30)  | Não         | Identifica o período em que o processo ocorre, como manhã, tarde ou noite. |
+| **DS_ENTRADA**     | text         | Sim         | Informações, produtos ou solicitações necessárias para iniciar o processo. |
+| **DS_ATIVIDADES**  | text         | Sim         | Principais atividades executadas durante o processo.                       |
+| **DS_SAIDA**       | text         | Sim         | Resultado esperado após a conclusão do processo.                           |
+| **NM_RESPONSAVEL** | varchar(100) | Sim         | Funcionário ou setor responsável pela execução do processo.                |
+| **DS_CONTROLE**    | text         | Não         | Controles, conferências ou regras aplicadas durante o processo.            |
+| **DS_OBSERVACAO**  | text         | Não         | Informações adicionais ou particularidades do processo.                    |
+
+
+Dados para preencher os 6 processos
+| ID | Nome do processo                             | Turno | Responsável            | Descrição resumida                                                                                                                                |
+| -: | -------------------------------------------- | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  1 | Pré-preparo e Produção de Insumos            | Manhã | Cozinha                | Moagem de carnes de 180g e 120g, preparo de molhos, corte de vegetais e porcionamento.                                                            |
+|  2 | Abertura e Operação de Caixa                 | —     | Operador de caixa      | Abertura das sessões dos terminais Salão/Delivery, registro do fundo de reserva de R$ 150,00 e atribuição do operador.                            |
+|  3 | Atendimento de Salão e Gestão de Comandas    | —     | Garçom                 | Abertura de comanda vinculada à mesa, lançamento progressivo de itens e transferência entre mesas.                                                |
+|  4 | Produção na Cozinha                          | —     | Cozinha/Chapa/Montagem | Recebimento dos itens dos pedidos, preparação e montagem, considerando observações como ponto da carne e remoção de ingredientes.                 |
+|  5 | Fechamento de Conta e Recebimento Fracionado | —     | Caixa                  | Consolidação do consumo, aplicação ou isenção da taxa de serviço de 10%, recebimento em diferentes formas de pagamento e encerramento da comanda. |
+|  6 | Controle Financeiro e Fechamento de Turno    | —     | Caixa/Gerência         | Apuração das entradas por meio de pagamento, registro de sangrias e suprimentos, conferência de divergências e fechamento do turno.               |
+
+---
+
+Dicionário de Dados Conceitual (Preliminar)
+-Modelo conceitual
+Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.
+
+|Entidade |Relaciona-se com     |Cardinalidade |                                       
+|---------|---------------------|--------------|
+|\*Funcionário\* |\*Comanda\* |\*1:N(Uma comanda é aberta por um funcionário. Um funcionário pode abrir várias comandas.)\*|
+|\*Mesas\* |\*Comanda\* |\*1:N(Uma mesa pode ter várias comandas ao longo do tempo. Cada comanda pertence a uma mesa.)\* |
+|\*Comanda\*|\*Pedido\* |\*1:N(Uma comanda possui vários pedidos. Cada pedido pertence a uma comanda.)\*|
+|\*Funcionário\* |\*Pedido\* |\*1:N(Um funcionário registra/gera vários pedidos.Cada pedido é associado a um funcionário.)\*|
+|\*Menu (Produto)\* |\*Pedido\*|\*1:N(Um produto pode aparecer em vários pedidos. Cada item de pedido refere-se a um produto.)\* |
+|\*Menu (Produto)\*|\*Ficha_Tecnica\*|\*1:N(Um produto possui uma ou várias linhas na ficha técnica.)\*|
+|\*Ingredientes\*|\*Ficha_Tecnica\* |\*1:N(Um ingrediente pode compor vários produtos (via ficha técnica).)\* |
+|\*Comanda\*|\*Pagamentos_Comanda\* |\*1:N(Uma comanda pode ter um ou vários pagamentos.)\* |
+|\*Terminal(máquina que registra venda/pagamento)\*|\*Caixa\* |\*1:N(Um terminal pode operar vários caixas (ao longo do tempo). Cada caixa está associada a um terminal.)\* |
+
+
+Comanda é o “container” do consumo na Mesa, criada por um funcionário.
+Pedidos são itens (produto + quantidade) dentro da comanda, também associados ao funcionário que registrou.
+Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu.
+Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa).
+
 —------------------------------------------------------------------
 
 Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
