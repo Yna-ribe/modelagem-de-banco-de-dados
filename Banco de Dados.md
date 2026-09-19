@@ -88,17 +88,6 @@ A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Cla
 A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo acesso direto e irrestrito do grupo às rotinas operacionais (um dos integrantes é colaborador do local). O ambiente apresenta complexidade ideal para modelagem de dados: possui volumetria rica (30 mesas, 2 caixas, múltiplos turnos e ficha técnica artesanal) sem exceder o escopo da disciplina.
 
 ========================================================================
-## **2\. Processos de Negócio**
-
-### **Principais Processos Mapeados**
-
-1. **Pré-preparo e Produção de Insumos (Turno da Manhã):** Manipulação de insumos artesanais (moagem de carnes de 180g e 120g, preparo de molhos da casa, corte de vegetais, porcionamento).  
-2. **Abertura e Operação de Caixa:** Abertura de sessões por terminal (Salão/Delivery) com registro de fundo de reserva (R$150,00) e atribuição de operador.  
-3. **Atendimento de Salão e Gestão de Comandas:** Abertura de comanda associada à mesa, lançamento progressivo de itens por garçom e controle de transferência entre mesas.  
-4. **Produção na Cozinha (Chapa/Montagem):** Recebimento dos itens de pedidos fracionados por comanda, controle de observações (ponto de carne, remoção de itens)  
-5. **Fechamento de Conta e Recebimento Fracionado:** Consolidação do consumo, aplicação/isenção opcional da taxa de serviço de 10%, registros de pagamentos fracionados (N formas de pagamento) e encerramento da comanda com liberação da mesa.  
-6. **Controle Financeiro e Fechamento de Turno:** Apuração das entradas por meio de pagamento, registro de sangrias/suprimentos, conferência de divergências de caixa e fechamento do turno.  
-
 
 2. Processos de Negócio
 Principais Processos Mapeados
@@ -111,10 +100,14 @@ Controle Financeiro e Fechamento de Turno: Apuração das entradas por meio de p
 
 
 —----------------------------------------------------------
+
+<img width="300" height="350" alt="Lista de Contagem" src="https://github.com/user-attachments/assets/3681e022-5068-4aa0-b1e9-38ba8afcf704" />
+
 Evidência 01: Relatório do Fechamento de Turno do Caixa (Fita de Caixa) :
 Descrição: Relatório impresso de fechamento de caixa referente a um dia de movimento moderado, operado no terminal de Delivery.
 Impacto no BD: Demonstra a necessidade de registrar a divisão de formas de pagamento (Dinheiro, Cartão, Outros), a taxa de serviço de 10%, o fundo de reserva (R$ 150,00) e a apuração de diferenças no caixa na tabela
 
+<img width="300" height="350" alt="Relátorio Ararat" src="https://github.com/user-attachments/assets/30bafa3e-e780-439d-b3c1-d2fe97a76a50" />
 
 Evidência 02: Lista de Compras (Controle Manual de Estoque) :
 
@@ -125,7 +118,7 @@ Impacto no BD: Comprova a ausência de baixa automática de materiais no ato da 
 
 
 
-
+<img width="300" height="350" alt="Cardapio Ararat 1" src="https://github.com/user-attachments/assets/a71ee506-9426-4a5c-b3b0-6f19610038e1" /> <img width="300" height="350" alt="Cardapio Ararat 2" src="https://github.com/user-attachments/assets/5a28ca1f-4dc5-452e-9106-14184889afd5" />
 
 
 
