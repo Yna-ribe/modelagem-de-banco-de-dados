@@ -233,7 +233,8 @@ Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e port
 —------------------------------------------------------------------
 
 Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-![Diagrama ER](imagens/Diagrama.png)
+![Diagrama ER](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Diagrama%20Entidade-Relacionamento.png?raw=true)
+
 
 <<<<<<< HEAD
 Diagrama Entidade-Relacionamento (DER)
