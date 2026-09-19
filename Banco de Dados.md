@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Mont Ararat Burger House
 Hamburgueria Artesanal
 - **Nomes dos alunos e RGM**
@@ -47,6 +48,51 @@ Google Maps: Mont Ararat Hamburgueria
 Instagram: https://www.instagram.com/montararatburger/ 
 Contato (telefone): (11)2015-5871
 Um dos Integrantes do grupo já trabalha no local, portanto, o contato foi simples, ele mesmo foi ao local e conversou com o responsável daquela unidade, que no caso é a de São Mateus. 
+=======
+Entrega 1: Modelo Conceitual (DER)
+Sistema de Gestão de Informações – Mont Ararat Burger House
+
+Metadados
+Integrantes do Grupo (Nomes e RGMs): 
+– Gustavo Almeida de Lima, RGM: 48157899
+– Mariana Brito Farias, RGM: 
+– Ynaê Ribeiro da Silva, RGM: 
+
+
+1. Caracterização da Organização
+Nome e Natureza da Organização:
+Razão Social: MONT ARARAT BURGER HOUSE LTDA
+Nome Fantasia: Mont Ararat Burger House
+CNPJ: 46.336.364/0001-48
+Natureza Jurídica: Sociedade Empresária Limitada (LTDA) / Organização Privada com Fins Lucrativos.
+Atividade Econômica Principal (CNAE): Lanchonetes
+
+Evidências da organização:
+Logradouro: Rua Vercínio Pereira de Souza, 1199, São Paulo, São Paulo, 
+Bairro: São Mateus
+CEP: 03945-000
+Município: São Paulo
+Estado: São Paulo
+Google Maps: Mont Ararat Hamburgueria
+Instagram: https://www.instagram.com/montararatburger/ 
+Contato (telefone): (11)2015-5871
+Pesquisa de Campo: Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais. 
+
+Evidencias – Entrevista:
+
+Evidência 01: Relatório do Fechamento de Turno do Caixa (Fita de Caixa) :
+Descrição: Relatório impresso de fechamento de caixa referente a um dia de movimento moderado, operado no terminal de Delivery.
+Impacto no BD: Demonstra a necessidade de registrar a divisão de formas de pagamento (Dinheiro, Cartão, Outros), a taxa de serviço de 10%, o fundo de reserva (R$ 150,00) e a apuração de diferenças no caixa na tabela
+
+Evidência 02: Lista de Compras (Controle Manual de Estoque) :
+Descrição: Formulário impresso utilizado para a contagem visual e manual dos insumos em estoque.
+Impacto no BD: Comprova a ausência de baixa automática de materiais no ato da venda, justificando a criação das tabelas Ficha Técnica e Ingredientes para automatizar o controle de estoque.
+
+Evidência 03: Cardápio Impresso (Cardápio Físico e Estrutura de Produtos):
+Descrição: Foto do cardápio físico da hamburgueria exibindo a categorização de produtos (Lanches, Extras, Bebidas), preços base e opções de combos.
+Impacto no BD: Demonstra a necessidade da tabela Menu para estruturar os produtos por categoria e preço base, servindo de origem para o lançamento de itens na tabela Pedido.
+
+>>>>>>> 384965902e11eff7b9aa5036b972bcce881b2cf8
 
 Processos de Negócio:
 A empresa funciona de Terça à Domingo e aos feriados, Seu funcionamento é das 18h às 23h durante a semana, e até 00h durante os finais de semana, os funcionários são divididos entre o Horário da Manhã e o da Tarde/Noite.
@@ -132,3 +178,13 @@ imagem anexada
 Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc.) em qualquer parte do trabalho, registre **para cada uso relevante**:
 
 
+<<<<<<< HEAD
+=======
+\---
+
+\#\# 9\. Uso de Inteligência Artificial  
+\*(documentação obrigatória — não é opcional se o grupo usou IA em qualquer etapa: pesquisa, escrita, organização de ideias ou revisão de texto)\*
+
+Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc.) em qualquer parte do trabalho, registre \*\*para cada uso relevante\*\*:
+
+>>>>>>> 384965902e11eff7b9aa5036b972bcce881b2cf8
