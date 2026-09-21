@@ -181,23 +181,50 @@ Regras de Negócio (regras que devem ser obedecidas pelo sistema)
 
 ## 4. Regras de Negócio:
 
-Tabela: PROCESSO_NEGOCIO
+Processo de Negócio — Gestão Integrada de Atendimento e Vendas
 
-| Atributo           | Tipo físico  | Obrigatório | Significado e relevância                                                   |
-| ------------------ | ------------ | ----------- | -------------------------------------------------------------------------- |
-| **ID_PROCESSO**    | integer      | Sim (PK)    | Identificador único do processo de negócio.                                |
-| **NM_PROCESSO**    | varchar(150) | Sim         | Nome do processo realizado pelo estabelecimento.                           |
-| **DS_PROCESSO**    | text         | Sim         | Descrição das atividades e procedimentos realizados no processo.           |
-| **TP_TURNO**       | varchar(30)  | Não         | Identifica o período em que o processo ocorre, como manhã, tarde ou noite. |
-| **DS_ENTRADA**     | text         | Sim         | Informações, produtos ou solicitações necessárias para iniciar o processo. |
-| **DS_ATIVIDADES**  | text         | Sim         | Principais atividades executadas durante o processo.                       |
-| **DS_SAIDA**       | text         | Sim         | Resultado esperado após a conclusão do processo.                           |
-| **NM_RESPONSAVEL** | varchar(100) | Sim         | Funcionário ou setor responsável pela execução do processo.                |
-| **DS_CONTROLE**    | text         | Não         | Controles, conferências ou regras aplicadas durante o processo.            |
-| **DS_OBSERVACAO**  | text         | Não         | Informações adicionais ou particularidades do processo.                    |
+| ID   | Atributo                | Tipo Físico | Obrigatório | Significado                                                                                 | Relevância                                                                    |
+| ---- | ----------------------- | ----------- | ----------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| PB01 | Pré-preparo e Produção  | Processo    | Sim         | Preparação dos insumos utilizados na operação, incluindo carnes, molhos e vegetais.         | Garante que os insumos estejam disponíveis e padronizados para o atendimento. |
+| PB02 | Abertura de Caixa       | Processo    | Sim         | Início da operação dos terminais, com registro do operador e fundo de reserva de R$ 150,00. | Permite controlar o início da movimentação financeira de cada caixa.          |
+| PB03 | Abertura de Comanda     | Processo    | Sim         | Criação de uma comanda vinculada a uma mesa ou atendimento.                                 | Permite identificar e controlar o consumo do cliente.                         |
+| PB04 | Registro de Pedido      | Processo    | Sim         | Registro dos produtos solicitados pelo cliente na comanda.                                  | Garante que os pedidos sejam encaminhados corretamente para produção.         |
+| PB05 | Transferência de Mesa   | Processo    | Não         | Alteração da mesa associada à comanda quando necessário.                                    | Mantém o controle correto da ocupação e do consumo.                           |
+| PB06 | Produção do Pedido      | Processo    | Sim         | Preparação dos itens solicitados pela cozinha, considerando observações e alterações.       | Garante que o pedido seja produzido conforme a solicitação do cliente.        |
+| PB07 | Entrega do Pedido       | Processo    | Sim         | Entrega do pedido preparado ao cliente do salão, balcão ou delivery.                        | Finaliza a etapa operacional do pedido.                                       |
+| PB08 | Fechamento de Conta     | Processo    | Sim         | Consolidação dos itens consumidos e cálculo do valor final da comanda.                      | Permite determinar o valor devido pelo cliente.                               |
+| PB09 | Taxa de Serviço         | Informação  | Não         | Registro da aplicação ou isenção da taxa de serviço de 10%.                                 | Permite controlar corretamente o valor final da conta.                        |
+| PB10 | Pagamento               | Processo    | Sim         | Registro do recebimento da conta por uma ou mais formas de pagamento.                       | Garante o controle das receitas e possibilita pagamentos fracionados.         |
+| PB11 | Encerramento de Comanda | Processo    | Sim         | Finalização da comanda após a confirmação do pagamento e liberação da mesa.                 | Mantém o controle das mesas e dos atendimentos concluídos.                    |
+| PB12 | Sangria/Suprimento      | Processo    | Não         | Registro de retiradas ou entradas de valores no caixa durante o turno.                      | Auxilia na conferência e controle da movimentação financeira.                 |
+| PB13 | Fechamento de Turno     | Processo    | Sim         | Conferência das movimentações financeiras e encerramento do caixa.                          | Permite identificar divergências e validar os valores movimentados.           |
+| PB14 | Controle de Delivery    | Processo    | Sim         | Gerenciamento dos pedidos realizados pelo canal de delivery.                                | Controla um dos principais canais de vendas da operação.                      |
+| PB15 | Controle de Ocupação    | Processo    | Sim         | Gerenciamento das mesas disponíveis, ocupadas e liberadas.                                  | Permite administrar as 30 mesas e melhorar o fluxo de atendimento.            |
 
+
+Atributos principais do processo
+
+| ID   | Nome                 | Tipo Físico   | Obrigatório | Significado                                                             | Relevância                                                 |
+| ---- | -------------------- | ------------- | ----------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| AT01 | ID do Processo       | Inteiro       | Sim         | Identificador único do processo.                                        | Permite identificar cada processo sem ambiguidade.         |
+| AT02 | Nome do Processo     | Texto         | Sim         | Nome utilizado para identificar o processo.                             | Facilita a organização e documentação dos processos.       |
+| AT03 | Canal de Atendimento | Texto/Enum    | Sim         | Identifica se o atendimento ocorre no salão, balcão ou delivery.        | Permite diferenciar os fluxos operacionais.                |
+| AT04 | Data/Hora            | Data/Hora     | Sim         | Momento em que a atividade ocorre.                                      | Permite rastrear as operações.                             |
+| AT05 | Operador             | Texto/Inteiro | Sim         | Funcionário responsável pela operação.                                  | Permite identificar quem realizou determinada atividade.   |
+| AT06 | Mesa                 | Inteiro       | Não         | Número da mesa associada ao atendimento.                                | Controla a ocupação do salão.                              |
+| AT07 | Comanda              | Inteiro       | Sim         | Identificador da comanda do cliente.                                    | Centraliza os itens consumidos e o pagamento.              |
+| AT08 | Pedido               | Inteiro       | Sim         | Identificador do pedido realizado.                                      | Permite acompanhar o pedido durante o processo.            |
+| AT09 | Produto              | Texto/Inteiro | Sim         | Produto solicitado pelo cliente.                                        | Define o item que deverá ser produzido.                    |
+| AT10 | Quantidade           | Inteiro       | Sim         | Quantidade de unidades solicitadas.                                     | Determina a quantidade que deverá ser produzida e cobrada. |
+| AT11 | Observação           | Texto         | Não         | Informações adicionais, como ponto da carne ou remoção de ingredientes. | Evita erros na preparação do pedido.                       |
+| AT12 | Valor                | Decimal       | Sim         | Valor monetário do pedido ou da conta.                                  | Base para o recebimento e controle financeiro.             |
+| AT13 | Forma de Pagamento   | Texto/Enum    | Sim         | Método utilizado para realizar o pagamento.                             | Permite controlar diferentes formas de recebimento.        |
+| AT14 | Status               | Texto/Enum    | Sim         | Situação atual do processo ou pedido.                                   | Permite acompanhar o andamento da operação.                |
+| AT15 | Taxa de Serviço      | Decimal       | Não         | Valor correspondente à taxa de serviço de 10%.                          | Permite registrar aplicação ou isenção da taxa.            |
 
 Dados para preencher os 6 processos
+
+
 | ID | Nome do processo                             | Turno | Responsável            | Descrição resumida                                                                                                                                |
 | -: | -------------------------------------------- | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  1 | Pré-preparo e Produção de Insumos            | Manhã | Cozinha                | Moagem de carnes de 180g e 120g, preparo de molhos, corte de vegetais e porcionamento.                                                            |
