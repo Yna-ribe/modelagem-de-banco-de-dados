@@ -241,24 +241,7 @@ Dados para preencher os 6 processos
 Dicionário de Dados Conceitual (Preliminar)
 -Modelo conceitual
 Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.
-
-|Entidade |Relaciona-se com     |Cardinalidade |                                       
-|---------|---------------------|--------------|
-|\*Funcionário\* |\*Comanda\* |\*1:N(Uma comanda é aberta por um funcionário. Um funcionário pode abrir várias comandas.)\*|
-|\*Mesas\* |\*Comanda\* |\*1:N(Uma mesa pode ter várias comandas ao longo do tempo. Cada comanda pertence a uma mesa.)\* |
-|\*Comanda\*|\*Pedido\* |\*1:N(Uma comanda possui vários pedidos. Cada pedido pertence a uma comanda.)\*|
-|\*Funcionário\* |\*Pedido\* |\*1:N(Um funcionário registra/gera vários pedidos.Cada pedido é associado a um funcionário.)\*|
-|\*Menu (Produto)\* |\*Pedido\*|\*1:N(Um produto pode aparecer em vários pedidos. Cada item de pedido refere-se a um produto.)\* |
-|\*Menu (Produto)\*|\*Ficha_Tecnica\*|\*1:N(Um produto possui uma ou várias linhas na ficha técnica.)\*|
-|\*Ingredientes\*|\*Ficha_Tecnica\* |\*1:N(Um ingrediente pode compor vários produtos (via ficha técnica).)\* |
-|\*Comanda\*|\*Pagamentos_Comanda\* |\*1:N(Uma comanda pode ter um ou vários pagamentos.)\* |
-|\*Terminal(máquina que registra venda/pagamento)\*|\*Caixa\* |\*1:N(Um terminal pode operar vários caixas (ao longo do tempo). Cada caixa está associada a um terminal.)\* |
-
-
-Comanda é o “container” do consumo na Mesa, criada por um funcionário.
-Pedidos são itens (produto + quantidade) dentro da comanda, também associados ao funcionário que registrou.
-Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu.
-Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa).
+ -Anexado em HTML
 
 —------------------------------------------------------------------
 
