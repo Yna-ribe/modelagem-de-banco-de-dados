@@ -1,0 +1,18 @@
+p{
+    color: rgb(255, 53, 154);
+    font-size: 40px;
+
+}
+<!-- é para id --->
+#ident1{
+    color: aquamarine;
+    font-size: 12px;
+}
+h1,h2,h3{
+    color: rgb(18, 114, 114);
+    font-size: 14px;
+}
+             
+.classe1{
+    color: brown;
+} 
