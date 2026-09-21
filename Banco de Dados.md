@@ -91,7 +91,9 @@ A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo a
 ========================================================================
 
 2. Processos de Negócio
+
 Principais Processos Mapeados
+
 Pré-preparo e Produção de Insumos (Turno da Manhã): Manipulação de insumos artesanais (moagem de carnes de 180g e 120g, preparo de molhos da casa, corte de vegetais, porcionamento).
 Abertura e Operação de Caixa: Abertura de sessões por terminal (Salão/Delivery) com registro de fundo de reserva (R$150,00) e atribuição de operador.
 Atendimento de Salão e Gestão de Comandas: Abertura de comanda associada à mesa, lançamento progressivo de itens por garçom e controle de transferência entre mesas.
@@ -185,21 +187,21 @@ Processo de Negócio — Gestão Integrada de Atendimento e Vendas
 
 | ID   | Atributo                | Tipo Físico | Obrigatório | Significado                                                                                 | Relevância                                                                    |
 | ---- | ----------------------- | ----------- | ----------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| PB01 | Pré-preparo e Produção  | Processo    | Sim         | Preparação dos insumos utilizados na operação, incluindo carnes, molhos e vegetais.         | Garante que os insumos estejam disponíveis e padronizados para o atendimento. |
-| PB02 | Abertura de Caixa       | Processo    | Sim         | Início da operação dos terminais, com registro do operador e fundo de reserva de R$ 150,00. | Permite controlar o início da movimentação financeira de cada caixa.          |
-| PB03 | Abertura de Comanda     | Processo    | Sim         | Criação de uma comanda vinculada a uma mesa ou atendimento.                                 | Permite identificar e controlar o consumo do cliente.                         |
-| PB04 | Registro de Pedido      | Processo    | Sim         | Registro dos produtos solicitados pelo cliente na comanda.                                  | Garante que os pedidos sejam encaminhados corretamente para produção.         |
-| PB05 | Transferência de Mesa   | Processo    | Não         | Alteração da mesa associada à comanda quando necessário.                                    | Mantém o controle correto da ocupação e do consumo.                           |
-| PB06 | Produção do Pedido      | Processo    | Sim         | Preparação dos itens solicitados pela cozinha, considerando observações e alterações.       | Garante que o pedido seja produzido conforme a solicitação do cliente.        |
-| PB07 | Entrega do Pedido       | Processo    | Sim         | Entrega do pedido preparado ao cliente do salão, balcão ou delivery.                        | Finaliza a etapa operacional do pedido.                                       |
-| PB08 | Fechamento de Conta     | Processo    | Sim         | Consolidação dos itens consumidos e cálculo do valor final da comanda.                      | Permite determinar o valor devido pelo cliente.                               |
-| PB09 | Taxa de Serviço         | Informação  | Não         | Registro da aplicação ou isenção da taxa de serviço de 10%.                                 | Permite controlar corretamente o valor final da conta.                        |
-| PB10 | Pagamento               | Processo    | Sim         | Registro do recebimento da conta por uma ou mais formas de pagamento.                       | Garante o controle das receitas e possibilita pagamentos fracionados.         |
-| PB11 | Encerramento de Comanda | Processo    | Sim         | Finalização da comanda após a confirmação do pagamento e liberação da mesa.                 | Mantém o controle das mesas e dos atendimentos concluídos.                    |
-| PB12 | Sangria/Suprimento      | Processo    | Não         | Registro de retiradas ou entradas de valores no caixa durante o turno.                      | Auxilia na conferência e controle da movimentação financeira.                 |
-| PB13 | Fechamento de Turno     | Processo    | Sim         | Conferência das movimentações financeiras e encerramento do caixa.                          | Permite identificar divergências e validar os valores movimentados.           |
-| PB14 | Controle de Delivery    | Processo    | Sim         | Gerenciamento dos pedidos realizados pelo canal de delivery.                                | Controla um dos principais canais de vendas da operação.                      |
-| PB15 | Controle de Ocupação    | Processo    | Sim         | Gerenciamento das mesas disponíveis, ocupadas e liberadas.                                  | Permite administrar as 30 mesas e melhorar o fluxo de atendimento.            |
+| PPP | Pré-preparo e Produção  | Processo    | Sim         | Preparação dos insumos utilizados na operação, incluindo carnes, molhos e vegetais.         | Garante que os insumos estejam disponíveis e padronizados para o atendimento. |
+| AC | Abertura de Caixa       | Processo    | Sim         | Início da operação dos terminais, com registro do operador e fundo de reserva de R$ 150,00. | Permite controlar o início da movimentação financeira de cada caixa.          |
+| A_comanda | Abertura de Comanda     | Processo    | Sim         | Criação de uma comanda vinculada a uma mesa ou atendimento.                                 | Permite identificar e controlar o consumo do cliente.                         |
+| RP | Registro de Pedido      | Processo    | Sim         | Registro dos produtos solicitados pelo cliente na comanda.                                  | Garante que os pedidos sejam encaminhados corretamente para produção.         |
+| TM | Transferência de Mesa   | Processo    | Não         | Alteração da mesa associada à comanda quando necessário.                                    | Mantém o controle correto da ocupação e do consumo.                           |
+| PP | Produção do Pedido      | Processo    | Sim         | Preparação dos itens solicitados pela cozinha, considerando observações e alterações.       | Garante que o pedido seja produzido conforme a solicitação do cliente.        |
+| EP | Entrega do Pedido       | Processo    | Sim         | Entrega do pedido preparado ao cliente do salão, balcão ou delivery.                        | Finaliza a etapa operacional do pedido.                                       |
+| FC | Fechamento de Conta     | Processo    | Sim         | Consolidação dos itens consumidos e cálculo do valor final da comanda.                      | Permite determinar o valor devido pelo cliente.                               |
+| TX | Taxa de Serviço         | Informação  | Não         | Registro da aplicação ou isenção da taxa de serviço de 10%.                                 | Permite controlar corretamente o valor final da conta.                        |
+| PAGAMENTO | Pagamento               | Processo    | Sim         | Registro do recebimento da conta por uma ou mais formas de pagamento.                       | Garante o controle das receitas e possibilita pagamentos fracionados.         |
+| EC | Encerramento de Comanda | Processo    | Sim         | Finalização da comanda após a confirmação do pagamento e liberação da mesa.                 | Mantém o controle das mesas e dos atendimentos concluídos.                    |
+| SUPRI. | Sangria/Suprimento      | Processo    | Não         | Registro de retiradas ou entradas de valores no caixa durante o turno.                      | Auxilia na conferência e controle da movimentação financeira.                 |
+| FT | Fechamento de Turno     | Processo    | Sim         | Conferência das movimentações financeiras e encerramento do caixa.                          | Permite identificar divergências e validar os valores movimentados.           |
+| CD | Controle de Delivery    | Processo    | Sim         | Gerenciamento dos pedidos realizados pelo canal de delivery.                                | Controla um dos principais canais de vendas da operação.                      |
+| CO | Controle de Ocupação    | Processo    | Sim         | Gerenciamento das mesas disponíveis, ocupadas e liberadas.                                  | Permite administrar as 30 mesas e melhorar o fluxo de atendimento.            |
 
 
 Atributos principais do processo
