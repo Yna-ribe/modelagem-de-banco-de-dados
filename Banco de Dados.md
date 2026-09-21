@@ -261,7 +261,8 @@ Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu.
 Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa).
 
 —------------------------------------------------------------------
-<<<<<<< HEAD
+
+
 Diagrama Entidade-Relacionamento (DER): anexado
 
 Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
