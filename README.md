@@ -1,4 +1,4 @@
-# **Entrega 1: Modelagem de Banco de Dados)**
+# **Entrega 1: Modelagem de Banco de Dados**
 
 **Sistema de Gestão de Informações – Mont Ararat Burger House**
 
