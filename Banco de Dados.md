@@ -261,13 +261,11 @@ Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu.
 Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa).
 
 —------------------------------------------------------------------
+<<<<<<< HEAD
+Diagrama Entidade-Relacionamento (DER): anexado
 
 Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-![Diagrama ER](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Diagrama%20Entidade-Relacionamento.png?raw=true)
 
-
-<<<<<<< HEAD
-Diagrama Entidade-Relacionamento (DER)
 ![Modelagem Conceitual](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Modelagem%20Conceitual.png?raw=true)
 
 ## 8. Justificativa Técnica
