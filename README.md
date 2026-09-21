@@ -239,15 +239,15 @@ interoperabilidade…)
 
 ---
 
-**Dicionário de Dados Conceitual (Preliminar) -Modelo conceitual Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento. -Anexado em HTML** 
+**5. Dicionário de Dados Conceitual (Preliminar) -Modelo conceitual Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento. -Anexado em HTML** 
 
-**Diagrama Entidade-Relacionamento (DER): Anexado**
+**6. Diagrama Entidade-Relacionamento (DER): Anexado**
 
 
 -------------------------------------------------------------------------
 
 
-# **Modelagem Conceitual** (Entidades, Atributos, Relacionamentos)
+# 7. **Modelagem Conceitual** (Entidades, Atributos, Relacionamentos)
 
 ![Modelagem Conceitual](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Modelagem%20Conceitual.png?raw=true)
 
