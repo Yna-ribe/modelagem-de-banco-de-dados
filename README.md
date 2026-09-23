@@ -2,8 +2,8 @@
 
 **Sistema de Gestão de Informações – Mont Ararat Burger House**
 
-**Metadados:**
-* Integrantes do Grupo (Nomes e RGMs):   
+
+** Integrantes do Grupo (Nomes e RGMs):**   
 * – Gustavo Almeida de Lima, RGM: 48157899  
 * – Mariana Brito Farias, RGM:48134767   
 * – Ynaê Ribeiro da Silva, RGM:47987111
