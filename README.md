@@ -54,6 +54,26 @@ Declaramos, para os devidos fins, que as informações fornecidas pela Hamburgue
 
 A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Classifica-se formalmente como Microempresa (ME) / Empresa de Pequeno Porte (EPP). Fundada originalmente em 2016, a marca conta com unidades em São Paulo (unidade de estudo em São Mateus), Suzano e Mogi das Cruzes.
 
+-------------------------------------------------------------------------
+
+# **Coleta de Dados**
+
+<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19" src="https://github.com/user-attachments/assets/3500d3ba-d6bb-4329-a536-83eabbb073a1"/>
+
+-- Integrante do Grupo Gustavo, e Rafael Vieira (Responsável pela Unidade de São Mateus) --
+
+-------------------------------------------------------------------------
+
+
+
+<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
+
+--Hamburgueria Mont Ararat Burguer House, Unidade de São Mateus--
+
+ -- O entrevistado foi o Encarregado da Unidade de São Mateus, O responsável pela parte financeira do estabelecimento, tanto salário, compras, e o responsável pela administração dos dados que a loja possui, funcionários, caixa, ingredientes, Etc. Ele não possui um cargo fixo no estabelecimento, ele é  um parente direto do Dono da Franquia. O integrantes do grupo que conduziu a coleta de dados, é um contribuinte do estabelecimento, facilitando o contato e a entrevista.
+A entrevista foi combinada e marcada pelo celular. 
+
+Contato do Entrevistado: (11)95920-7522
 
 
 -------------------------------------------------------------------------
