@@ -274,14 +274,69 @@ interoperabilidade…)
 -------------------------------------------------------------------------
 
 ## 8. Justificativa Técnica
-*(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
 
-*Explique e defenda as decisões de abstração e modelagem tomadas: por que essas entidades, esses atributos, esses relacionamentos e essas cardinalidades — e não outras alternativas possíveis?*
+
+## 9. Uso de Inteligência Artificial
+**IA utilizada:** Google Gemini
+
+## Preparação para a Entrevista
+O Gemini foi utilizado para estruturar o roteiro de entrevista e orientar a coleta de dados com a gerência do estabelecimento.
+
+**Prompts utilizados:**
+> "Esse banco de dados precisa ser baseado em uma empresa, tenho a base, mas que dados, baseado nesse mapa, devo buscar com o gerente para produzir o banco de dados?"
+
+> "De verde são as informações que eu tenho já por trabalhar lá e de vermelho são as que vou buscar. Com as informações que já tenho, o que mais posso adicionar?" *(Refere-se ao documento Entrevista mont ararat.docx)*
 
 ---
 
-## 9. Uso de Inteligência Artificial
-*(documentação obrigatória — não é opcional se o grupo usou IA em qualquer etapa: pesquisa, escrita, organização de ideias ou revisão de texto)*
+## Diagramas, Requisitos e Regras de Negócio
 
-Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc.) em qualquer parte do trabalho, registre **para cada uso relevante**:
+### Diagrama de Entidade e Relacionamento (DER)
+Validação do primeiro esboço das tabelas criadas no DBDesigner, revisando atributos, redundâncias de dados e tirando dúvidas sobre a arquitetura do sistema de caixa.
 
+**Prompts utilizados:**
+> "Estou utilizando o DBDesigner para ter uma base e ele está ficando assim: o que mais posso melhorá-lo de acordo com sua sugestão dita agora?" *(Refere-se à imagem image_aaaa0b.png)*
+
+> "A parte dos caixas seria um sistema à parte do banco de dados, certo? Então ele não seria necessário ou deixo e coloco uma observação dizendo que é à parte?"
+
+> "O preço unitário em pedido seria desnecessário, certo? Já que possui a comanda."
+
+### Requisitos e Regras de Negócio
+Definição do escopo do projeto e identificação de quais entidades (tabelas) e regras de negócio fariam parte do banco de dados.
+
+**Prompts utilizados:**
+> "Para a construção de um banco de dados para uma hamburgueria, quais informações eu deveria obter?"
+
+> "No caso desta hamburgueria, não possui o cadastro de cliente. Eu deveria colocar as informações dos funcionários? Também deve conter fornecedores ou não seria necessário?"
+
+> "Na hamburgueria os pedidos são feitos por Mesa (possui 30 mesas ao todo), deveria ser adicionado?"
+
+> "O caixa deveria ser incluído também?"
+
+---
+
+## Redação de Textos e Documentação
+
+### Documentação do Projeto Acadêmico
+Redação da fundamentação teórica e descritiva para a documentação, abordando conceitos operacionais como volume de atividades e tamanho da operação.
+
+**Prompts utilizados:**
+> "Estou fazendo a documentação da Hamburgueria, como eu colocaria o volume das atividades da Hamburgueria na documentação?"
+
+> "E tamanho da operação, do que se trataria?"
+
+### Edição e Formatação
+Análise e documentação do modelo de dados para refinar a redação técnica com transições fluidas e descrever o uso das ferramentas.
+
+**Prompts utilizados:**
+> "Como eu posso justificar os detalhes, entidades e relacionamentos etc.?"
+
+> "Eu preciso justificar tudo e colocar a parte de elementos em um único texto, o que você recomenda?"
+
+> "Faça uma breve descrição sobre essas ferramentas: brModeler, MySQL, Workbench, Draw.io, Lucidchart, Miro."
+
+---
+
+# Reflexão crítica 
+
+A principal motivação para o uso da IA nesses casos foi compreender detalhes técnicos, a construção e a estrutura do banco de dados necessários para a realização deste trabalho. Por essa razão, evitamos utilizar IA na elaboração dos textos (como justificativas, introdução, entre outros), buscando aprofundar o aprendizado, revisar as decisões tomadas e evitar generalizações incorretas.
