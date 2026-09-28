@@ -5,12 +5,12 @@
 
 ** Integrantes do Grupo (Nomes e RGMs):**   
 * – Gustavo Almeida de Lima, RGM: 48157899  
-* – Mariana Brito Farias, RGM:48134767   
-* – Ynaê Ribeiro da Silva, RGM:47987111
+* – Mariana Brito Farias, RGM: 48134767   
+* – Ynaê Ribeiro da Silva, RGM: 47987111
 
 -------------------------------------------------------------------------
 
-## **Introdução**
+# **Introdução**
 
 Modelagem de dados é o processo de criar uma representação visual de um sistema de informação para comunicar as conexões entre pontos e estruturas de dados, compreendendo profundamente o que foi projetado.
 
@@ -73,7 +73,7 @@ A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Cla
  -- O entrevistado foi o Encarregado da Unidade de São Mateus, O responsável pela parte financeira do estabelecimento, tanto salário, compras, e o responsável pela administração dos dados que a loja possui, funcionários, caixa, ingredientes, Etc. Ele não possui um cargo fixo no estabelecimento, ele é  um parente direto do Dono da Franquia. O integrantes do grupo que conduziu a coleta de dados, é um contribuinte do estabelecimento, facilitando o contato e a entrevista.
 A entrevista foi combinada e marcada pelo celular. 
 
-Contato do Entrevistado: (11)95920-7522
+> Contato do Entrevistado: (11)95920-7522
 
 
 -------------------------------------------------------------------------
@@ -273,15 +273,83 @@ interoperabilidade…)
 
 -------------------------------------------------------------------------
 
-## 8. Justificativa Técnica
-*(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
+# 8. Justificativa Técnica
 
-*Explique e defenda as decisões de abstração e modelagem tomadas: por que essas entidades, esses atributos, esses relacionamentos e essas cardinalidades — e não outras alternativas possíveis?*
+A justificativa técnica deste trabalho fundamenta-se na necessidade de estruturar, de forma padronizada e eficiente, o fluxo de informações operacionais e financeiras da Mont Ararat Burger House, considerando os problemas e as necessidades identificadas, como a inexistência de registros formais de clientes e a gestão descentralizada de compras e estoque. Esses fatores dificultavam a rastreabilidade das operações e impediam a identificação precisa do funcionário responsável pelo controle de insumos e compras, resultando na ausência do cálculo automatizado da Ficha Técnica, em compras imprecisas e em custos operacionais não contabilizados em tempo real. Contudo, a estrutura desenvolvida apresenta pontos positivos consolidados, como a vinculação direta dos funcionários a comandas, pedidos e caixa, elementos que contribuem para o registro de dados essenciais para a padronização organizacional da empresa.
+
+Para organizar, desenhar e validar todas as entidades e conexões, foram utilizadas ferramentas gratuitas para uso pessoal. A partir de um estudo básico de suas funcionalidades e singularidades, foi possível alinhar e consolidar os diferentes pontos de vista dos membros do grupo com base na visão geral da Mont Ararat Burger House:
+
+* **brModeler:** Ferramenta dedicada à modelagem de bancos de dados relacionais. Foi ideal para criar os diagramas conceituais e lógicos, permitindo estruturar visualmente as entidades, atributos, relacionamentos e cardinalidades do sistema.
+* **Draw.io:** Ferramenta versátil de diagramação baseada na web, excelente para desenhar fluxos de processos operacionais, esquemas de arquitetura e diagramas do sistema de forma rápida e colaborativa.
+* **Lucidchart:** Plataforma intuitiva de criação de diagramas para mapear visualmente a arquitetura de dados, esquemas de entidades e fluxogramas do negócio, facilitando a documentação clara do projeto.
+* **Miro:** Quadro branco digital colaborativo utilizado nas etapas iniciais de brainstorming, ideal para reunir os integrantes do grupo, mapear a crise operacional da empresa e levantar os requisitos do sistema antes da modelagem final.
+
+Em razão de futuras melhorias propostas pelos integrantes deste trabalho, busca-se aprimorar a estrutura conceitual do sistema para atender de forma mais abrangente às necessidades operacionais e estratégicas da organização. Essa evolução visa expandir o alcance da modelagem de dados, garantindo que os fluxos de informação acompanhem o crescimento do negócio e proporcionem maior eficiência, precisão nos registros e suporte adequado às tomadas de decisão. Dentre as principais adequações futuras a serem implementadas, destacam-se o controle de acessos, o gerenciamento de dados sensíveis, a contabilização automática do caixa e o registro de clientes. Com isso, a Mont Ararat Burger House poderá crescer de forma organizada, íntegra e segura, prevenindo fraudes e perdas financeiras.
 
 ---
 
-## 9. Uso de Inteligência Artificial
-*(documentação obrigatória — não é opcional se o grupo usou IA em qualquer etapa: pesquisa, escrita, organização de ideias ou revisão de texto)*
+# 9. Uso de Inteligência Artificial
 
-Se o grupo usou alguma ferramenta de IA (ChatGPT, Claude, Gemini, Perplexity etc.) em qualquer parte do trabalho, registre **para cada uso relevante**:
+**IA utilizada:** Google Gemini
 
+## Preparação para a Entrevista
+O Gemini foi utilizado para estruturar o roteiro de entrevista e orientar a coleta de dados com a gerência do estabelecimento.
+
+**Prompts utilizados:**
+> "Esse banco de dados precisa ser baseado em uma empresa, tenho a base, mas que dados, baseado nesse mapa, devo buscar com o gerente para produzir o banco de dados?"
+
+> "De verde são as informações que eu tenho já por trabalhar lá e de vermelho são as que vou buscar. Com as informações que já tenho, o que mais posso adicionar?"
+
+---
+
+## Diagramas, Requisitos e Regras de Negócio
+
+### Diagrama de Entidade e Relacionamento (DER)
+Validação do primeiro esboço das tabelas criadas no DBDesigner, revisando atributos, redundâncias de dados e tirando dúvidas sobre a arquitetura do sistema de caixa.
+
+**Prompts utilizados:**
+> "Estou utilizando o DBDesigner para ter uma base e ele está ficando assim: o que mais posso melhorá-lo de acordo com sua sugestão dita agora?"
+
+> "A parte dos caixas seria um sistema à parte do banco de dados, certo? Então ele não seria necessário ou deixo e coloco uma observação dizendo que é à parte?"
+
+> "O preço unitário em pedido seria desnecessário, certo? Já que possui a comanda."
+
+### Requisitos e Regras de Negócio
+Definição do escopo do projeto e identificação de quais entidades (tabelas) e regras de negócio fariam parte do banco de dados.
+
+**Prompts utilizados:**
+> "Para a construção de um banco de dados para uma hamburgueria, quais informações eu deveria obter?"
+
+> "No caso desta hamburgueria, não possui o cadastro de cliente. Eu deveria colocar as informações dos funcionários? Também deve conter fornecedores ou não seria necessário?"
+
+> "Na hamburgueria os pedidos são feitos por Mesa (possui 30 mesas ao todo), deveria ser adicionado?"
+
+> "O caixa deveria ser incluído também?"
+
+---
+
+## Redação de Textos e Documentação
+
+### Documentação do Projeto Acadêmico
+Redação da fundamentação teórica e descritiva para a documentação, abordando conceitos operacionais como volume de atividades e tamanho da operação.
+
+**Prompts utilizados:**
+> "Estou fazendo a documentação da Hamburgueria, como eu colocaria o volume das atividades da Hamburgueria na documentação?"
+
+> "E tamanho da operação, do que se trataria?"
+
+### Edição e Formatação
+Análise e documentação do modelo de dados para refinar a redação técnica com transições fluidas e descrever o uso das ferramentas.
+
+**Prompts utilizados:**
+> "Como eu posso justificar os detalhes, entidades e relacionamentos etc.?"
+
+> "Eu preciso justificar tudo e colocar a parte de elementos em um único texto, o que você recomenda?"
+
+> "Faça uma breve descrição sobre essas ferramentas: brModeler, MySQL, Workbench, Draw.io, Lucidchart, Miro."
+
+---
+
+# Reflexão crítica 
+
+A principal motivação para o uso da IA nesses casos foi compreender detalhes técnicos, a construção e a estrutura do banco de dados necessários para a realização deste trabalho. Por essa razão, evitamos utilizar IA na elaboração dos textos (como justificativas, introdução, entre outros), buscando aprofundar o aprendizado, revisar as decisões tomadas e evitar generalizações incorretas.
