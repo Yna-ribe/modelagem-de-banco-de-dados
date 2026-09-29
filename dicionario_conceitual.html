@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dicionario</title>
     <style>
+        header{
+            background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-color: rgb(227, 134, 47);
+            color: rgb(226, 240, 238);
+            text-align: center;
+            padding: 10px;
+        }
+        #dicionario-conceitual {
+            margin: 20px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        .folder-header {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            text-color: rgb(255, 123, 0);
+        }
         table,th,td{
             border: 1px solid black;
             border-collapse: collapse; 
@@ -24,20 +45,34 @@
         }
         caption {
         caption-side: bottom;
-        padding: 10px;
+        padding: 5px;
         font-weight: bold;
         text-align: justify;
-        
+
+        font-size: 14px;
+        }
+        .links-group {
+            margin-top: 15px;
+        }
+        .folder-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #080101;
+            color: #fff;
         }
 
     </style>
 </head>
+    <header class="folder-header">
+      <h1>Mont Ararat Hamburgueria</h1>
+</header>
+
 <body>
-    <H1>Dicionário de Dados Conceitual (Preliminar)</H1>
-    <P>Modelo conceitual Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.</P>
+    <H1 id="dicionario-conceitual">Dicionário de Dados Conceitual (Preliminar)</H1>
+    <P>Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.</P>
     <hr>
     <table>
-        <!-- linha é feita com a tag <tr> e a coluna com a tag <td> -->
             <caption>
                 Comanda é o “container” do consumo na Mesa, criada por um funcionário. Pedidos são itens (produto + quantidade) dentro da comanda, também associados ao funcionário que registrou. Ficha_Técnica define quais Ingredientes compõem cada Produto do Menu. Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa).
             </caption>
@@ -93,5 +128,39 @@
         </tr>
 
     </table>
+    <div class="folder-container">
+   
+    <div class="folder-body">
+
+      <div class="info-group">
+        <h2 class="section-title">Localização</h2>
+        <div class="info-line"><strong>Logradouro:</strong> <span>Rua Vercínio Pereira de Souza, 1199</span></div>
+        <div class="info-line"><strong>Bairro:</strong> <span>São Mateus</span></div>
+        <div class="info-line"><strong>CEP:</strong> <span>03945-000</span></div>
+        <div class="info-line"><strong>Município:</strong> <span>São Paulo</span></div>
+        <div class="info-line"><strong>Estado:</strong> <span>SP</span></div>
+      </div>
+
+      <div class="info-group">
+        <h2 class="section-title">Contato e Redes</h2>
+        <div class="info-line"><strong>Telefone:</strong> <span>(11) 2015-5871</span></div>
+       
+        <div class="links-group" 
+          <a href="https://goo.gl" target="_blank">Localizar no Google Maps</a>
+          <a href="https://instagram.com" target="_blank">Siga no Instagram</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="folder-footer">
+      <div class="footer-title">Pesquisa de Campo</div>
+      <p class="footer-text">
+        Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais.
+      </p>
+    </footer>
+
+  </div>
+
 </body>
 </html>
