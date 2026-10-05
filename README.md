@@ -259,9 +259,9 @@ interoperabilidade…)
 
 ---
 
-##**5. Dicionário de Dados Conceitual (Preliminar)** : disponível em [Dicionário de dados](https://stirring-tartufo-f0af56.netlify.app)
+# 5. Dicionário de Dados Conceitual (Preliminar) : disponível em [Dicionário de dados](https://stirring-tartufo-f0af56.netlify.app)
 
-##**6. Diagrama Entidade-Relacionamento (DER): Anexado**
+# 6. Diagrama Entidade-Relacionamento (DER): Anexado
 
 
 -------------------------------------------------------------------------
