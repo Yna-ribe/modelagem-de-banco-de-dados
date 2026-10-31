@@ -295,32 +295,51 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 * **Lucidchart:** Plataforma intuitiva de criação de diagramas para mapear visualmente a arquitetura de dados, esquemas de entidades e fluxogramas do negócio, facilitando a documentação clara do projeto.
 * **Miro:** Quadro branco digital colaborativo utilizado nas etapas iniciais de brainstorming, ideal para reunir os integrantes do grupo, mapear a crise operacional da empresa e levantar os requisitos do sistema antes da modelagem final.
 
-##  Proposta de Arquitetura Analítica para BI e IA
+---
 
-| Problema ou KPI | Fórmula e período | Tabelas envolvidas | 
-|---|---|---|---|
-| P1 — compras sem controle | Gasto total por fornecedor, por mês | FORNECEDOR, COMPRA, ITEM_COMPRA |
-| KPI — valor de compras pendentes de pagamento | Soma de quantidade × valor unitário das compras com status "Pendente", por semana | COMPRA, ITEM_COMPRA, FORNECEDOR |
-| P1 — ruptura de insumos | Insumos com estoque atual ≤ estoque mínimo, diário | INSUMO |
-| KPI — custo teórico do lanche | Soma de (quantidade da ficha × custo médio do insumo) por produto | MENU, FICHA_TECNICA, INSUMO, ITEM_COMPRA |
-| KPI — ticket médio | Total das comandas fechadas ÷ número de comandas, semanal | COMANDA, PEDIDO |
-| KPI — faturamento por canal | Soma do total das comandas por tipo de atendimento, mensal | COMANDA |
-| P3 — divergência de caixa | Média e soma de `diferença` por terminal e por turno | CAIXA, TERMINAL | 
-| KPI — composição dos pagamentos | % do valor recebido por forma de pagamento, mensal | PAGAMENTOS, CAIXA |
-| KPI — adesão à taxa de serviço | Comandas com taxa aceita ÷ total de comandas, mensal | COMANDA |
-| P2 — cadastro de clientes | % de comandas com cliente identificado, mensal | COMANDA, CLIENTE |
-| P2 — vendas por responsável | Faturamento por funcionário, semanal | COMANDA, FUNCIONARIO |
-| KPI — produtos mais vendidos e margem | Quantidade vendida e (preço de venda − custo teórico) por produto | PEDIDO, MENU, CATEGORIA, FICHA_TECNICA |
-KPI - Taxa de serviço| valor da comanda + ( valor da comando x 0.10) pagar o valor da taxa é opcional| COMANDA, PEDIDO|
-KPI - taxa de entrega| valor do pedido + 10,00 (valor fixo da entrega)| PEDIDO, ENTREGA|
-KPI - desconto (combo de aniversariante do cliente cadastrado)| não paga valor do combo + (combo x 0.10)taxa de serviço ainda opcional| CLIENTE, COMANDA, MENU|
+## Proposta de Arquitetura Analítica para BI e IA
 
-### Problemas declarados
-- **P1** — Gestão descentralizada de compras e estoque 
-- **P2** — Ausência de cadastro centralizado de pessoas
-- **P3** — Falta de padronização e rastreabilidade do caixa
+| Tipo | Indicador / Problema | Fórmula / Regra de Negócio | Período | Tabelas Envolvidas |
+|--------|---------------------|----------------------------|---------|-------------------|
+| Problema | P1 – Compras sem controle | Gasto total por fornecedor | Mensal | FORNECEDOR, COMPRA, ITEM_COMPRA |
+| KPI | Valor de compras pendentes de pagamento | Soma da quantidade × valor unitário das compras com status "Pendente" | Semanal | COMPRA, ITEM_COMPRA, FORNECEDOR |
+| Problema | P1 – Ruptura de insumos | Insumos com estoque atual ≤ estoque mínimo | Diário | INSUMO |
+| KPI | Custo teórico do lanche | Soma de (quantidade da ficha técnica × custo médio do insumo) por produto | Contínuo | MENU, FICHA_TECNICA, INSUMO, ITEM_COMPRA |
+| KPI | Ticket médio | Total das comandas fechadas ÷ número de comandas | Semanal | COMANDA, PEDIDO |
+| KPI | Faturamento por canal | Soma do total das comandas por tipo de atendimento | Mensal | COMANDA |
+| Problema | P3 – Divergência de caixa | Média e soma da diferença de caixa por terminal e turno | Diário | CAIXA, TERMINAL |
+| KPI | Composição dos pagamentos | Percentual do valor recebido por forma de pagamento | Mensal | PAGAMENTO, CAIXA |
+| KPI | Adesão à taxa de serviço | Comandas com taxa aceita ÷ total de comandas | Mensal | COMANDA |
+| Problema | P2 – Cadastro de clientes | Percentual de comandas com cliente identificado | Mensal | COMANDA, CLIENTE |
+| KPI | Vendas por responsável | Faturamento por funcionário | Semanal | COMANDA, FUNCIONARIO |
+| KPI | Produtos mais vendidos e margem | Quantidade vendida e (preço de venda − custo teórico) por produto | Mensal | PEDIDO, MENU, CATEGORIA, FICHA_TECNICA |
+| KPI | Taxa de serviço | Valor da comanda + (valor da comanda × 10%). A cobrança da taxa é opcional. | Por comanda | COMANDA, PEDIDO |
+| KPI | Taxa de entrega | Valor do pedido + R$ 10,00 (taxa fixa de entrega) | Por pedido | PEDIDO, ENTREGA |
+| KPI | Desconto aniversário | Cliente aniversariante não paga o valor do combo. A taxa de serviço permanece opcional. | Por comanda | CLIENTE, COMANDA, MENU |
 
--------------------------------------------------------------------------
+---
+
+##Problemas Declarados
+
+| Código | Descrição |
+|---------|-----------|
+| P1 | Gestão descentralizada de compras e estoque |
+| P2 | Ausência de cadastro centralizado de pessoas |
+| P3 | Falta de padronização e rastreabilidade do caixa |
+
+---
+
+## Visão Analítica por Área
+
+| Área | Indicadores |
+|------|------------|
+| Compras e Estoque | Compras por fornecedor, compras pendentes, ruptura de insumos, custo teórico |
+| Vendas | Ticket médio, faturamento por canal, produtos mais vendidos e margem |
+| Financeiro | Composição dos pagamentos, divergência de caixa, taxa de serviço |
+| Clientes | Cadastro de clientes, desconto de aniversário |
+| Operação | Vendas por responsável, taxa de entrega |
+
+---
 
 ## Atendimento e Clientes
 
