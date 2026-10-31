@@ -1,29 +1,23 @@
-# **Entrega 1: Modelagem de Banco de Dados**
+# **Entrega 2: Modelagem de Banco de Dados**
 
-**Sistema de Gestão de Informações – Mont Ararat Burger House**
+*Sistema de Gestão de Informações – Mont Ararat Burger House*
 
 
-** Integrantes do Grupo (Nomes e RGMs):**   
-* – Gustavo Almeida de Lima, RGM: 48157899  
-* – Mariana Brito Farias, RGM: 48134767   
-* – Ynaê Ribeiro da Silva, RGM: 47987111
+Integrantes do Grupo (Nomes e RGMs):
 
--------------------------------------------------------------------------
+**Gustavo Almeida de Lima**
+- RGM: 48157899
+- GitHub: https://github.com/Veigasz
 
-# **Introdução**
+**Mariana Brito Farias**
+- RGM: 48134767
+- GitHub: https://github.com/maru8liana
 
-Modelagem de dados é o processo de criar uma representação visual de um sistema de informação para comunicar as conexões entre pontos e estruturas de dados, compreendendo profundamente o que foi projetado.
-
-A estrutura deste trabalho foi direcionada ao aprendizado ativo em razão de colocar em prática o que foi estudado em sala de aula, para melhor aproveitamento das aulas. Nesse cenário, uma empresa alimentícia desempenha um papel fundamental na ligação entre atingir qualidade e manter o custo-benefício dos pratos dispostos, tendo em vista o foco em agilidade e faturamento.
-
-Para realizar a análise da Mont Ararat, foi necessário reunir diversas informações através de pesquisas e entrevistas feitas na hamburgueria, onde podemos contar com a honestidade e imparcialidade dos funcionários e gerentes.
-
-Diante desse cenário, este trabalho tem como objetivo analisar as necessidades da organização para identificar suas entidades, métodos operacionais e as inter-relações entre seus dados.
-
-Declaramos, para os devidos fins, que as informações fornecidas pela Hamburgueria Mont Ararat Burger House foram protegidas a fim de assegurar a segurança de possíveis dados sensíveis coletados sobre a empresa.
+**Ynaê Ribeiro da Silva**
+- RGM: 47987111
+- GitHub: https://github.com/Yna-ribe
 
 -------------------------------------------------------------------------
-
 # **1\. Caracterização da Organização**
 
 ### **Nome e Natureza da Organização:**
@@ -47,38 +41,16 @@ Declaramos, para os devidos fins, que as informações fornecidas pela Hamburgue
 * **Instagram:** [https://www.instagram.com/montararatburger/](https://www.instagram.com/montararatburger/)   
 * **Contato (telefone):** (11)2015-5871  
 * **Pesquisa de Campo:** Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais. 
+* **Imagem do Local:**
+<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
+
+* **Responsável pela Unidade:** Rafael Vieira. Contato: (11)95920-7522
 
 -------------------------------------------------------------------------
 
 # **Contexto e Porte:**
 
 A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Classifica-se formalmente como Microempresa (ME) / Empresa de Pequeno Porte (EPP). Fundada originalmente em 2016, a marca conta com unidades em São Paulo (unidade de estudo em São Mateus), Suzano e Mogi das Cruzes.
-
--------------------------------------------------------------------------
-
-# **Coleta de Dados**
-
-<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19" src="https://github.com/user-attachments/assets/3500d3ba-d6bb-4329-a536-83eabbb073a1"/>
-
--- Integrante do Grupo Gustavo, e Rafael Vieira (Responsável pela Unidade de São Mateus) --
-
--------------------------------------------------------------------------
-
-
-
-<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
-
---Hamburgueria Mont Ararat Burguer House, Unidade de São Mateus--
-
- -- O entrevistado foi o Encarregado da Unidade de São Mateus, O responsável pela parte financeira do estabelecimento, tanto salário, compras, e o responsável pela administração dos dados que a loja possui, funcionários, caixa, ingredientes, Etc. Ele não possui um cargo fixo no estabelecimento, ele é  um parente direto do Dono da Franquia. O integrantes do grupo que conduziu a coleta de dados, é um contribuinte do estabelecimento, facilitando o contato e a entrevista.
-A entrevista foi combinada e marcada pelo celular. 
-
-> Contato do Entrevistado: (11)95920-7522
-
-
--------------------------------------------------------------------------
-
-
 # **Tamanho da Operação:**
 
 * **Infraestrutura Física:** Salão com capacidade para 30 mesas presenciais, com gestão dinâmica de ocupação e comandas.  
@@ -90,15 +62,22 @@ A entrevista foi combinada e marcada pelo celular.
 
 # **Volume de Atividades:**
 
-* **Fluxo de Atendimentos:**  
-  * Média Diária (Dias úteis): \~80 a 120 comandas/atendimentos.  
-  * Média Diária (Finais de semana / Pico): \~200 a 300 comandas/atendimentos.  
-  * Projeção Mensal: \~3.000 a 4.000 comandas processadas no salão.  
-* **Movimentação Financeira do Salão:**  
+* **Fluxo de Atendimentos: (Salão)**  
+  * Média Diária (Dias úteis): 30 a 90 comandas/atendimentos.  
+  * Média Diária (Finais de semana / Pico): 70 a 140 comandas/atendimentos.  
+  * Projeção Mensal: 1000 a 1500 comandas processadas no salão.  
+  Movimentação Financeira: 
   * Dia de Baixo Movimento: \~R$3.500,00/dia (com taxa de serviço).  
-  * Dia de Pico (Fim de semana): \~R$15.000,00 a R$18.000,00/dia (com taxa de serviço).  
-  * *Observação:* O canal de Delivery apresenta volume de vendas superior ao do salão.
-
+  * Dia de Pico (Fim de semana): \~R$10.000,00 a R$14.000,00/dia (com taxa de serviço).
+* **Fluxo de Atendimentos: (Delivery / Balcão)**
+  * Obs: Pelo balcão não possui taxa de serviço e entrega.  
+  * Média Diária (Dias úteis): 30 a 90 comandas/atendimentos (Números Parecidos ao do salão). 
+  * Média Diária (Finais de semana / Pico): 150 a 250 comandas/atendimentos.  
+  * Projeção Mensal: 2000 a 3000 comandas processadas no salão.  
+  Movimentação Financeira:
+  * Dia de Baixo Movimento: \~R$3.500,00/dia (com taxa de entrega).  
+  * Dia de Pico (Fim de semana): \~R$20.000,00 a R$25.000,00/dia (com taxa de entrega). 
+ 
 -------------------------------------------------------------------------
 
 # **Problemas e Necessidades Identificados (Crise Operacional):**
@@ -107,185 +86,65 @@ A entrevista foi combinada e marcada pelo celular.
 * **2. Ausência de Cadastro Centralizado de Pessoas:** Inexistência de registros formais de clientes para ações de fidelização/aniversariantes e ausência de vinculação formal de colaboradores/freelancers aos lançamentos de vendas.
 * **3. Falta de padronização e Rastreabilidade do Caixa:** Necessidade de vincular as vendas fracionadas (divisão de contas) e sangrias aos terminais e operadores responsáveis.
 
-### **Justificativa da Escolha:**
+-------------------------------------------------------------------------
+
+# **Escopo do Sistema**
+
+O presente projeto tem como escopo o desenvolvimento de um modelo de banco de dados relacional integrado para abranger o ecossistema informacional da hamburgueria artesanal referente. Diferente de soluções parciais voltadas a um único setor, o sistema foi concebido para centralizar e gerenciar de forma unificada todos os dados gerados pela organização.
+
+A abrangência do sistema contempla três grandes módulos operacionais interconectados:
+
+Módulo de Vendas (Comercial): Abrange o controle completo de atendimento ao cliente, seja via salão (comandas e mesas), balcão ou canais de delivery. Inclui também o registro de pedidos fracionados, formas de pagamento, controle e auditoria de cancelamentos de itens e a gestão dinâmica do cardápio e precificação de produtos e adicionais.
+
+Módulo de Compras (Suprimentos): Gerencia todo o relacionamento com fornecedores de insumos (carnes, pães, hortifrúti, bebidas e embalagens), automatiza a geração de listas de compras baseadas na necessidade operacional e registra formalmente o recebimento e conferência de mercadorias.
+
+Módulo de Apoio e Gestão (Retaguarda): Envolve o controle de estoque em tempo real (com baixa automatizada por fichas técnicas), o registro de pré-preparo de insumos, a abertura e operação de caixas por terminal, o controle financeiro de fechamento de turnos (sangrias e suprimentos) e o gerenciamento da escala de funcionários e colaboradores freelancers.
+
+Fora do Escopo: Ficam excluídos do escopo deste projeto módulos de contabilidade fiscal externa (apuração de tributos federais/estaduais complexos) e sistemas de folha de pagamento e encargos trabalhistas de RH, visto que o foco reside na operação comercial, logística de insumos e controle financeiro interno da hamburgueria.
+
+
+-------------------------------------------------------------------------
+
+# **Justificativa da Escolha**
 
 A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo acesso direto e irrestrito do grupo às rotinas operacionais (um dos integrantes é colaborador do local). O ambiente apresenta complexidade ideal para modelagem de dados: possui volumetria rica (30 mesas, 2 caixas, múltiplos turnos e ficha técnica artesanal) sem exceder o escopo da disciplina.
 
 -------------------------------------------------------------------------
+# **Processos de Negócio**
 
-# **2. Processos de Negócio**
- 
 ### **Principais Processos Mapeados**
- 
-* **Pré-preparo e Produção de Insumos (Turno da Manhã):** manipulação de insumos artesanais (moagem de carnes de 180g e 120g, preparo de molhos da casa, corte de vegetais, porcionamento).
-* **Abertura e Operação de Caixa:** abertura de sessões por terminal (Salão e Delivery/Balcão) com registro de fundo de reserva (R$ 150,00) e atribuição de operador.
-* **Atendimento de Salão e Gestão de Comandas:** abertura de comanda associada à mesa, lançamento progressivo de itens por garçom e controle de transferência entre mesas.
-* **Atendimento de Delivery e Balcão:** registro do pedido, envio para a cozinha e entrega ou retirada. É o canal de maior volume de vendas da unidade.
-* **Produção na Cozinha (Chapa/Montagem):** recebimento dos itens do pedido por comanda e controle de observações (ponto da carne, remoção de itens).
-* **Cancelamento e Estorno de Itens:** retirada de item lançado por erro ou desistência do cliente.
-* **Fechamento de Conta e Recebimento Fracionado:** consolidação do consumo, aplicação ou isenção opcional da taxa de serviço de 10%, registro de pagamentos fracionados (N formas de pagamento) e encerramento da comanda com liberação da mesa.
-* **Controle Financeiro e Fechamento de Turno:** apuração das entradas por forma de pagamento, registro de sangrias e suprimentos, conferência de divergências de caixa e fechamento do turno.
-* **Compras e Recebimento de Insumos:** contagem do estoque, pedido ao fornecedor, recebimento, entrada no estoque e pagamento.
----
 
 
--------------------------------------------------------------------------
+* **Atendimento de Salão e Gestão de Comandas**: Abertura de comanda associada à mesa, lançamento progressivo de itens por garçom e controle de transferência entre mesas.
+* **Pedido de Delivery e Balcão:** Processo voltado para o atendimento de clientes que compram para retirada no balcão, via 99 (Aplicativo de Delivery) ou  por WhatsApp. Envolve o registro dos dados do cliente (no caso de delivery), escolha de produtos, cálculo automático da taxa de entrega baseada no endereço ou seleção de retirada, escolha da forma de pagamento online ou na entrega, e o direcionamento imediato do pedido para a fila de produção da cozinha, integrando-se ao controle de expedição e entrega.
+* **Cancelamento de Item ou de Pedido:** Fluxo de exceção que rege o cancelamento de itens já lançados em comandas ou de pedidos completos. Exige a identificação do operador responsável e justificativa obrigatória para a administradora do caixa do dia respectivo. O sistema deve registrar o evento para fins de auditoria de estoque (estornando os insumos utilizados se aplicável) e controle gerencial de perdas.
+* **Fechamento de Conta e Recebimento Fracionado**: Consolidação do consumo, aplicação/isenção opcional da taxa de serviço de 10%, registros de pagamentos fracionados (N formas de pagamento) e encerramento da comanda com liberação da mesa.
+* **Gestão do Cardápio e Preços:** Processo administrativo responsável pela criação, alteração e descontinuação de produtos, categorias (lanches, bebidas, acompanhamentos) e ingredientes adicionais. Permite a definição de preços vigentes, controle de disponibilidade de itens em tempo real (esgotar produto) e parametrização de combos ou promoções aplicáveis aos canais de venda (salão, balcão e delivery).
+* **Cardapio**:
+<img width="300" height="400" alt="WhatsApp Image 2026-10-26 at 09 47 25" src="https://github.com/user-attachments/assets/582071cb-4771-4d7c-82e3-d9c1afa14fab" />
+<img width="300" height="400" alt="WhatsApp Image 2026-10-26 at 09 47 25 (1)" src="https://github.com/user-attachments/assets/b4d9b61c-e444-4abe-a445-68658e29cfaf" />
 
-### **Evidência 01:** Relatório do Fechamento de Turno do Caixa (Fita de Caixa) :
-Descrição: Relatório impresso de fechamento de caixa referente a um dia de movimento moderado, operado no terminal de Delivery.
-Impacto no BD: Demonstra a necessidade de registrar a divisão de formas de pagamento (Dinheiro, Cartão, Outros), a taxa de serviço de 10%, o fundo de reserva (R$ 150,00) e a apuração de diferenças no caixa na tabela
+* **Cadastro de fornecedores**: Processo de registro e manutenção da base de parceiros comerciais da hamburgueria (fornecedores de carne, pães, hortifrúti, bebidas e embalagens). Armazena dados cadastrais, CNPJ, prazos de entrega negociados, formas de pagamento e os insumos específicos fornecidos por cada parceiro.
+* **Compra de Insumos (Geração de Pedidos de Compra:)** Processo periódico de análise de estoque mínimo e projeção de demanda para a geração de listas de compras. Com base nas baixas operacionais e no saldo atual de insumos, o sistema auxilia na criação de ordens de compra a serem enviadas aos fornecedores cadastrados, prevenindo rupturas na produção.
+* **Recebimento e Conferência da Mercadoria:** Processo físico e lógico de entrada de insumos no estabelecimento. No momento da entrega pelo fornecedor, os produtos são conferidos quantitativa e qualitativamente em relação à nota fiscal e ao pedido de compra original, registrando-se a entrada oficial dos lotes no estoque e atualizando os custos unitários dos insumos.
+* **Escala de Funcionários e Freelancers:** Processo de organização e planejamento da jornada de trabalho da equipe (chapa, atendimento, garçom, auxiliar de cozinha e caixa). Permite o registro de turnos fixos dos colaboradores CLT e a alocação de freelancers para dias de maior movimento, controlando horários de entrada, saída, intervalo de almoço (1 hora) e custos operacionais de mão de obra para os turnos matutino, integral e noturno.
+* **Produção na Cozinha (Chapa/Montagem)**: Recebimento dos itens de pedidos fracionados por comanda, controle de observações (ponto de carne, remoção de itens)
+* **Abertura e Operação de Caixa:** Abertura de sessões por terminal (Salão/Delivery) com registro de fundo de reserva (R$150,00) e atribuição de operador.
+* **Pré-preparo e Produção de Insumos (Turno da Manhã)**: Manipulação de insumos artesanais (moagem de carnes de 180g e 120g, preparo de molhos da casa, corte de vegetais, porcionamento).
+* **Controle de Estoque:** Gestão contínua das entradas, saídas e saldos de insumos e produtos acabados. O sistema realiza a baixa automática de estoque com base na ficha técnica dos itens vendidos (ex: a venda de um hambúrguer desconta pão, carne, queijo e embalagem), além de permitir ajustes manuais para perdas, desperdícios, quebras e contagens periódicas de inventário físico.
+* **Controle Financeiro e Fechamento de Turno**: Apuração das entradas por meio de pagamento, registro de sangrias/suprimentos, conferência de divergências de caixa e fechamento do turno.
 
-<img width="300" height="350" alt="Lista de Contagem" src="https://github.com/user-attachments/assets/3681e022-5068-4aa0-b1e9-38ba8afcf704" />
+### **Justificativa:**
+Para garantir a máxima aderência à realidade do mercado, utilizamos Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear os processos padrão de uma hamburgueria artesanal:
 
---------------------
-
-
-### **Evidência 02:** Lista de Compras (Controle Manual de Estoque) :
-
-Descrição: Formulário impresso utilizado para a contagem visual e manual dos insumos em estoque.
-Impacto no BD: Comprova a ausência de baixa automática de materiais no ato da venda, justificando a criação das tabelas Ficha Técnica e Ingredientes para automatizar o controle de estoque.
-
-<img width="300" height="350" alt="Relátorio Ararat" src="https://github.com/user-attachments/assets/30bafa3e-e780-439d-b3c1-d2fe97a76a50" />
-
--------------------
-
-
-### **Evidência 03:** Cardápio Impresso (Cardápio Físico e Estrutura de Produtos)
-Descrição: Foto do cardápio físico da hamburgueria exibindo a categorização de produtos (Lanches, Extras, Bebidas), preços base e opções de combos.
-Impacto no BD: Demonstra a necessidade da tabela Menu para estruturar os produtos por categoria e preço base, servindo de origem para o lançamento de itens na tabela Pedido.
-
-<img width="300" height="350" alt="Cardapio Ararat 1" src="https://github.com/user-attachments/assets/a71ee506-9426-4a5c-b3b0-6f19610038e1" /> <img width="300" height="350" alt="Cardapio Ararat 2" src="https://github.com/user-attachments/assets/5a28ca1f-4dc5-452e-9106-14184889afd5" />
-
-
-
--------------------------------------------------------------------------
-
-
-# **3\. Requisitos Funcionais**
-
-**Requisitos Funcionais** (o que o sistema deve fazer?)
-
-| Identificador | Descrição De... | Prioridade | Relacionamentos |
-|---------------|-----------------|------------|-----------------|
-| **RF01** | Gestão de Mesas e Comandas: O sistema deve permitir cadastrar e visualizar o status das 30 mesas (Livre, Ocupada, Aguardando Pagamento) e abrir/fechar comandas associadas a elas. | Alta | RN01, RNF04 |
-| **RF02** | Registro de Pedidos: O sistema deve permitir o lançamento de itens de pedido vinculados a uma comanda, com escolha de produtos, quantidade, observações personalizadas e gravação do preço unitário praticado. | Alta | RF01, RF07, RN02, RNF02 |
-| **RF03** | Transferência de Mesa: O sistema deve permitir transferir os itens acumulados de uma comanda de uma mesa de origem para uma mesa de destino. | Média | RF01, RF02 | 
-| **RF04** | Divisão de Pagamento: O sistema deve permitir registrar múltiplos pagamentos parciais para uma mesma comanda, suportando diferentes formas de pagamento (Dinheiro, Cartão, PIX) até quitar o valor total. | Alta | RF01, RF02 |
-| **RF05** | Gestão da Taxa de Serviço: O sistema deve aplicar automaticamente a taxa de serviço de 10% sobre o subtotal da comanda, permitindo sua remoção manual mediante autorização do cliente. | Média | RF01, RF04, RN03 | 
-| **RF06** | Controle de Sessão de Caixa: O sistema deve permitir a abertura de caixa informando o valor inicial (fundo de reserva) e o fechamento do caixa com o cálculo automático de diferenças entre o valor esperado e o valor informado. | Alta | RF04, RN05, RN06 |
-| **RF07** | Cadastro de Colaboradores: O sistema deve permitir o registro de funcionários (fixos) e a vinculação da sua identificação à abertura de caixas e comandas. | Média | RF01, RF02, RF06 |
-
------------------------------
-
-**Requisitos Não Funcionais** (tipicamente, restrições a serem obedecidas em relação a: segurança, portabilidade, desempenho, usabilidade,
-interoperabilidade…)
-
-| Identificador | Descrição De... | Prioridade | Relacionados |
-|---------------|-----------------|------------|--------------|
-| **RNF01** | Disponibilidade: O sistema deve apresentar disponibilidade contínua de 99,5% durante o horário de funcionamento do estabelecimento (terça a domingo, das 18h às 00h) | Alta | RF01, RF02, RF06 | 
-| **RNF02** | Desempenho: O tempo de resposta para o lançamento de pedidos e impressão/envio para a cozinha não deve exceder 2 segundos em pico operacional. | Média | RF02 
-| **RNF03** | Usabilidade e Acessibilidade Operacional: A interface de lançamento deve ser otimizada para terminais touch e dispositivos móveis dos garçons no salão. | Média |RF01, RF02, RF03 |
-
------------------------
-
-# **4. Regras de Negócio**(regras que devem ser obedecidas pelo sistema)
- 
-## **4.1 Catálogo de Processos de Negócio**
- 
-Detalhamento dos processos da seção 2. A coluna "Processo macro" indica a qual grupo da seção 2 cada processo pertence.
- 
-| ID | Processo | Processo macro (seção 2) | Categoria | Obrigatório | Significado | Relevância |
-| ---- | -------- | ------------------------ | --------- | ----------- | ----------- | ---------- |
-| PN01 | Pré-preparo e Produção | Pré-preparo e Produção de Insumos | Produção | Sim | Preparação dos insumos da operação: carnes, molhos e vegetais. | Garante insumos disponíveis e padronizados para o atendimento. |
-| PN02 | Abertura de Caixa | Abertura e Operação de Caixa | Financeiro | Sim | Início da operação de cada terminal, com registro do operador e do fundo de reserva de R$ 150,00. | Controla o início da movimentação financeira de cada caixa. |
-| PN03 | Abertura de Comanda | Atendimento de Salão | Atendimento | Sim | Criação de uma comanda vinculada a uma mesa ou atendimento. | Identifica e controla o consumo do cliente. |
-| PN04 | Controle de Ocupação | Atendimento de Salão | Atendimento | Sim | Gerenciamento do status das 30 mesas: livre, ocupada e aguardando pagamento. | Permite administrar o salão e melhorar o fluxo de atendimento. |
-| PN05 | Registro de Pedido | Atendimento de Salão | Atendimento | Sim | Lançamento dos produtos solicitados na comanda, com quantidade, observações e preço unitário. | Garante que os pedidos sejam encaminhados corretamente para produção. |
-| PN06 | Transferência de Mesa | Atendimento de Salão | Atendimento | Não | Troca da mesa associada à comanda, levando os itens acumulados. | Mantém o controle correto da ocupação e do consumo. |
-| PN07 | Atendimento de Delivery e Balcão | Atendimento de Delivery e Balcão | Atendimento | Sim | Registro e acompanhamento dos pedidos dos canais delivery e balcão, atendidos pelo Caixa 02. | Controla o canal de maior volume de vendas da unidade. |
-| PN08 | Produção do Pedido | Produção na Cozinha | Produção | Sim | Preparação dos itens pela cozinha, considerando observações como ponto da carne e remoção de ingredientes. | Garante que o pedido seja produzido conforme a solicitação do cliente. |
-| PN09 | Entrega do Pedido | Produção na Cozinha | Produção | Sim | Entrega do pedido pronto ao cliente do salão, ao balcão ou ao entregador. | Finaliza a etapa operacional do pedido. |
-| PN10 | Cancelamento e Estorno de Itens | Cancelamento e Estorno de Itens | Atendimento | Não | Retirada de item lançado por erro ou desistência do cliente. Regras de autorização a definir. | Evita cobrança indevida e permite rastrear perdas. |
-| PN11 | Fechamento de Conta | Fechamento de Conta e Recebimento Fracionado | Financeiro | Sim | Consolidação dos itens consumidos, aplicação ou isenção da taxa de serviço de 10% e cálculo do valor final. | Determina o valor devido pelo cliente. |
-| PN12 | Pagamento | Fechamento de Conta e Recebimento Fracionado | Financeiro | Sim | Registro do recebimento por uma ou mais formas de pagamento (Dinheiro, Cartão, PIX). | Controla as receitas e permite a divisão da conta. |
-| PN13 | Encerramento de Comanda | Fechamento de Conta e Recebimento Fracionado | Atendimento | Sim | Finalização da comanda após a quitação e liberação da mesa. | Mantém o controle das mesas e dos atendimentos concluídos. |
-| PN14 | Sangria/Suprimento | Controle Financeiro e Fechamento de Turno | Financeiro | Não | Registro de retiradas ou entradas de valores no caixa durante o turno. | Auxilia a conferência da movimentação financeira. |
-| PN15 | Fechamento de Turno | Controle Financeiro e Fechamento de Turno | Financeiro | Sim | Conferência das movimentações e encerramento do caixa, com cálculo da divergência. | Identifica divergências e valida os valores movimentados. |
-| PN16 | Compras e Recebimento de Insumos | Compras e Recebimento de Insumos | Compras e Estoque | Sim | Pedido de compra ao fornecedor, lançamento dos itens, recebimento e controle do pagamento ao fornecedor. | Substitui o controle manual por planilhas avulsas. |
-| PN17 | Controle de Estoque | Compras e Recebimento de Insumos | Compras e Estoque | Sim | Contagem dos insumos, entrada pelas compras e baixa pelas vendas com base na ficha técnica. Forma de baixa a definir. | Evita compras imprecisas e custos não contabilizados. |
-| PN18 | Emissão de Documento Fiscal | A definir | Financeiro | A definir | Emissão do documento fiscal da venda. Não apareceu na entrevista. | A confirmar com a gerência. |
- 
-## **4.2 Regras de Negócio**
- 
-Situação: **Levantada** (informada na pesquisa de campo), **Proposta** (derivada dos dados e a validar) ou **A definir** (depende da gerência).
- 
-| ID | Regra | Descrição | Prioridade | Relacionados | Situação |
-| ---- | ----- | --------- | ---------- | ------------ | -------- |
-| RN01 | Ocupação exclusiva de mesa | Uma mesa ativa só pode conter uma única comanda aberta por vez. Novas comandas só podem ser abertas após o fechamento da anterior. | Alta | RF01, PN03, PN04 | Levantada |
-| RN02 | Congelamento do preço no pedido | O preço unitário registrado em `Pedido` é congelado no lançamento. Alterações futuras no preço base de `Menu` não alteram o histórico de vendas. | Alta | RF02, PN05 | Levantada |
-| RN03 | Opcionalidade da taxa de serviço | A taxa de 10% é adicionada por padrão ao total da comanda, mas só é cobrada se `taxa_servico_aceita` for verdadeiro. | Média | RF05, PN11 | Levantada |
-| RN04 | Quitação obrigatória para fechamento | Uma comanda só muda para "Fechada" se a soma de `Pagamentos_Comanda` for igual ou superior ao valor total final. | Alta | RF01, RF04, PN13 | Levantada |
-| RN05 | Vinculação obrigatória do pagamento ao caixa | Todo pagamento deve estar associado a uma sessão de caixa com `status_caixa = 'Aberto'` e a um terminal ativo (`Caixa_Salao` ou `Caixa_Delivery`). | Alta | RF04, RF06, PN12 | Levantada |
-| RN06 | Apuração de divergência de caixa | No fechamento da sessão, `diferenca = saldo_final_informado - saldo_final_calculado`. | Alta | RF06, PN15 | Levantada |
-| RN07 | Identificação do responsável | Toda comanda, pedido e sessão de caixa deve registrar o funcionário responsável, fixo ou freelancer. | Alta | RF07 | Proposta |
-| RN08 | Pedido de compra com fornecedor e itens | Todo pedido de compra deve ter um fornecedor e ao menos um item. Cada item exige quantidade e valor unitário. | Alta | PN16 | Proposta |
-| RN09 | Baixa de estoque pela ficha técnica | A venda de um produto reduz o estoque dos ingredientes conforme a `Ficha_Tecnica`; a compra recebida aumenta o estoque. | Média | PN16, PN17 | Proposta |
-| RN10 | Autorização de cancelamento | Cancelamento de item lançado: quem autoriza e até quando é permitido. | Média | PN10 | A definir |
-| RN11 | Documento fiscal | Regra de emissão do documento fiscal por venda. | A definir | PN18 | A definir |
-
--------------------------------------------------------------------------
-
-
-**Atributos principais do processo**
-
-| ID   | Nome                 | Tipo Físico   | Obrigatório | Significado                                                             | Relevância                                                 |
-| ---- | -------------------- | ------------- | ----------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
-| AT01 | ID do Processo       | Inteiro       | Sim         | Identificador único do processo.                                        | Permite identificar cada processo sem ambiguidade.         |
-| AT02 | Nome do Processo     | Texto         | Sim         | Nome utilizado para identificar o processo.                             | Facilita a organização e documentação dos processos.       |
-| AT03 | Canal de Atendimento | Texto/Enum    | Sim         | Identifica se o atendimento ocorre no salão, balcão ou delivery.        | Permite diferenciar os fluxos operacionais.                |
-| AT04 | Data/Hora            | Data/Hora     | Sim         | Momento em que a atividade ocorre.                                      | Permite rastrear as operações.                             |
-| AT05 | Operador             | Texto/Inteiro | Sim         | Funcionário responsável pela operação.                                  | Permite identificar quem realizou determinada atividade.   |
-| AT06 | Mesa                 | Inteiro       | Não         | Número da mesa associada ao atendimento.                                | Controla a ocupação do salão.                              |
-| AT07 | Comanda              | Inteiro       | Sim         | Identificador da comanda do cliente.                                    | Centraliza os itens consumidos e o pagamento.              |
-| AT08 | Pedido               | Inteiro       | Sim         | Identificador do pedido realizado.                                      | Permite acompanhar o pedido durante o processo.            |
-| AT09 | Produto              | Texto/Inteiro | Sim         | Produto solicitado pelo cliente.                                        | Define o item que deverá ser produzido.                    |
-| AT10 | Quantidade           | Inteiro       | Sim         | Quantidade de unidades solicitadas.                                     | Determina a quantidade que deverá ser produzida e cobrada. |
-| AT11 | Observação           | Texto         | Não         | Informações adicionais, como ponto da carne ou remoção de ingredientes. | Evita erros na preparação do pedido.                       |
-| AT12 | Valor                | Decimal       | Sim         | Valor monetário do pedido ou da conta.                                  | Base para o recebimento e controle financeiro.             |
-| AT13 | Forma de Pagamento   | Texto/Enum    | Sim         | Método utilizado para realizar o pagamento.                             | Permite controlar diferentes formas de recebimento.        |
-| AT14 | Status               | Texto/Enum    | Sim         | Situação atual do processo ou pedido.                                   | Permite acompanhar o andamento da operação.                |
-| AT15 | Taxa de Serviço      | Decimal       | Não         | Valor correspondente à taxa de serviço de 10%.                          | Permite registrar aplicação ou isenção da taxa.            |
-
-
--------------------------------------------------------------------------
-
-
-**Dados para preencher os 6 processos**
-
-| ID | Nome do processo                             | Turno | Responsável            | Descrição resumida                                                                                                                                |
-| -: | -------------------------------------------- | ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  1 | Pré-preparo e Produção de Insumos            | Manhã | Cozinha                | Moagem de carnes de 180g e 120g, preparo de molhos, corte de vegetais e porcionamento.                                                            |
-|  2 | Abertura e Operação de Caixa                 | —     | Operador de caixa      | Abertura das sessões dos terminais Salão/Delivery, registro do fundo de reserva de R$ 150,00 e atribuição do operador.                            |
-|  3 | Atendimento de Salão e Gestão de Comandas    | —     | Garçom                 | Abertura de comanda vinculada à mesa, lançamento progressivo de itens e transferência entre mesas.                                                |
-|  4 | Produção na Cozinha                          | —     | Cozinha/Chapa/Montagem | Recebimento dos itens dos pedidos, preparação e montagem, considerando observações como ponto da carne e remoção de ingredientes.                 |
-|  5 | Fechamento de Conta e Recebimento Fracionado | —     | Caixa                  | Consolidação do consumo, aplicação ou isenção da taxa de serviço de 10%, recebimento em diferentes formas de pagamento e encerramento da comanda. |
-|  6 | Controle Financeiro e Fechamento de Turno    | —     | Caixa/Gerência         | Apuração das entradas por meio de pagamento, registro de sangrias e suprimentos, conferência de divergências e fechamento do turno.               |
-
----
-
-# 5. Dicionário de Dados Conceitual (Preliminar) : disponível em ![dicionario conceitual](dicionario_conceitual.html) (link do arquivo dicionario_conceitual.html dentro do repositorio)
-
-# 6. Diagrama Entidade-Relacionamento (DER): Anexado
-
-
--------------------------------------------------------------------------
-
+Processos Incluídos (100% das áreas operacionais): Optamos por contemplar a totalidade dos fluxos de Vendas, Compras e Apoio/Gestão (incluindo Fornecedores, Recebimento, Cancelamentos e Escala de Freelancers). Essa abordagem garante a baixa automática de estoque via ficha técnica, a rastreabilidade financeira e a auditoria completa no SGBD.
 # 7. **Modelagem Conceitual** (Entidades, Atributos, Relacionamentos)
 
-![Modelagem Conceitual](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Modelagem%20Conceitual.png?raw=true)
+Única Exceção (Fora do Escopo): O processo de Marketing e Relacionamento com o Cliente (redes sociais e avaliações em plataformas como iFood e Instagram) foi mantido fora do banco de dados relacional por ser executado em ferramentas de terceiros e não gerar transações estruturadas diretas no sistema principal da empresa.
 
 -------------------------------------------------------------------------
 
+# 1.1 Requisitos:
 A justificativa técnica deste trabalho fundamenta-se na necessidade de estruturar, de forma padronizada e eficiente, o fluxo de informações operacionais e financeiras da Mont Ararat Burger House, considerando os problemas e as necessidades identificadas, como a inexistência de registros formais de clientes e a gestão descentralizada de compras e estoque. Esses fatores dificultavam a rastreabilidade das operações e impediam a identificação precisa do funcionário responsável pelo controle de insumos e compras, resultando na ausência do cálculo automatizado da Ficha Técnica, em compras imprecisas e em custos operacionais não contabilizados em tempo real. Contudo, a estrutura desenvolvida apresenta pontos positivos consolidados, como a vinculação direta dos funcionários a comandas, pedidos e caixa, elementos que contribuem para o registro de dados essenciais para a padronização organizacional da empresa.
 
 Para organizar, desenhar e validar todas as entidades e conexões, foram utilizadas ferramentas gratuitas para uso pessoal. A partir de um estudo básico de suas funcionalidades e singularidades, foi possível alinhar e consolidar os diferentes pontos de vista dos membros do grupo com base na visão geral da Mont Ararat Burger House:
@@ -361,82 +220,150 @@ Com atributos que reúnem cada registro diário e calculam a diferença de caixa
 
 Do lado do cardápio e vendas, a transformação de dados brutos em decisões estratégicas de negócio é assegurada pela entidade `PEDIDOS` (`ID_PEDIDO`, `Quantidade`, `Observacao`, `Valor_Unitario`), que garante que cada item seja produzido exatamente conforme a solicitação do cliente. Os pedidos compõem o `MENU` (`ID_Produto`, `Nome_Produto`, `Preco_Venda`, `Disponibilidade`, `Descricao`), entidade responsável pelo controle e registro dos produtos. 
 
-O `MENU` possui uma correlação `(1, 1)` para `(0, n)` com a `CATEGORIA` (`ID_CATEGORIA`, `Nome_Categoria`, `Descrição`), que filtra e organiza os produtos diretamente para a exibição no cardápio, evitando a redundância e o desalinhamento de dados cadastrais.
+**Requisitos Funcionais** (o que o sistema deve fazer?)
 
----
+| Identificador | Descrição De... | Prioridade | 
+|---------------|-----------------|------------|
+| **RF01** | Gestão de Mesas e Comandas: O sistema deve permitir cadastrar e visualizar o status das 30 mesas (Livre, Ocupada, Aguardando Pagamento) e abrir/fechar comandas associadas a elas. | Alta |
+| **RF02** | Registro de Pedidos: O sistema deve permitir o lançamento de itens de pedido vinculados a uma comanda, com escolha de produtos, quantidade, observações personalizadas e gravação do preço unitário praticado. | Alta | 
+| **RF03** | Gestão de Pedidos de Delivery e Balcão: O sistema deve cadastrar pedidos vindos do balcão ou canais digitais (WhatsApp, apps), Coletando dados do cliente, endereço e taxa de entrega. | Alta |
+| **RF04** | Cadastro Cliente: O sistema deve permitir cadastrar cliente com nome completo, CPF, telefone e endereço (logradouro, número, bairro, CEP) | Média |
+| **RF05** | Divisão de Pagamento: O sistema deve permitir registrar múltiplos pagamentos parciais para uma mesma comanda, suportando diferentes formas de pagamento (Dinheiro, Cartão, PIX) até quitar o valor total. | Alta | 
+| **RF06** | Gestão da Taxa de Serviço: O sistema deve aplicar automaticamente a taxa de serviço de 10% sobre o subtotal da comanda, permitindo sua remoção manual mediante autorização do cliente. | Média | 
+| **RF07** | Gestão do Cardápio e Preços: O sistema deve permitir cadastrar, alterar preços, categorizar produtos e pausar a venda de itens esgotados em tempo real. | Alta | 
+| **RF08** | Controle de Sessão de Caixa: O sistema deve permitir a abertura de caixa informando o valor inicial (fundo de reserva - R$150,00) e o fechamento do caixa com o cálculo automático de diferenças entre o valor esperado e o valor informado. | Alta | 
+| **RF09** | Ficha Técnica dos Produtos: O sistema deve permitir associar cada item do cardápio a uma ficha técnica estruturada, detalhando a quantidade exata de cada insumo utilizado (ex: 1 pão, 180g de carne, 2 fatias de queijo).| Alta| 
+| **RF10** | Cancelamento de Itens e Pedidos: O sistema deve permitir o cancelamento de itens ou pedidos completos e registrar cada realizado | Alta |
+| **RF11** | Cadastro de Fornecedores: O sistema deve permitir o registro, alteração e consulta de fornecedores de insumos (carnes, pães, hortifrúti, bebidas e embalagens), armazenando dados cadastrais, CNPJ, prazos e insumos fornecidos. | Média |
+| **RF12** | Entrada de Mercadorias: O sistema deve registrar a entrada de novos lotes de insumos via conferência de nota fiscal ou pedido de compra, atualizando saldo e custo unitário. | Alta | 
+| **RF13** | Baixa Automática de Estoque: O sistema deve realizar a baixa de matérias-primas no estoque de forma automática ao concluir a venda de um produto, utilizando sua ficha técnica. | Alta | 
+| **RF14** | Registro de Escala e Horários: O sistema deve permitir o cadastro de turnos e a alocação da equipe fixa e de colaboradores freelancers por dia/horário.| Baixa | 
 
-## Estoque e Suprimentos
 
-Por fim, no módulo de estoque e suprimentos, a entidade `FORNECEDOR` (`ID_Fornecedor`, `Nome_Fornecedor`, `CNPJ`, `Telefone`) permite controlar e gerenciar os parceiros comerciais, armazenando suas principais informações para a entrega da `COMPRA` (`ID_Compra`, `Data_Hora_Compra`, `Valor_Total_Compra`, `Nota_Fiscal`). Esse fluxo controla e padroniza a entrada de suprimentos com nota fiscal, data, quantidade e valor de aquisição, fornecendo esses materiais ao `INSUMO` (`ID_Insumo`, `Nome_Insumo`, `Estoque_Atual`, `Estoque_Minimo`, `Unidade_Medida`) para que estejam sempre disponíveis e padronizados para o atendimento. 
 
-Para ligar o consumo do menu ao estoque físico, utiliza-se a `FICHA TÉCNICA` (`ID_FICHA`, `Quantidade`, `Unidade_Medida`), entidade associativa necessária para resolver a relação de muitos para muitos ($N:M$) entre pratos e insumos, permitindo a baixa automatizada de matérias-primas fracionadas e a prevenção de rupturas no estoque.
+-----------------------------
 
-Em razão de futuras melhorias propostas pelos integrantes deste trabalho, busca-se aprimorar a estrutura conceitual do sistema para atender de forma mais abrangente às necessidades operacionais e estratégicas da organização. Essa evolução visa expandir o alcance da modelagem de dados, garantindo que os fluxos de informação acompanhem o crescimento do negócio e proporcionem maior eficiência, precisão nos registros e suporte adequado às tomadas de decisão. Dentre as principais adequações futuras a serem implementadas, destacam-se o controle de acessos, o gerenciamento de dados sensíveis, a contabilização automática do caixa e o registro de clientes. Com isso, a Mont Ararat Burger House poderá crescer de forma organizada, íntegra e segura, prevenindo fraudes e perdas financeiras.
+**Requisitos Não Funcionais** (tipicamente, restrições a serem obedecidas em relação a: segurança, portabilidade, desempenho, usabilidade,
+interoperabilidade…)
 
----
+| Identificador | Descrição De... | Prioridade | 
+|---------------|-----------------|------------|
+| **RNF01** | Disponibilidade: O sistema deve apresentar disponibilidade contínua de 99,5% durante o horário de funcionamento do estabelecimento (terça a domingo, das 18h às 00h) | Alta | 
+| **RNF02** | Desempenho: O tempo de resposta para o lançamento de pedidos e impressão/envio para a cozinha não deve exceder 2 segundos em pico operacional. | Média |
+| **RNF03** | Usabilidade e Acessibilidade Operacional: A interface de lançamento deve ser otimizada para terminais touch e dispositivos móveis dos garçons no salão. | Média |
+| **RNF04** | Integridade Referencial no SGBD: O banco de dados deve garantir a integridade referencial de forma que a exclusão de um produto do cardápio não apague o histórico de vendas antigas associadas a ele. | Alta |
+| **RNF05** | Rastreabilidade e Auditoria: Todas as operações de cancelamento, alteração de preço, desconto e sangria de caixa devem registrar um log auditável contendo data, hora, usuário e motivo. | Média |
 
-# 9. Uso de Inteligência Artificial
+### **Justificativa:**
+Com base no reestudo do escopo operacional e no benchmarking dos processos de uma hamburgueria artesanal, procedemos à seguinte revisão no conjunto de requisitos do sistema:
 
-**IA utilizada:** Google Gemini
+Inclusão de Novos Requisitos: Foram adicionados novos Requisitos Funcionais (RFs) e Não Funcionais (RNFs) para cobrir integralmente as crises operacionais apontadas no Trabalho (como cadastro de clientes, fichas técnicas, Fornecedor e compras). Sugestões adicionais levantadas na pesquisa de mercado que possuíam equivalência com os itens já existentes foram descartadas para evitar redundâncias na especificação.
 
-## Preparação para a Entrevista
-O Gemini foi utilizado para estruturar o roteiro de entrevista e orientar a coleta de dados com a gerência do estabelecimento.
+Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi descontinuado do escopo principal, visto que o foco da modelagem relacional prioriza as transações estruturais de persistência (vendas, caixa, controle de estoque e financeiro), otimizando a abrangência do banco de dados.
 
-**Prompts utilizados:**
-> "Esse banco de dados precisa ser baseado em uma empresa, tenho a base, mas que dados, baseado nesse mapa, devo buscar com o gerente para produzir o banco de dados?"
+-----------------------------
 
-> "De verde são as informações que eu tenho já por trabalhar lá e de vermelho são as que vou buscar. Com as informações que já tenho, o que mais posso adicionar?"
+## **Regras de Negócio** (regras que devem ser obedecidas pelo sistema)
 
----
+| Identificador | Descrição de.. | Prioridade |
+|---------------|-----------------|-----------|
+| **RN01** | Ocupação Exclusiva de Mesa: Uma mesa ativa só pode conter uma única comanda aberta por vez. Novas comandas só podem ser abertas após o fechamento da anterior. Importância: Evita conflitos de lançamento e garante a precisão no atendimento ao cliente. | Alta | 
+| **RN02** | Congelamento do Preço no Pedido: O preço unitário do item registrado na tabela Pedido deve ser congelado no ato do lançamento. Alterações futuras no preço base da tabela Menu não podem alterar o histórico de vendas passadas. | Alta |
+| **RN03** | Opcionalidade da Taxa de Serviço: A taxa de serviço de 10% é adicionada por padrão ao valor total da comanda, mas sua cobrança depende da validação do campo booleano taxa_servico_aceita. Importância: Protege o histórico de faturamento contra flutuações futuras de preços no cardápio. | Média |
+| **RN04** | Quitação Obliterante para Fechamento: Uma comanda só pode alterar seu status para "Fechada" se a soma de seus registros na tabela Pagamentos_Comanda for igual ou superior ao valor total final da comanda. Importância: Respeita a legislação de defesa do consumidor (a gorjeta é opcional). | Alta | 
+| **RN05** | Operação de Caixa Vincular: Toda transação de pagamento deve obrigatoriamente estar associada a uma sessão de caixa com status_caixa = 'Aberto' e a um terminal ativo (Caixa_Salao ou Caixa_Delivery). Importância: Evita prejuízos financeiros e furos no caixa da hamburgueria. | Alta | 
+| **RN06** | Apuração de Divergência de Caixa: No fechamento da sessão do caixa, o valor da diferença deve ser calculado automaticamente através da fórmula: [Diferença = saldo_final_informado - saldo_final_calculado]. Importância: Garante a rastreabilidade exata de quem operou o dinheiro. Importância: Assegura o controle de perdas e auditoria financeira.| Alta |
+| **RN07** |Fundo de Reserva Inicial Obrigatório: Toda abertura de sessão de caixa deve registrar um fundo de troco fixo de R$ 150,00. Importância: Assegura liquidez inicial para o troco de clientes no início do turno. | Alta | 
+| **RN08** | Autorização para Cancelamento: O cancelamento de itens lançados em comandas exige permissão de perfil gerencial e registro de justificativa. Importância: Evita fraudes internas, desvios de produtos e controla o estoque de quebras. | Alta | 
+| **RN09** | Validação de Área e Taxa de Delivery: Pedidos de entrega externa devem validar o endereço do cliente e calcular a taxa de frete correspondente. Importância: Garante a viabilidade logística e o preço justo de entrega por região. | Alta | 
+| **RN10** | Baixa Automática por Ficha Técnica: A venda de um produto deve disparar a baixa no estoque de todos os insumos vinculados à sua ficha técnica. Importância: Mantém o inventário real atualizado e evita rupturas de matéria-prima. | Alta | 
+| **RN11** | Restrição Fiscal (Emissão de Cupom/Nota Fiscal): Toda transação de venda encerrada deve gerar obrigatoriamente um registro fiscal para apuração de tributos. Importância: Atende às exigências da legislação tributária e fiscal vigente. | Alta | 
+| **RN12** | Restrição Sanitária (Controle de Manipulação): O sistema deve registrar e monitorar lotes e validades de insumos artesanais produzidos no turno da manhã. Importância: Cumpre as normas da vigilância sanitária para manipulação de alimentos perecíveis (carnes e molhos). | Alta | 
+| **RN13** | Restrição Trabalhista e LGPD (Proteção de Dados): Dados cadastrais e documentos (CPF) de funcionários e clientes devem ser armazenados com restrição de acesso. Importância: Garante a conformidade com a Lei Geral de Proteção de Dados (LGPD) e leis trabalhistas. | Alta | 
+| **RN14** |Reposição por Estoque Mínimo: Quando o saldo de um insumo atingir o limite mínimo, o sistema deve sinalizar a necessidade de nova ordem de compra. Importância: Previne a falta de ingredientes essenciais para a produção dos hambúrgueres. | Alta | 
 
-## Diagramas, Requisitos e Regras de Negócio
 
-### Diagrama de Entidade e Relacionamento (DER)
-Validação do primeiro esboço das tabelas criadas no DBDesigner, revisando atributos, redundâncias de dados e tirando dúvidas sobre a arquitetura do sistema de caixa.
+### **Justificativa:**
 
-**Prompts utilizados:**
-> "Estou utilizando o DBDesigner para ter uma base e ele está ficando assim: o que mais posso melhorá-lo de acordo com sua sugestão dita agora?"
+Para garantir a máxima aderência à realidade do mercado, Novamente foi utilizado a Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear as regras de negocio padrão de uma hamburgueria artesanal: De acordo com o resposta da IA, todas regras que uma Hamburgueria possui, está presente nesta seção. O conjunto de regras de negócio foi estruturado para abranger integralmente o ciclo de vida operacional da hamburgueria artesanal, Adicionalmente, foram incorporadas restrições organizacionais e normativas cruciais — como a obrigatoriedade fiscal, as normas sanitárias de manipulação de insumos e as diretrizes de privacidade de dados (LGPD). Essa amplitude garante que o banco de dados não apenas processe transações, mas também assegure a integridade operacional, a auditoria gerencial e a conformidade legal da empresa.
 
-> "A parte dos caixas seria um sistema à parte do banco de dados, certo? Então ele não seria necessário ou deixo e coloco uma observação dizendo que é à parte?"
 
-> "O preço unitário em pedido seria desnecessário, certo? Já que possui a comanda."
+# **Modelo Conceitual (DER)**
 
-### Requisitos e Regras de Negócio
-Definição do escopo do projeto e identificação de quais entidades (tabelas) e regras de negócio fariam parte do banco de dados.
+### **DER:**
 
-**Prompts utilizados:**
-> "Para a construção de um banco de dados para uma hamburgueria, quais informações eu deveria obter?"
+**Software**: O Modelo Conceitual foi feito a partir do BRmodelo, por sua notação já ser recomenda nas instruções do professor.
 
-> "No caso desta hamburgueria, não possui o cadastro de cliente. Eu deveria colocar as informações dos funcionários? Também deve conter fornecedores ou não seria necessário?"
+| Apontamento E1 | Correção | Por Quê | 
+|---------------|-----------------|------------|
+| Cada relacionamento tem uma única cardinalidade, de um lado só. | Carnalidade Adicionada dos dois lados de cada relacionamento. | Porque elas descrevem as regras de negócio de ambas as direções da relação. | 
+| Há chaves estrangeiras em cinco das nove entidades. | Chaves estrangeiras removidas do modelo conceitual. | Chaves Estrangeiras são representadas no Modelo lógico. |
+| Não há fornecedor nem compra, embora o problema nº 1 da organização seja a gestão de compras | Adição das Entidades: INSUMO, COMPRA, ITEM-COMPRA e FORNECEDOR. | Fundamental para estruturar o módulo de gestão de suprimentos e estoque da Hamburgueria. |
+| Ausência da entidade cliente, o grupo listou como problema Nº 2 a ausência de cadastro de clientes | Adição da Entidade Cliente e atributo Endereço (Logradouro, Bairro, Número, CEP, complemento). | Identificar o comprador, manter histórico de consumo e registar o destino exato para entregas. |
 
-> "Na hamburgueria os pedidos são feitos por Mesa (possui 30 mesas ao todo), deveria ser adicionado?"
 
-> "O caixa deveria ser incluído também?"
+#  **1.2 Conversão ao Modelo Lógico**
 
----
+### **Entidades para Tabelas:**
+- Cada entidade forte identificada no Modelo Conceitual (como CLIENTE, MESA, MENU, FUNCIONARIO, CAIXA, FORNECEDOR, COMPRA e INSUMO) foi diretamente convertida em uma tabela relacional no Modelo Lógico. Os nomes das entidades foram preservados, e suas instâncias do mundo real tornaram-se as linhas (registros) de cada tabela. Entidades Associativas como Item-Pedido, Ficha-Tecnica e Item-Compra se tornaram Tabelas, assim como as entidades normais.
 
-## Redação de Textos e Documentação
+### **Atributos para Colunas:**
+- Os atributos descritivos de cada entidade conceitual tornaram-se as colunas das respectivas tabelas no modelo lógico.
+- Tipagem de Dados: Cada atributo recebeu um tipo de dado compatível com o SGBD (ex: INT para identificadores e números inteiros, VARCHAR para campos com caracteres definidos, como CPF, Telefone e CNPJ, DATE para datas, DATETIME para horários, e FLOAT para valores monetários e Quantidades).
+-- Atributos Compostos: O atributo Endereço da entidade CLIENTE foi desmembrado em colunas atômicas individuais (Logradouro, Numero, Bairro, Complemento, CEP), atendendo rigorosamente à 1ª Forma Normal (1FN).
 
-### Documentação do Projeto Acadêmico
-Redação da fundamentação teórica e descritiva para a documentação, abordando conceitos operacionais como volume de atividades e tamanho da operação.
+### **Relacionamentos para Chaves:**
+- Os Atributos Identificadores ( círculo preenchido ) de cada entidade se tornou as chaves primárias de cada tabela, exceto das entidades associativas.
+- Os relacionamentos binários foram traduzidos para o modelo relacional através da propagação de Chaves Estrangeiras.
+- Nos relacionamentos de 1 para N, a Chave Primária (PK) da tabela do lado "1" é copiada para a tabela do lado "N", onde passa a atuar como uma Chave Estrangeira (FK). Isso cria o elo entre os registros das duas tabelas.
+- Exemplo FUNCIONÁRIO -> PEDIDOS (0:N): Um funcionário faz vários pedidos. A chave primária ID_FUNCIONARIO da tabela FUNCIONÁRIO foi inserida como chave estrangeira idFUNCIONÁRIO (FK) dentro da tabela PEDIDOS. Assim, cada pedido sabe exatamente qual funcionário o atendeu.
+- Nos relacionamentos de 1 para 1, a Chave Primária de uma das tabelas é inserida como Chave Estrangeira na outra tabela.
+- Exemplo CLIENTE -> COMANDA (0:1): Cada cliente tem sua comanda, e sem um cliente não existe comanda. O ID_CLIENTE foi inserido como idCLIENTE (FK) dentro da tabela COMANDAS.
 
-**Prompts utilizados:**
-> "Estou fazendo a documentação da Hamburgueria, como eu colocaria o volume das atividades da Hamburgueria na documentação?"
 
-> "E tamanho da operação, do que se trataria?"
+### **Cardinalidades e Tratamento de Tabelas Associativas**
+- Relacionamentos 1:1 (Um para Um): A chave primária de uma das tabelas migrou como chave estrangeira para a outra tabela envolvida, garantindo o vínculo exclusivo.
+- Relacionamentos 1:N (Um para Muitos): A chave primária do lado "1" foi inserida como chave estrangeira na tabela do lado "N" (ex: um FUNCIONARIO gerencia vários PEDIDOS, logo idFUNCIONARIO foi para a tabela PEDIDOS).
+- Relacionamentos N:N (Muitos para Muitos) e Tabelas Associativas: Como no modelo relacional não suporta diretamente relações N:N, elas foram transformadas em tabelas associativas) no modelo lógico. Cada tabela associativa recebeu as chaves estrangeiras das duas tabelas ligadas.
+- ITEM-PEDIDO: Conecta PEDIDOS e MENU (com os atributos descritivos Quantidade, Valor_Unitario e Observacao).
+- FICHA-TECNICA: Conecta MENU e INSUMO (detalhando os ingredientes de cada prato).
+- ITEM-COMPRA: Conecta COMPRA e INSUMO (registrando os itens adquiridos por nota fiscal).
 
-### Edição e Formatação
-Análise e documentação do modelo de dados para refinar a redação técnica com transições fluidas e descrever o uso das ferramentas.
+# **1.3 Definição de Chaves Primárias e Estrangeiras**
 
-**Prompts utilizados:**
-> "Como eu posso justificar os detalhes, entidades e relacionamentos etc.?"
+| TABELA | PK | FK | 
+|---------------|-----------------|------------|
+| Cliente | CPF_Cliente | Sem FKs |
+| Cliente_Telefone | CPF_Cliente | CPF_Cliente |
+| Mesa | ID_Mesa | Sem FKs |
+| Comanda | ID_Comanda | idMESA, idCLIENTE |
+| Pedidos | ID_Pedido | idCOMANDA, idFUNCIONARIO |
+| Entrega | ID_Entrega | idCOMANDA |
+| Cupom_Fiscal | ID_Cupom | idCOMANDA |
+| Pagamentos | ID_Pagamentos | Sem FKs |
+| Caixa | ID_Caixa | idFUNCIONARIO, idPAGAMENTOS |
+| Funcionario | ID_Funcionario | Sem FKs |
+| Item_Pedido | Sem PKs | idPEDIDO, idPRODUTO |
+| Menu | ID_Menu | Sem FKs |
+| Ficha_Tecnica| Sem PKs | idPRODUTO, idINSUMO |
+| Item_Compra | Sem PKs | idCOMPRA, idINSUMO |
+| Compra | ID_Compra | idFORNECEDOR |
+| Fornecedor | ID_Fornecedor | Sem FKs |_
 
-> "Eu preciso justificar tudo e colocar a parte de elementos em um único texto, o que você recomenda?"
+# **1.4 Normalização**
 
-> "Faça uma breve descrição sobre essas ferramentas: brModeler, MySQL, Workbench, Draw.io, Lucidchart, Miro."
+1°FN:
+- Atributo Composto: O atributo Endereço originalmente contida na entidade CLIENTE foi desmembrado em subpartes atômicas e independentes: Logradouro, Número, Bairro, Complemento e CEP.
+- Atributos Multivalorados: Como um cliente pode possuir mais de um número de contato, o campo de telefone foi isolado criando-se a entidade fraca/associativa Cliente_Telefone, garantindo que cada coluna armazene apenas um valor atômico indivisível por registro.
+- A 1FN assegura que todos os atributos sejam atômicos e que não existam grupos repetitivos ou multivalorados na mesma tabela, padronizando as consultas e o armazenamento.
 
----
+2°FN:
+- Para resolver os relacionamentos de Muitos-for-Muitos (N:N) — que geram dependências parciais se mantidos na mesma tabela —, foram criadas entidades associativas no modelo conceitual e convertidas em tabelas lógicas compostas por chaves estrangeiras:
+- ITEM-PEDIDO: Relaciona PEDIDOS e MENU.
+- FICHA-TECNICA: Relaciona MENU e INSUMO.
+- ITEM-COMPRA: Relaciona COMPRA e INSUMO.
+- A 2FN elimina a redundância associada a chaves compostas parciais, garantindo que atributos descritivos (como Quantidade ou Valor_Unitario) dependam exclusivamente da chave primária composta da tabela associativa correspondente.
 
-# Reflexão crítica 
-
-A principal motivação para o uso da IA nesses casos foi compreender detalhes técnicos, a construção e a estrutura do banco de dados necessários para a realização deste trabalho. Por essa razão, evitamos utilizar IA na elaboração dos textos (como justificativas, introdução, entre outros), buscando aprofundar o aprendizado, revisar as decisões tomadas e evitar generalizações incorretas.
+3°FN: 
+- O isolamento de entidades como FORNECEDOR, FUNCIONARIO, CAIXA e MESA assegurou que dados específicos de entidades secundárias não ficassem transitivamente acoplados (por exemplo, dados de contato do fornecedor pertencem exclusivamente à tabela FORNECEDOR e não se misturam com os dados da COMPRA).
+- A 3FN blinda o banco de dados contra anomalias de atualização, assegurando que cada dado esteja estritamente no seu lugar de origem e dependa apenas da chave primária da tabela onde está alocado.
