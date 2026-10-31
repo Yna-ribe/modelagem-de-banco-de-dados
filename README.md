@@ -280,7 +280,6 @@ Situação: **Levantada** (informada na pesquisa de campo), **Proposta** (deriva
 
 -------------------------------------------------------------------------
 
-
 # 7. **Modelagem Conceitual** (Entidades, Atributos, Relacionamentos)
 
 ![Modelagem Conceitual](https://github.com/Veigasz/modelagem-de-banco-de-dados/blob/new-formatacao/Modelagem%20Conceitual.png?raw=true)
@@ -295,6 +294,33 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 * **Draw.io:** Ferramenta versátil de diagramação baseada na web, excelente para desenhar fluxos de processos operacionais, esquemas de arquitetura e diagramas do sistema de forma rápida e colaborativa.
 * **Lucidchart:** Plataforma intuitiva de criação de diagramas para mapear visualmente a arquitetura de dados, esquemas de entidades e fluxogramas do negócio, facilitando a documentação clara do projeto.
 * **Miro:** Quadro branco digital colaborativo utilizado nas etapas iniciais de brainstorming, ideal para reunir os integrantes do grupo, mapear a crise operacional da empresa e levantar os requisitos do sistema antes da modelagem final.
+
+##  Proposta de Arquitetura Analítica para BI e IA
+
+| Problema ou KPI | Fórmula e período | Tabelas envolvidas | 
+|---|---|---|---|
+| P1 — compras sem controle | Gasto total por fornecedor, por mês | FORNECEDOR, COMPRA, ITEM_COMPRA |
+| KPI — valor de compras pendentes de pagamento | Soma de quantidade × valor unitário das compras com status "Pendente", por semana | COMPRA, ITEM_COMPRA, FORNECEDOR |
+| P1 — ruptura de insumos | Insumos com estoque atual ≤ estoque mínimo, diário | INSUMO |
+| KPI — custo teórico do lanche | Soma de (quantidade da ficha × custo médio do insumo) por produto | MENU, FICHA_TECNICA, INSUMO, ITEM_COMPRA |
+| KPI — ticket médio | Total das comandas fechadas ÷ número de comandas, semanal | COMANDA, PEDIDO |
+| KPI — faturamento por canal | Soma do total das comandas por tipo de atendimento, mensal | COMANDA |
+| P3 — divergência de caixa | Média e soma de `diferença` por terminal e por turno | CAIXA, TERMINAL | 
+| KPI — composição dos pagamentos | % do valor recebido por forma de pagamento, mensal | PAGAMENTOS, CAIXA |
+| KPI — adesão à taxa de serviço | Comandas com taxa aceita ÷ total de comandas, mensal | COMANDA |
+| P2 — cadastro de clientes | % de comandas com cliente identificado, mensal | COMANDA, CLIENTE |
+| P2 — vendas por responsável | Faturamento por funcionário, semanal | COMANDA, FUNCIONARIO |
+| KPI — produtos mais vendidos e margem | Quantidade vendida e (preço de venda − custo teórico) por produto | PEDIDO, MENU, CATEGORIA, FICHA_TECNICA |
+KPI - Taxa de serviço| valor da comanda + ( valor da comando x 0.10) pagar o valor da taxa é opcional| COMANDA, PEDIDO|
+KPI - taxa de entrega| valor do pedido + 10,00 (valor fixo da entrega)| PEDIDO, ENTREGA|
+KPI - desconto (combo de aniversariante do cliente cadastrado)| não paga valor do combo + (combo x 0.10)taxa de serviço ainda opcional| CLIENTE, COMANDA, MENU|
+
+### Problemas declarados
+- **P1** — Gestão descentralizada de compras e estoque 
+- **P2** — Ausência de cadastro centralizado de pessoas
+- **P3** — Falta de padronização e rastreabilidade do caixa
+
+-------------------------------------------------------------------------
 
 ## Atendimento e Clientes
 
