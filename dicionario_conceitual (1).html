@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionario</title>
+    <style>
+        header{
+            background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-color: rgb(227, 134, 47);
+            color: rgb(226, 240, 238);
+            text-align: center;
+            padding: 10px;
+        }
+        #dicionario-conceitual {
+            margin: 20px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        .folder-header {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            text-color: rgb(255, 123, 0);
+        }
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse; 
+        }
+        th,td{
+            padding-bottom: 10px;
+        }
+        table{
+            width: 50%; 
+            border-spacing: 20px;
+            margin:0 auto;
+    }
+        th{
+            background-color: azure;
+            color:rgb(224, 119, 20);
+            text-align: center;
+
+        }
+        caption {
+        caption-side: bottom;
+        padding: 5px;
+        font-weight: bold;
+        text-align: justify;
+        font-size: 14px;
+        }
+        .links-group {
+            margin-top: 15px;
+        }
+        .folder-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #080101;
+            color: #fff;
+        }
+
+    </style>
+</head>
+    <header class="folder-header">
+      <h1>Mont Ararat Hamburgueria</h1>
+</header>
+
+<body>
+    <H1 id="dicionario-conceitual">Dicionário de Dados Conceitual (Preliminar)</H1>
+    <P>Este modelo representa como funciona o esquema de ligação de registro do momento que os pedidos são registrados, até o processo de pagamento.</P>
+    <hr>
+    <h2 id="s1">1. Entidades e relacionamentos</h2>
+<h3>1.1 Definição das entidades</h3>
+<div class="w">
+    <table>
+        <tr>
+            <th>Entidade</th>
+            <th>Tipo</th>
+            <th>Definição</th>
+        </tr>
+        <tr>
+            <td>Funcionario</td>
+            <td>Forte</td>
+            <td>Colaborador fixo que abre comandas, registra pedidos e opera o caixa (RF07).</td>
+        </tr>
+        <tr>
+            <td>Mesas</td>
+            <td>Forte</td>
+            <td>Cada uma das 30 mesas do salão, com status de ocupação.</td>
+        </tr>
+        <tr>
+            <td>Comanda</td>
+            <td>Forte</td>
+            <td>“Container” do consumo, aberta por um funcionário, normalmente vinculada a uma mesa.</td>
+        </tr>
+        <tr>
+            <td>Menu</td>
+            <td>Forte</td>
+            <td>Produtos do cardápio (Lanches, Extras, Bebidas) com preço base.</td>
+        </tr>
+        <tr>
+            <td>Ingredientes</td><td>Forte</td>
+            <td>Insumos usados na produção, base do controle de estoque.</td>
+        </tr>
+        <tr>
+            <td>Terminal</td>
+            <td>Forte</td>
+            <td>Máquina que registra venda/pagamento: Caixa_Salao e Caixa_Delivery.</td>
+        </tr>
+        <tr>
+            <td>Caixa</td>
+            <td>Dependente</td>
+            <td>Sessão de caixa aberta em um terminal por um operador, com fundo de reserva e apuração de diferença.</td>
+        </tr>
+        <tr>
+            <td>Pedido</td>
+            <td>Associativa</td>
+            <td>Item lançado na comanda (Comanda × Menu), registrado por um funcionário, com quantidade, observação e preço unitário congelado (RN02).</td>
+        </tr>
+        <tr>
+            <td>Ficha_Tecnica</td>
+            <td>Associativa</td>
+            <td>Define quais Ingredientes e quantidades compõem cada produto (Menu × Ingredientes).</td>
+        </tr>
+        <tr>
+            <td>Pagamentos_Comanda</td>
+            <td>Associativa</td>
+            <td>Pagamento parcial ou total de uma comanda, vinculado ao Caixa (Comanda × Caixa).</td>
+        </tr>
+        <tr>
+            <td>Fornecedores</td>
+            <td>Forte</td>
+            <td>Empresa que vende insumos e embalagens à hamburgueria (carnes, pães, hortifruti, embalagens).</td>
+        </tr>
+        <tr>
+            <td>Pedido_Compra</td>
+            <td>Dependente</td>
+            <td>Pedido de compra feito a um fornecedor, com data e status de pagamento. Não confundir com Pedido, que é o item consumido na comanda.</td>
+        </tr>
+        <tr>
+            <td>Item_Pedido_Compra</td>
+            <td>Associativa</td>
+            <td>Insumo comprado em um pedido de compra (Pedido_Compra × Ingredientes), com quantidade e valor unitário. Alimenta o estoque.</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>1.2 Relacionamentos e cardinalidade (mín,máx)</h3>
+<div class="w">
+    <table>
+        <caption>Comanda é o “container” do consumo na Mesa, criada por um funcionário. Pedidos são itens (produto + quantidade) dentro da comanda, também associados ao funcionário que registrou. Ficha_Tecnica define quais Ingredientes compõem cada Produto do Menu. Pagamentos_Comanda registra como a comanda foi paga, vinculando ao Caixa (e portanto ao Terminal e ao Funcionário do caixa). As cardinalidades mínimas são <span class="ad">proposta</span>, derivadas das regras de negócio.</caption>
+        <tr>
+            <th>Entidade</th>
+            <th>Relaciona-se com</th>
+            <th>Cardinalidade</th>
+        </tr>
+        <tr>
+            <td>Funcionario</td>
+            <td>Comanda</td>
+            <td>(1,1) : (0,N) — Uma comanda é aberta por um funcionário; um funcionário pode abrir várias.</td>
+        </tr>
+        <tr>
+            <td>Mesas</td>
+            <td>Comanda</td>
+            <td>(0,1) : (0,N) — Uma mesa tem várias comandas ao longo do tempo, mas só uma aberta por vez (RN01). Mínimo 0 do lado da comanda para balcão/delivery <span class="ad">(a validar)</span>.</td>
+        </tr>
+        <tr>
+            <td>Comanda</td>
+            <td>Pedido</td>
+            <td>(1,1) : (1,N) — Uma comanda possui vários pedidos; cada pedido pertence a uma comanda.</td>
+        </tr>
+        <tr>
+            <td>Funcionario</td>
+            <td>Pedido</td>
+            <td>(1,1) : (0,N) — Um funcionário registra vários pedidos; cada pedido tem um funcionário.</td>
+        </tr>
+        <tr>
+            <td>Menu</td
+                ><td>Pedido</td>
+                <td>(1,1) : (0,N) — Um produto pode aparecer em vários pedidos; cada pedido refere-se a um produto.</td>
+        </tr>
+        <tr>
+            <td>Menu</td>
+            <td>Ficha_Tecnica</td>
+            <td>(1,1) : (1,N) — Um produto possui uma ou várias linhas na ficha técnica.</td>
+        </tr>
+        <tr>
+            <td>Ingredientes</td>
+            <td>Ficha_Tecnica</td>
+            <td>(1,1) : (0,N) — Um ingrediente pode compor vários produtos.</td>
+        </tr>
+        <tr>
+            <td>Comanda</td>
+            <td>Pagamentos_Comanda</td>
+            <td>(1,1) : (0,N) — Uma comanda pode ter vários pagamentos (RF04); só fecha com soma ≥ total (RN04).</td>
+        </tr>
+        <tr>
+            <td>Caixa</td>
+            <td>Pagamentos_Comanda</td>
+            <td>(1,1) : (0,N) — Todo pagamento está em uma sessão de caixa aberta (RN05).</td>
+        </tr>
+        <tr>
+            <td>Terminal</td>
+            <td>Caixa</td>
+            <td>(1,1) : (0,N) — Um terminal opera vários caixas ao longo do tempo; cada caixa está em um terminal.</td>
+        </tr>
+        <tr>
+            <td>Funcionario</td>
+            <td>Caixa</td>
+            <td>(1,1) : (0,N) — Cada sessão de caixa tem um operador; um funcionário pode operar várias sessões.</td>
+        </tr>
+        <tr>
+            <td>Fornecedores</td>
+            <td>Pedido_Compra</td>
+            <td>(1,1) : (0,N) — Um fornecedor recebe vários pedidos de compra; cada pedido é de um fornecedor.</td>
+        </tr>
+        <tr>
+            <td>Pedido_Compra</td>
+            <td>Item_Pedido_Compra</td>
+            <td>(1,1) : (1,N) — Um pedido de compra tem vários itens; cada item pertence a um pedido.</td>
+        </tr>
+        <tr>
+            <td>Ingredientes</td>
+            <td>Item_Pedido_Compra</td>
+            <td>(1,1) : (0,N) — Um insumo pode ser comprado em vários pedidos, tratado aqui como Ingredientes.</td>
+        </tr>
+    </table>
+</div>
+ 
+<h2 id="s2">2. Fluxo de dados</h2>
+<div class="w">
+    <table>
+        <tr>
+            <th>Etapa</th>
+            <th>Processo</th>
+            <th>Responsável</th>
+            <th>Dados lidos</th>
+            <th>Dados gravados</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Abertura de caixa</td>
+            <td>Operador de caixa</td>
+            <td>Terminal, Funcionario</td>
+            <td>Caixa (fundo de reserva R$ 150,00, status_caixa = Aberto)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Abertura de comanda</td>
+            <td>Garçom</td>
+            <td>Mesas, Funcionario</td>
+            <td>Comanda; Mesas.status = Ocupada</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Registro de pedido</td>
+            <td>Garçom</td><td>Menu</td>
+            <td>Pedido (quantidade, observação, preco_unitario congelado)</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Produção na cozinha</td>
+            <td>Cozinha/Chapa</td>
+            <td>Pedido, Ficha_Tecnica</td>
+            <td>Status do Pedido</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Transferência de mesa (opcional)</td>
+            <td>Garçom</td><td>Mesas, Comanda</td>
+            <td>Comanda.id_mesa; status das duas mesas</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Fechamento de conta</td>
+            <td>Caixa</td>
+            <td>Pedido</td>
+            <td>Comanda (subtotal, taxa_servico_aceita, valor total)</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Recebimento fracionado</td>
+            <td>Caixa</td>
+            <td>Comanda, Caixa</td>
+            <td>Pagamentos_Comanda (N formas de pagamento)</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Encerramento de comanda</td>
+            <td>Caixa</td>
+            <td>Pagamentos_Comanda</td>
+            <td>Comanda.status = Fechada; Mesas.status = Livre (RN04)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Fechamento de turno</td>
+            <td>Caixa/Gerência</td>
+            <td>Pagamentos_Comanda, Caixa</td>
+            <td>Caixa (saldo calculado, informado, diferença – RN06; status Fechado)</td>
+        </tr>
+    </table>
+</div>
+<p>Processo paralelo, fora do modelo atual: <b>pré-preparo de insumos</b> (manhã, cozinha) e <b>sangria/suprimento</b> (durante o turno). Sangria/suprimento não tem entidade definida <span class="ad">(a confirmar se entra no modelo)</span>.</p>
+
+<h3>Fluxo de compras e estoque</h3>
+    <div class="w">
+        <table>
+            <tr>
+                <th>Etapa</th>
+                <th>Processo</th>
+                <th>Responsável</th>
+                <th>Dados gravados</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Contagem manual do estoque (lista de compras)</td>
+                <td>Encarregado/Gerência</td>
+                <td>Ingredientes.estoque_atual</td>
+            </tr>
+            <tr>
+                <td>2</td><td>Pedido de compra ao fornecedor</td>
+                <td>Encarregado/Gerência</td>
+                <td>Pedido_Compra (data_pedido, status_pagamento = Pendente)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Lançamento dos itens comprados</td>
+                <td>Encarregado/Gerência</td>
+                <td>Item_Pedido_Compra (quantidade, valor_unitario)</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Recebimento e entrada no estoque</td>
+                <td class="ad">a definir</td>
+                <td>Ingredientes.estoque_atual</td>
+        </tr>
+            <tr>
+                <td>5</td>
+                <td>Pagamento ao fornecedor</td>
+                <td class="ad">a definir</td>
+                <td>Pedido_Compra.status_pagamento</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Baixa do estoque pelas vendas, via Ficha_Tecnica</td>
+                <td>Sistema</td>
+                <td>Ingredientes.estoque_atual</td>
+            </tr>
+            
+        </table>
+    </div>
+<h2 id="s3">3. Convenções</h2>
+    <div class="w">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>SGBD</td>
+                <td>MySQL 8.0 (relacional, engine InnoDB, com suporte a chaves estrangeiras e transações)</td>
+            </tr>
+            <tr>
+                <td>Collation / charset</td>
+                <td>utf8mb4 / utf8mb4_unicode_ci (acentuação do português, sem diferenciar maiúsculas de minúsculas)</td>
+            </tr>
+            <tr>
+                <td>Notação do modelo</td>
+                <td>Pé de Galinha (Crow's Foot), com cardinalidade registrada no formato (mín,máx)</td>
+            </tr>
+            <tr>
+                <td>Nomes de entidades</td>
+                <td>Primeira letra maiúscula, partes separadas por “_” (ex.: Ficha_Tecnica)</td>
+            </tr>
+            <tr>
+                <td>Nomes de atributos</td>
+                <td>minúsculas com “_” (ex.: taxa_servico_aceita, status_caixa)</td>
+            </tr>
+            <tr>
+                <td>Prefixos</td>
+                <td>Tabelas <code>tb_</code> (ex.: tb_comanda); colunas de chave primária e estrangeira <code>id_</code> (a FK usa o mesmo nome da PK referenciada); restrições <code>pk_</code>, <code>fk_</code>, <code>uq_</code> e <code>ck_</code>; índices <code>idx_</code> (ex.: idx_pedido_id_comanda)</td>
+            </tr>
+            <tr>
+                <td>Versão</td>
+                <td>0.2 (preliminar) – 28/10/2026. Histórico: 0.1 (tabela de relacionamentos e localização); 0.2 (itens 1 a 6 e convenções).</td>
+            </tr>
+            <tr>
+                <td>Legenda</td>
+                <td>PK = chave primária; FK = chave estrangeira; N = aceita nulo; S = obrigatório; tamanhos físicos conforme SGBD</td>
+            </tr>
+            
+        </table>
+    </div>
+ 
+<h2 id="s4">4. Dicionário por entidade</h2>
+<p>Atributos derivados dos requisitos RF01–RF07 e regras RN01–RN06. Tipos são lógicos.</p>
+ 
+<h3>Funcionario</h3>
+<span class="expr">Funcionario(<u>id_funcionario</u>, nome, tipo_vinculo, funcao, ativo)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_funcionario</td>
+            <td>Inteiro</td><td>N</td>
+            <td>PK</td><td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>nome</td>
+            <td>Texto</td>
+            <td>N</td>
+            <td></td>
+            <td>Nome do colaborador</td>
+        </tr>
+        <tr>
+            <td>tipo_vinculo</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Fixo (CLT) ou Freelancer <span class="ad">(proposta)</span></td>
+        </tr>
+        <tr>
+            <td>funcao</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Garçom, Caixa, Cozinha, Gerência</td>
+        </tr>
+        <tr>
+            <td>ativo</td>
+            <td>Booleano</td>
+            <td>N</td>
+            <td></td>
+            <td>Se pode registrar operações</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Mesas</h3>
+<span class="expr">Mesas(<u>id_mesa</u>, numero, status)</span>
+<div class="w">
+    <table>
+        <tr><th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_mesa</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK</td>
+            <td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>numero</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td></td>
+            <td>1 a 30, único</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Livre, Ocupada, Aguardando Pagamento (RF01)</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Comanda</h3>
+<span class="expr">Comanda(<u>id_comanda</u>, #id_mesa, #id_funcionario, canal, data_abertura, data_fechamento, status, taxa_servico_aceita, valor_total)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_comanda</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK</td>
+            <td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>id_mesa</td>
+            <td>Inteiro</td>
+            <td>S</td>
+            <td>FK</td>
+            <td>Mesa atual; nulo em balcão/delivery <span class="ad">(a validar)</span></td>
+        </tr>
+        <tr>
+            <td>id_funcionario</td>
+            <td>Inteiro</td><td>N</td>
+            <td>FK</td><td>Quem abriu a comanda</td>
+        </tr>
+        <tr>
+            <td>canal</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Salão, Balcão, Delivery</td>
+        </tr>
+        <tr>
+            <td>data_abertura</td>
+            <td>Data/Hora</td>
+            <td>N</td>
+            <td></td>
+            <td>Momento da abertura</td>
+        </tr>
+        <tr>
+            <td>data_fechamento</td>
+            <td>Data/Hora</td>
+            <td>S</td>
+            <td></td>
+            <td>Preenchida ao fechar</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Aberta, Fechada (RN04)</td>
+        </tr>
+        <tr>
+            <td>taxa_servico_aceita</td>
+            <td>Booleano</td>
+            <td>N</td>
+            <td></td>
+            <td>Padrão verdadeiro; 10% sobre o subtotal (RN03)</td>
+        </tr>
+        <tr>
+            <td>valor_total</td>
+            <td>Decimal</td>
+            <td>S</td>
+            <td></td>
+            <td>Subtotal + taxa; calculado no fechamento</td>
+        </tr> 
+    </table>
+</div>
+ 
+<h3>Pedido</h3>
+<span class="expr">Pedido(<u>id_pedido</u>, #id_comanda, #id_produto, #id_funcionario, quantidade, preco_unitario, observacao, data_hora, status)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_pedido</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK</td>
+            <td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>id_comanda</td>
+            <td>Inteiro</td><td>N</td>
+            <td>FK</td>
+            <td>Comanda do item</td>
+        </tr>
+        <tr>
+            <td>id_produto</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>FK</td>
+            <td>Produto do Menu</td>
+        </tr>
+        <tr>
+            <td>id_funcionario</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>FK</td>
+            <td>Quem registrou</td>
+        </tr>
+        <tr>
+            <td>quantidade</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td></td>
+            <td>Maior que 0</td>
+        </tr>
+        <tr>
+            <td>preco_unitario</td>
+            <td>Decimal</td>
+            <td>N</td>
+            <td></td>
+            <td>Preço congelado no lançamento (RN02)</td>
+        </tr>
+        <tr><td>observacao</td>
+            <td>Texto</td>
+            <td>S</td>
+            <td></td>
+            <td>Ponto da carne, remoção de itens</td>
+        </tr>
+        <tr>
+            <td>data_hora</td>
+            <td>Data/Hora</td>
+            <td>N</td><td></td>
+            <td>Momento do lançamento</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td class="ad">a definir (ex.: Lançado, Em preparo, Entregue, Cancelado)</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Menu</h3>
+<span class="expr">Menu(<u>id_produto</u>, nome, categoria, preco_base, ativo)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_produto</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK</td>
+            <td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>nome</td>
+            <td>Texto</td>
+            <td>N</td>
+            <td></td>
+            <td>Nome no cardápio</td>
+        </tr>
+        <tr>
+            <td>categoria</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Lanches, Extras, Bebidas (combos <span class="ad">a definir</span>)</td>
+        </tr>
+        <tr>
+            <td>preco_base</td>
+            <td>Decimal</td>
+            <td>N</td>
+            <td></td>
+            <td>Preço atual; mudanças não afetam Pedido (RN02)</td>
+        </tr>
+        <tr>
+            <td>ativo</td>
+            <td>Booleano</td>
+            <td>N</td>
+            <td></td>
+            <td>Disponível para venda</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Ingredientes</h3>
+<span class="expr">Ingredientes(<u>id_ingrediente</u>, nome, unidade_medida, estoque_atual)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th><th>Tipo</th><th>Nulo</th><th>Chave</th><th>Descrição / valores</th>
+        </tr>
+        <tr
+            td>id_ingrediente</td>
+            <td>Inteiro</td>
+            <td>N</td><td>PK</td>
+            <td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>nome</td>
+            <td>Texto</td>
+            <td>N</td>
+            <td></td>
+            <td>Ex.: carne 180g, molho da casa</td>
+        </tr>
+        <tr>
+            <td>unidade_medida</td><td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>g, kg, ml, un (proposta)</td>
+        </tr>
+        <tr>
+            <td>estoque_atual</td>
+            <td>Decimal</td><td>S</td>
+            <td></td><td>Substitui a contagem manual em planilha. Entra pelas compras (Item_Pedido_Compra) e sai pelas vendas (Ficha_Tecnica) (proposta)</span></td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Ficha_Tecnica</h3>
+<span class="expr">Ficha_Tecnica(<u>#id_produto, #id_ingrediente</u>, quantidade_utilizada)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_produto</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK, FK</td>
+            <td>Produto do Menu</td>
+        </tr>
+        <tr>
+            <td>id_ingrediente</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK, FK</td>
+            <td>Ingrediente</td>
+        </tr>
+        <tr>
+            <td>quantidade_utilizada</td>
+            <td>Decimal</td>
+            <td>N</td>
+            <td></td>
+            <td>Quantidade por unidade vendida, na unidade do ingrediente</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Terminal</h3>
+<span class="expr">Terminal(<u>id_terminal</u>, nome, ativo)</span>
+    <div class="w">
+        <table>
+            <tr>
+                <th>Atributo</th>
+                <th>Tipo</th>
+                <th>Nulo</th>
+                <th>Chave</th>
+                <th>Descrição / valores</th>
+            </tr>
+            <tr>
+                <td>id_terminal</td><td>Inteiro</td>
+                <td>N</td>
+                <td>PK</td>
+                <td>Identificador único</td>
+            </tr>
+            <tr>
+                <td>nome</td>
+                <td>Enum</td>
+                <td>N</td>
+                <td></td>
+                <td>Caixa_Salao, Caixa_Delivery</td>
+            </tr>
+            <tr>
+                <td>ativo</td>
+                <td>Booleano</td>
+                <td>N</td>
+                <td></td>
+                <td>Terminal em uso (RN05)</td>
+            </tr>
+        </table>
+    </div>
+ 
+<h3>Caixa</h3>
+<span class="expr">Caixa(<u>id_caixa</u>, #id_terminal, #id_funcionario, data_abertura, data_fechamento, fundo_reserva, saldo_final_calculado, saldo_final_informado, diferenca, status_caixa)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_caixa</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK</td>
+            <td>Identificador da sessão</td>
+        </tr>
+        <tr>
+            <td>id_terminal</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>FK</td>
+            <td>Terminal da sessão</td>
+        </tr>
+        <tr>
+            <td>id_funcionario</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>FK</td>
+            <td>Operador</td>
+        </tr>
+        <tr>
+            <td>data_abertura</td>
+            <td>Data/Hora</td>
+            <td>N</td>
+            <td></td>
+            <td>Início do turno</td>
+        </tr>
+        <tr>
+            <td>data_fechamento</td>
+            <td>Data/Hora</td>
+            <td>S</td>
+            <td></td>
+            <td>Fim do turno</td>
+        </tr>
+        <tr>
+            <td>fundo_reserva</td>
+            <td>Decimal</td>
+            <td>N</td>
+            <td></td>
+            <td>Valor inicial (R$ 150,00)</td>
+        </tr>
+        <tr>
+            <td>saldo_final_calculado</td>
+            <td>Decimal</td>
+            <td>S</td>
+            <td></td>
+            <td>Esperado pelo sistema</td>
+        </tr>
+        <tr>
+            <td>saldo_final_informado</td>
+            <td>Decimal</td>
+            <td>S</td>
+            <td></td>
+            <td>Contagem do operador</td>
+        </tr>
+        <tr>
+            <td>diferenca</td>
+            <td>Decimal</td>
+            <td>S</td>
+            <td></td>
+            <td>saldo_final_informado − saldo_final_calculado (RN06)</td>
+        </tr>
+        <tr>
+            <td>status_caixa</td>
+            <td>Enum</td>
+            <td>N</td>
+            <td></td>
+            <td>Aberto, Fechado (RN05)</td>
+        </tr>
+    </table>
+</div>
+ 
+<h3>Pagamentos_Comanda</h3>
+<span class="expr">Pagamentos_Comanda(<u>id_pagamento</u>, #id_comanda, #id_caixa, forma_pagamento, valor, data_hora)</span>
+<div class="w">
+    <table>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>Nulo</th>
+            <th>Chave</th>
+            <th>Descrição / valores</th>
+        </tr>
+        <tr>
+            <td>id_pagamento</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>PK</td>
+            <td>Identificador único</td>
+        </tr>
+        <tr>
+            <td>id_comanda</td><td>Inteiro</td>
+            <td>N</td>
+            <td>FK</td>
+            <td>Comanda paga</td>
+        </tr>
+        <tr>
+            <td>id_caixa</td>
+            <td>Inteiro</td>
+            <td>N</td>
+            <td>FK</td>
+            <td>Caixa aberto que recebeu</td>
+        </tr>
+        <tr>
+            <td>forma_pagamento</td>
+            <td>Enum</td><td>N</td><td></td>
+            <td>Dinheiro, Cartão, PIX (fita de caixa também cita “Outros”)</td>
+        </tr>
+        <tr>
+            <td>valor</td>
+            <td>Decimal</td>
+            <td>N</td>
+            <td></td>
+            <td>Maior que 0</td>
+        </tr>
+        <tr>
+            <td>data_hora</td>
+            <td>Data/Hora</td>
+            <td>N</td>
+            <td></td>
+            <td>Momento do recebimento</td>
+        </tr>
+    </table>
+</div>
+
+<h3>Fornecedores</h3>
+<span class="expr">Fornecedores(<u>id</u>, nome, cnpj, telefone, email, cidade, estado)</span>
+    <div class="w">
+        <table>
+            <tr>
+                <th>Atributo</th>
+                <th>Tipo</th>
+                <th>Nulo</th>
+                <th>Chave</th>
+                <th>Descrição / valores</th>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>INT</td>
+                <td>N</td>
+                <td>PK</td>
+                <td>Identificador único; pela convenção seria <code>id_fornecedor</code>)</td>
+            </tr>
+            <tr>
+                <td>nome</td>
+                <td>VARCHAR(100)</td>
+                <td>N</td>
+                <td></td>
+                <td>Razão social ou nome comercial</td>
+            </tr>
+            <tr>
+                <td>cnpj</td>
+                <td>VARCHAR(20)</td>
+                <td>S</td>
+                <td></td>
+                <td>Formato 00.000.000/0000-00</td>
+            </tr>
+            <tr>
+                <td>telefone</td>
+                <td>VARCHAR(20)</td>
+                <td>S</td>
+                <td></td>
+                <td>Formato (11) 0000-0000</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>VARCHAR(100)</td>
+                <td>S</td>
+                <td></td>
+                <td>E-mail comercial</td>
+            </tr>
+            <tr>
+                <td>cidade</td>
+                <td>VARCHAR(60)</td>
+                <td>S</td>
+                <td></td>
+                <td>Município do fornecedor</td>
+            </tr>
+            <tr>
+                <td>estado</td>
+                <td>CHAR(2)</td>
+                <td>S</td>
+                <td></td>
+                <td>UF</td>
+            </tr>
+        </table>
+    </div>
+
+<h3>Item_Pedido_Compra (tabela <code>itens_pedido</code>)</h3>
+<span class="expr">Item_Pedido_Compra(<u>id_item</u>, #id_pedido, #id_produto, quantidade, valor_unitario)</span>
+    <div class="w">
+        <table>
+            <tr>
+                <th>Atributo</th>
+                <th>Tipo</th>
+                <th>Nulo</th>
+                <th>Chave</th>
+                <th>Descrição / valores</th>
+            </tr>
+            <tr>
+                <td>id_item</td>
+                <td>INT</td>
+                <td>N</td>
+                <td>PK</td>
+                <td>Identificador do item</td>
+            </tr>
+            <tr>
+                <td>id_pedido</td>
+                <td>INT</td>
+                <td>N</td>
+                <td>FK</td>
+                <td>Referencia Pedido_Compra(id_pedido)</td>
+            </tr>
+            <tr>
+                <td>id_produto</td>
+                <td>INT</td>
+                <td>N</td>
+                <td>FK</td>
+                <td>Referencia <code>produtos(id)</code>; equivale a Ingredientes (a confirmar)</td>
+            </tr>
+            <tr>
+                <td>quantidade</td>
+                <td>DECIMAL(10,2)</td>
+                <td>N</td>
+                <td></td>
+                <td>Quantidade comprada, na unidade do insumo</td>
+            </tr>
+            <tr>
+                <td>valor_unitario</td>
+                <td>DECIMAL(10,2)</td>
+                <td>N</td>
+                <td></td>
+                <td>Preço pago por unidade; valor do item = quantidade × valor_unitario</td>
+            </tr>
+        </table>
+    </div>
+            <p>O saldo fica em Ingredientes.Estoque_atual, é uma tabela de movimentação de estoque ficaria entre o recebimento e as baixas.</p>
+             
+<h3>Massa de dados: fornecedores e pedidos de compra</h3>
+<div class="w">
+    <table>
+        <caption>Total do pedido = soma de quantidade × valor_unitario dos itens.</caption>
+        <tr>
+            <th>id</th>
+            <th>Fornecedor</th>
+            <th>CNPJ</th>
+            <th>Cidade/UF</th>
+            <th>Itens</th>
+            <th>Total do pedido</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Burger Prime Distribuidora</td>
+            <td>12.345.678/0001-90</td>
+            <td>São Paulo/SP</td>
+            <td>4</td><td>R$ 828,00</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Pão Dourado Panificadora</td>
+            <td>23.456.789/0001-01</td>
+            <td>Guarulhos/SP</td>
+            <td>2</td>
+            <td>R$ 820,00</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Carnes Selecionadas Ltda.</td>
+            <td>34.567.890/0001-12</td>
+            <td>Osasco/SP</td>
+            <td>3</td>
+            <td>R$ 1.689,00</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Hortifruti Frescor</td>
+            <td>45.678.901/0001-23</td>
+            <td>Santo André/SP</td>
+            <td>3</td>
+            <td>R$ 348,00</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Embala Burger Distribuidora</td>
+            <td>56.789.012/0001-34</td>
+            <td>São Bernardo do Campo/SP</td>
+            <td>3</td>
+            <td>R$ 1.070,00</td>
+        </tr>
+        
+    </table>
+</div>
+    
+<h3>Índices <span class="ad" style="font-size:14px">(proposta)</span></h3>
+<div class="w">
+    <table>
+        <tr>
+            <th>Entidade</th>
+            <th>Índice</th>
+            <th>Colunas</th>
+            <th>Finalidade</th>
+        </tr>
+        <tr>
+            <td>Todas</td>
+            <td>PK</td>
+            <td>Chave primária de cada entidade</td>
+            <td>Unicidade e acesso direto</td>
+        </tr>
+        <tr>
+            <td>Mesas</td>
+            <td>Único</td>
+            <td>numero</td>
+            <td>Evita mesa duplicada</td>
+        </tr>
+        <tr>
+            <td>Comanda</td>
+            <td>Único parcial</td>
+            <td>id_mesa, onde status = Aberta</td>
+            <td>Uma comanda aberta por mesa (RN01)</td>
+        </tr>
+        <tr>
+            <td>Comanda</td>
+            <td>Comum</td>
+            <td>id_funcionario; data_abertura</td>
+            <td>Consultas por funcionário e por período</td>
+        </tr>
+        <tr>
+            <td>Pedido</td>
+            <td>Comum</td>
+            <td>id_comanda; id_produto</td>
+            <td>Itens da comanda; vendas por produto</td>
+        </tr>
+        <tr>
+            <td>Pagamentos_Comanda</td>
+            <td>Comum</td><td>id_comanda; id_caixa</td>
+            <td>Soma para fechar (RN04); apuração do caixa</td>
+        </tr>
+        <tr>
+            <td>Caixa</td>
+            <td>Comum</td>
+            <td>id_terminal, status_caixa</td>
+            <td>Achar a sessão aberta do terminal (RN05)</td>
+        </tr>
+    </table>
+</div>
+ 
+<h2 id="s5">5. Log de acesso</h2>
+<p>Campos do log (<span class="ad">proposta</span>): id_log, data_hora, id_funcionario, evento, entidade, id_registro, valor_anterior, valor_novo, id_terminal.</p>
+<div class="w">
+    <table>
+        <tr>
+            <th>Evento</th>
+            <th>Entidade</th>
+            <th>Motivo do registro</th>
+        </tr>
+        <tr>
+            <td>Login / logout</td>
+            <td>Funcionario</td><td>Vincular colaboradores e freelancers às vendas</td>
+        </tr>
+        <tr>
+            <td>Abertura e encerramento de comanda</td>
+            <td>Comanda</td>
+            <td>Rastrear consumo e ocupação das mesas</td>
+        </tr>
+        <tr>
+            <td>Lançamento e cancelamento de pedido</td>
+            <td>Pedido</td>
+            <td>Evitar perdas e fraudes</td>
+        </tr>
+        <tr>
+            <td>Transferência de mesa</td>
+            <td>Comanda, Mesas</td>
+            <td>RF03</td>
+        </tr>
+        <tr>
+            <td>Remoção da taxa de serviço</td>
+            <td>Comanda</td>
+            <td>Registrar autorização do cliente (RF05)</td>
+        </tr>
+        <tr>
+            <td>Registro de pagamento</td>
+            <td>Pagamentos_Comanda</td>
+            <td>Rastrear divisão de contas</td>
+        </tr>
+        <tr>
+            <td>Abertura e fechamento de caixa</td>
+            <td>Caixa</td>
+            <td>Divergências (RN06)</td>
+        </tr>
+        <tr>
+            <td>Sangria / suprimento</td><td class="ad">a definir</td>
+            <td>Rastreabilidade do caixa</td>
+        </tr>
+        <tr>
+            <td>Alteração de preço ou ficha técnica</td>
+            <td>Menu, Ficha_Tecnica</td>
+            <td>Histórico de custos</td>
+        </tr>
+    </table>
+</div>
+ 
+<h2 id="s6">6. Acesso por operação e LGPD</h2>
+<h3>6.1 Permissões (C = criar, R = ler, U = atualizar, D = excluir)</h3>
+<div class="w">
+    <table>
+        <caption>Proposta de perfis, a validar com o encarregado da unidade. Exclusão deve ser lógica (inativar) sempre que houver histórico.</caption>
+            <tr>
+                <th>Entidade</th><th>Garçom</th>
+                <th>Caixa</th><th>Cozinha</th>
+                <th>Gerência</th>
+            </tr>
+            <tr>
+                <td>Funcionario</td>
+                <td>–</td>
+                <td>R (próprio)</td>
+                <td>R (próprio)</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Mesas</td>
+                <td>RU</td>
+                <td>RU</td>
+                <td>R</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Comanda</td>
+                <td>CRU</td>
+                <td>RU</td>
+                <td>R</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Pedido</td>
+                <td>CRU</td>
+                <td>R</td>
+                <td>RU (status)</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Menu</td>
+                <td>R</td>
+                <td>R</td>
+                <td>R</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Ficha_Tecnica</td>
+                <td>–</td>
+                <td>–</td>
+                <td>R</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Ingredientes</td>
+                <td>–</td>
+                <td>–</td>
+                <td>RU (estoque)</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Terminal</td>
+                <td>–</td>
+                <td>R</td>
+                <td>–</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Caixa</td>
+                <td>–</td>
+                <td>CRU (própria sessão)</td>
+                <td>–</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Pagamentos_Comanda</td>
+                <td>–</td>
+                <td>CR</td>
+                <td>–</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Fornecedores</td>
+                <td>–</td>
+                <td>–</td>
+                <td>–</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Pedido_Compra</td>
+                <td>–</td>
+                <td>–</td>
+                <td>–</td>
+                <td>CRUD</td>
+            </tr>
+            <tr>
+                <td>Item_Pedido_Compra</td>
+                <td>–</td>
+                <td>–</td>
+                <td>–</td>
+                <td>CRUD</td>
+            </tr>
+    </table>
+</div>
+ 
+<h3>6.2 Dados pessoais e LGPD</h3>
+<div class="w">
+    <table>
+        <tr>
+            <th>Entidade / campo</th>
+            <th>Titular</th>
+            <th>Base legal</th>
+            <th>Retenção</th>
+        </tr>
+        <tr>
+            <td>Funcionario.nome (e demais dados cadastrais, se incluídos)</td>
+            <td>Colaborador</td>
+            <td class="ad">a validar (execução de contrato de trabalho / obrigação legal)</td>
+            <td class="ad">a definir</td>
+        </tr>
+        <tr>
+            <td>Log de acesso (id_funcionario, data_hora)</td>
+            <td>Colaborador</td>
+            <td class="ad">a validar (legítimo interesse / segurança)</td>
+            <td class="ad">a definir</td>
+        </tr>
+        <tr>
+            <td>Cadastro de clientes</td>
+            <td>Cliente</td>
+            <td class="ad">não existe hoje; se criado para fidelização/aniversariantes, exigirá consentimento</td>
+            <td class="ad">a definir</td>
+        </tr>
+    </table>
+</div>
+<p>Comanda, Pedido e Pagamentos_Comanda não guardam dados pessoais do cliente no modelo atual.</p>
+    <div class="folder-container">
+   
+    <div class="folder-body">
+
+      <div class="info-group">
+        <h2 class="section-title">Localização</h2>
+        <div class="info-line"><strong>Logradouro:</strong> <span>Rua Vercínio Pereira de Souza, 1199</span></div>
+        <div class="info-line"><strong>Bairro:</strong> <span>São Mateus</span></div>
+        <div class="info-line"><strong>CEP:</strong> <span>03945-000</span></div>
+        <div class="info-line"><strong>Município:</strong> <span>São Paulo</span></div>
+        <div class="info-line"><strong>Estado:</strong> <span>SP</span></div>
+      </div>
+
+      <div class="info-group">
+        <h2 class="section-title">Contato e Redes</h2>
+        <div class="info-line"><strong>Telefone:</strong> <span>(11) 2015-5871</span></div>
+       
+        <div class="links-group" 
+          <a href="https://goo.gl" target="_blank">Localizar no Google Maps</a>
+          <a href="https://instagram.com" target="_blank">Siga no Instagram</a>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="folder-footer">
+      <div class="footer-title">Pesquisa de Campo</div>
+      <p class="footer-text">
+        Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais.
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
