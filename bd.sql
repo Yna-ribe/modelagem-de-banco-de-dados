@@ -1,3 +1,8 @@
+CREATE TABLE cliente_telefone (
+  cpf_cliente INT PRIMARY KEY NOT NULL,
+  telefone VARCHAR(11) NOT NULL
+);
+
 CREATE TABLE cliente ( 
   cpf_cliente INT PRIMARY KEY NOT NULL,
   nome VARCHAR(255) NOT NULL,
@@ -6,7 +11,6 @@ CREATE TABLE cliente (
   numero INT NOT NULL,
   complemento VARCHAR(255),
   cep VARCHAR(8) NOT NULL,
-  telefone VARCHAR(11) NOT NULL,
   email VARCHAR(100) NOT NULL,
   data_nasc DATE NOT NULL 
 );
@@ -22,19 +26,13 @@ CREATE TABLE comanda (
   id_comanda INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   mesa_id INT,
   cliente_id INT,
+  tipo_cliente CHAR(20) NOT NULL CHECK (tipo_cliente IN ('Restaurante', 'Entrega')),
   hora_abert_fech DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   status_comanda CHAR(20) NOT NULL CHECK (status_comanda IN ('Aberto', 'Fechado')),
   FOREIGN KEY (cliente_id) REFERENCES cliente(cpf_cliente),
   FOREIGN KEY ( mesa_id) REFERENCES mesa(id_mesa)
 );
 
-CREATE TABLE cargo (
-  id_cargo INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  nome VARCHAR(100) NOT NULL UNIQUE,
-  descricao TEXT,
-  salario DECIMAL(10,2) NOT NULL CHECK (salario >= 0),
-  carga_horaria_mensal INT
-);
 
 CREATE TABLE funcionario ( 
   id_funcionario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -42,11 +40,11 @@ CREATE TABLE funcionario (
   cpf VARCHAR(14) NOT NULL,
   telefone VARCHAR(11) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  cargo_id INT NOT NULL,
+  cargo CHAR NOT NULL,
+  freelance CHAR(10) NOT NULL CHECK (freelance IN ('Sim', 'Não')),
   data_nasc_funcionario DATE NOT NULL,
   data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-  status_funcionario CHAR(20) NOT NULL CHECK (status_funcionario IN ('Ativo', 'Inativo')),
-  FOREIGN KEY (cargo_id) REFERENCES cargo(id_cargo)
+  status_funcionario CHAR(20) NOT NULL CHECK (status_funcionario IN ('Ativo', 'Inativo'))
 );
 
 
@@ -77,7 +75,6 @@ CREATE TABLE caixa (
   FOREIGN KEY (cupom_id) REFERENCES cupom_fiscal(id_cupom)
 );
 
-
 CREATE TABLE insumo (
   id_insumo INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   nm_produto VARCHAR(255) NOT NULL UNIQUE,
@@ -103,19 +100,9 @@ CREATE TABLE compra (
   insumo_id INT NOT NULL,
   fornecedor_id INT NOT NULL,
   valor_pago DECIMAL(10,2) NOT NULL CHECK (valor_pago > 0),
+  status_fornecedor VARCHAR(20) NOT NULL CHECK (status_fornecedor IN ('Pago', 'Pendente')),
   quantidade INT NOT NULL,
   codigo_nf INT NOT NULL,
   FOREIGN KEY (insumo_id) REFERENCES insumo(id_insumo),
   FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id_fornecedor)
 );
-
-
-SELECT * FROM cliente;
-SELECT * FROM comanda;
-SELECT * FROM funcionario;
-SELECT * FROM cupom_fiscal;
-SELECT * FROM caixa;
-SELECT * FROM compra;
-SELECT * FROM fornecedor;
-SELECT * FROM insumo;
-SELECT * FROM cargo;
