@@ -336,6 +336,7 @@ Para garantir a máxima aderência à realidade do mercado, Novamente foi utiliz
 
 # **1.3 Definição de Chaves Primárias e Estrangeiras**
 
+
 | TABELA | PK | FK | 
 |---------------|-----------------|------------|
 | Cliente | CPF_Cliente | Sem FKs |
@@ -343,10 +344,8 @@ Para garantir a máxima aderência à realidade do mercado, Novamente foi utiliz
 | Mesa | ID_Mesa | Sem FKs |
 | Comanda | ID_Comanda | idMESA, idCLIENTE |
 | Pedidos | ID_Pedido | idCOMANDA, idFUNCIONARIO |
-| Entrega | ID_Entrega | idCOMANDA |
 | Cupom_Fiscal | ID_Cupom | idCOMANDA |
-| Pagamentos | ID_Pagamentos | Sem FKs |
-| Caixa | ID_Caixa | idFUNCIONARIO, idPAGAMENTOS |
+| Caixa | ID_Caixa | idFUNCIONARIO, idCUPOM |
 | Funcionario | ID_Funcionario | Sem FKs |
 | Item_Pedido | Sem PKs | idPEDIDO, idPRODUTO |
 | Menu | ID_Menu | Sem FKs |
@@ -354,6 +353,7 @@ Para garantir a máxima aderência à realidade do mercado, Novamente foi utiliz
 | Item_Compra | Sem PKs | idCOMPRA, idINSUMO |
 | Compra | ID_Compra | idFORNECEDOR |
 | Fornecedor | ID_Fornecedor | Sem FKs |_
+
 
 # **1.4 Normalização**
 
