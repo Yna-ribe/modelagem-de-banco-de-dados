@@ -54,7 +54,9 @@ Integrantes do Grupo (Nomes e RGMs):
 * **Estado:** [São Paulo](https://cnpj.biz/empresas/estado/SP)  
 * **Google Maps:** [Mont Ararat Hamburgueria] (https://maps.app.goo.gl/tbeaWRYgZ4ftwdSMA)  
 * **Instagram:** [https://www.instagram.com/montararatburger/](https://www.instagram.com/montararatburger/)   
-* **Contato (telefone):** (11)2015-5871  
+* **Contato (telefone):** (11)2015-5871
+* **Responsável pela Unidade**: Rafael Vieira 
+* **Telefone do responsável**: (11)95920-7522
 
 -------------------------------------------------------------------------
 
@@ -120,13 +122,21 @@ Fora do Escopo: Ficam excluídos do escopo deste projeto módulos de contabilida
 A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo acesso direto e irrestrito do grupo às rotinas operacionais (um dos integrantes é colaborador do local). O ambiente apresenta complexidade ideal para modelagem de dados: possui volumetria rica (30 mesas, 2 caixas, múltiplos turnos e ficha técnica artesanal) sem exceder o escopo da disciplina.
 
 ---
-# ** Relato da Entrevista**
 
-* **Pesquisa de Campo:** Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais. 
-* **Imagem do Local:**
+# **Relato da Entrevista**
+
+* **Pesquisa de Campo:** 
+A Entrevista foi realizada na Hamburgueria, Durante o funcionamento, o entrevistado foi o responsavél pela Unidade (Rafael Vieira) no dia 22/09 pelo Integrante Gustavo Almeida.
+
+*Foi Observado pelo Integrante:*
+- *Recebimento de Insumos:* O funcionário que recebe os produtos verifica a quantidade recebida pela fornecedor e a quantidade registrada na Nota Fiscal, após a verificação, o funcionário guarda a Nota fiscal junto com as outras já recebidas da semana, e ao final de semana, as leva até o responsável da Unidade, onde é feito o relatório de gasto semanal com os insumos.
+- *Realização de Pedidos:* O Estabelecimento funciona a partir das 18:00 Horas, Com a chegada do cliente, o funcionário que o receber leva-o até a mesa adequada e o entrega o cardápio. O Atendente abre a comanda, pergunta se irão pedir alguma entrada, se o lanche será individual ou combo, ponto da carne, se haverá adicional, se irá trocar ou remover algum item do lanche, e a bebida, por fim lança o pedido a cozinha.
+- *Restrições Sanitárias:* No mesmo dia que o Integrante compareceu a entrevista, a Nutricionista que comparece semanalmente na Hamburgueria estava presente. Foi presenciado como é manipulado os alimentos, com data de validade, exigências de vestimentas adequadas, remoção de piercings, mascarás se necessario, luvas, toucas, etc.
+
+### **Levantamento:**
+
 <img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
 
-* **Responsável pela Unidade:** Rafael Vieira. Contato: (11)95920-7522
 
 -------------------------------------------------------------------------
 # **Processos de Negócio**
