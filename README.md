@@ -20,7 +20,7 @@ Integrantes do Grupo (Nomes e RGMs):
 -------------------------------------------------------------------------
 # **1\. Revisão do Modelo Conceitual **
 
-([Modelo Conceitual.png](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/Modelo%20Conceitual.png))
+([ModeloConceitual.png](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/ModeloConceitual.png))
 Única Exceção (Fora do Escopo): O processo de Marketing e Relacionamento com o Cliente (redes sociais e avaliações em plataformas como iFood e Instagram) foi mantido fora do banco de dados relacional por ser executado em ferramentas de terceiros e não gerar transações estruturadas diretas no sistema principal da empresa.
 
 ### **DER:**
