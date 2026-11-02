@@ -135,7 +135,11 @@ A Entrevista foi realizada na Hamburgueria, Durante o funcionamento, o entrevist
 
 ### **Levantamento:**
 
+*Imagem do estabelecimento:*
+
 <img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
+
+*Foto com o Responsável da Unidade:* https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/FotoEntrevista.png
 
 
 -------------------------------------------------------------------------
