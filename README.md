@@ -509,7 +509,7 @@ Os prompts foram utilizados de maneira progressiva, fornecendo contexto sobre o 
 
 A ferramenta Claude foi utilizada como apoio à análise e estruturação da documentação técnica, por meio de prompts direcionados à identificação de inconsistências, complementação de requisitos e padronização dos documentos. Foram utilizados recursos de engenharia de prompts, análise de HTML, organização de entidades e relacionamentos, revisão de regras de negócio e classificação de informações. Não foram utilizados recursos para implementação de banco de dados, execução de operações reais ou definição automática de requisitos não levantados. As informações ausentes foram sinalizadas como propostas ou pendentes de confirmação, garantindo maior transparência e confiabilidade ao desenvolvimento do projeto.
 
-## KPIs
+### KPIs
 
 A ferramenta Claude foi utilizada como apoio à elaboração da proposta de arquitetura analítica para Business Intelligence (BI) e Inteligência Artificial (IA), com o objetivo de identificar indicadores estratégicos que pudessem contribuir para a gestão da Mont Ararat Hamburgueria.
 
