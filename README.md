@@ -145,14 +145,6 @@ Processos Incluídos (100% das áreas operacionais): Optamos por contemplar a to
 -------------------------------------------------------------------------
 
 # 1.1 Requisitos:
-A justificativa técnica deste trabalho fundamenta-se na necessidade de estruturar, de forma padronizada e eficiente, o fluxo de informações operacionais e financeiras da Mont Ararat Burger House, considerando os problemas e as necessidades identificadas, como a inexistência de registros formais de clientes e a gestão descentralizada de compras e estoque. Esses fatores dificultavam a rastreabilidade das operações e impediam a identificação precisa do funcionário responsável pelo controle de insumos e compras, resultando na ausência do cálculo automatizado da Ficha Técnica, em compras imprecisas e em custos operacionais não contabilizados em tempo real. Contudo, a estrutura desenvolvida apresenta pontos positivos consolidados, como a vinculação direta dos funcionários a comandas, pedidos e caixa, elementos que contribuem para o registro de dados essenciais para a padronização organizacional da empresa.
-
-Para organizar, desenhar e validar todas as entidades e conexões, foram utilizadas ferramentas gratuitas para uso pessoal. A partir de um estudo básico de suas funcionalidades e singularidades, foi possível alinhar e consolidar os diferentes pontos de vista dos membros do grupo com base na visão geral da Mont Ararat Burger House:
-
-* **brModeler:** Ferramenta dedicada à modelagem de bancos de dados relacionais. Foi ideal para criar os diagramas conceituais e lógicos, permitindo estruturar visualmente as entidades, atributos, relacionamentos e cardinalidades do sistema.
-* **Draw.io:** Ferramenta versátil de diagramação baseada na web, excelente para desenhar fluxos de processos operacionais, esquemas de arquitetura e diagramas do sistema de forma rápida e colaborativa.
-* **Lucidchart:** Plataforma intuitiva de criação de diagramas para mapear visualmente a arquitetura de dados, esquemas de entidades e fluxogramas do negócio, facilitando a documentação clara do projeto.
-* **Miro:** Quadro branco digital colaborativo utilizado nas etapas iniciais de brainstorming, ideal para reunir os integrantes do grupo, mapear a crise operacional da empresa e levantar os requisitos do sistema antes da modelagem final.
 
 ---
 
@@ -418,3 +410,45 @@ A ferramenta Claude foi utilizada como apoio à análise e estruturação da doc
 3°FN: 
 - O isolamento de entidades como FORNECEDOR, FUNCIONARIO, CAIXA e MESA assegurou que dados específicos de entidades secundárias não ficassem transitivamente acoplados (por exemplo, dados de contato do fornecedor pertencem exclusivamente à tabela FORNECEDOR e não se misturam com os dados da COMPRA).
 - A 3FN blinda o banco de dados contra anomalias de atualização, assegurando que cada dado esteja estritamente no seu lugar de origem e dependa apenas da chave primária da tabela onde está alocado.
+
+## Justificativa
+A justificativa técnica deste trabalho fundamenta-se na necessidade de estruturar, de forma padronizada e eficiente, o fluxo de informações operacionais e financeiras da Mont Ararat Burger House, considerando os problemas e as necessidades identificadas, como a inexistência de registros formais de clientes e a gestão descentralizada de compras e estoque. Esses fatores dificultavam a rastreabilidade das operações e impediam a identificação precisa do funcionário responsável pelo controle de insumos e compras, resultando na ausência do cálculo automatizado da Ficha Técnica, em compras imprecisas e em custos operacionais não contabilizados em tempo real. Contudo, a estrutura desenvolvida apresenta pontos positivos consolidados, como a vinculação direta dos funcionários a comandas, pedidos e caixa, elementos que contribuem para o registro de dados essenciais para a padronização organizacional da empresa.
+
+Para organizar, desenhar e validar todas as entidades e conexões, foram utilizadas ferramentas gratuitas para uso pessoal. A partir de um estudo básico de suas funcionalidades e singularidades, foi possível alinhar e consolidar os diferentes pontos de vista dos membros do grupo com base na visão geral da Mont Ararat Burger House:
+
+* **brModeler:** Ferramenta dedicada à modelagem de bancos de dados relacionais. Foi ideal para criar os diagramas conceituais e lógicos, permitindo estruturar visualmente as entidades, atributos, relacionamentos e cardinalidades do sistema.
+* **Draw.io:** Ferramenta versátil de diagramação baseada na web, excelente para desenhar fluxos de processos operacionais, esquemas de arquitetura e diagramas do sistema de forma rápida e colaborativa.
+* **Lucidchart:** Plataforma intuitiva de criação de diagramas para mapear visualmente a arquitetura de dados, esquemas de entidades e fluxogramas do negócio, facilitando a documentação clara do projeto.
+* **Miro:** Quadro branco digital colaborativo utilizado nas etapas iniciais de brainstorming, ideal para reunir os integrantes do grupo, mapear a crise operacional da empresa e levantar os requisitos do sistema antes da modelagem final.
+
+# Atendimento e Clientes
+
+No módulo de atendimento e clientes, a entidade `CLIENTE` (`ID_Cliente`, `CPF`, `Data_Nascimento`, `Telefone`, `Endereco`, `Nome_cliente`) serve para registrar e manter o controle das informações cadastrais do consumidor, viabilizando estratégias de fidelização. A sua conexão com a `COMANDA` (`ID_COMANDA`, `Hora_Abert_Fech`, `Taxa_Servico_S/N`, `Tipo_atendimento`, `Total_Comanda`) ocorre de forma assertiva para enviar dados do cliente e manter o controle das mesas e do atendimento. 
+
+A cardinalidade opcional (`0, n` para `0, 1`) entre cliente e comanda foi adotada justamente para permitir tanto a identificação de clientes cadastrados quanto o atendimento anônimo e ágil no balcão; impor o cadastro obrigatório seria uma alternativa inviável para a fluidez do restaurante. Em paralelo, a entidade `MESA` (`ID_MESA`, `Numero`, `Status`) conecta-se à comanda em uma relação `0, 1` para `0, 1`, garantindo que uma mesa ocupe apenas uma comanda ativa por vez, evitando conflitos de atendimento na praça.
+
+---
+
+# Financeiro, Caixa e Terminais
+
+A `COMANDA` consolida o valor consumido e os itens solicitados, direcionando essas informações para `PAGAMENTOS` (`ID_PAGAMENTOS`, `Forma_Pagamento`, `Valor_Pago`, `Data_Hora`), entidade que garante o controle das receitas e possibilita a quitação fracionada da conta. Essa estrutura conecta-se ao `CAIXA` (`ID_CAIXA`, `Status`, `Data_Hora_Abert_Fech`, `Diferenca`, `Saldo_Inicial`, `Saldo_informado`, `Saldo_Calculado`), permitindo controlar o início da movimentação financeira de cada turno. 
+
+Com atributos que reúnem cada registro diário e calculam a diferença de caixa automaticamente, o sistema é capaz de auditar os saldos e transparecer essas informações aos operadores por meio da conexão com a entidade `TERMINAL` (`ID_TERMINAL`, `Nome_Terminal`). A alternativa de controlar as finanças diretamente na comanda, sem a abstração de caixa e terminal, impediria a auditoria e o fechamento por turno.
+
+---
+
+# Cardápio e Vendas
+
+Do lado do cardápio e vendas, a transformação de dados brutos em decisões estratégicas de negócio é assegurada pela entidade `PEDIDOS` (`ID_PEDIDO`, `Quantidade`, `Observacao`, `Valor_Unitario`), que garante que cada item seja produzido exatamente conforme a solicitação do cliente. Os pedidos compõem o `MENU` (`ID_Produto`, `Nome_Produto`, `Preco_Venda`, `Disponibilidade`, `Descricao`), entidade responsável pelo controle e registro dos produtos. 
+
+O `MENU` possui uma correlação `(1, 1)` para `(0, n)` com a `CATEGORIA` (`ID_CATEGORIA`, `Nome_Categoria`, `Descrição`), que filtra e organiza os produtos diretamente para a exibição no cardápio, evitando a redundância e o desalinhamento de dados cadastrais.
+
+---
+
+# Estoque e Suprimentos
+
+Por fim, no módulo de estoque e suprimentos, a entidade `FORNECEDOR` (`ID_Fornecedor`, `Nome_Fornecedor`, `CNPJ`, `Telefone`) permite controlar e gerenciar os parceiros comerciais, armazenando suas principais informações para a entrega da `COMPRA` (`ID_Compra`, `Data_Hora_Compra`, `Valor_Total_Compra`, `Nota_Fiscal`). Esse fluxo controla e padroniza a entrada de suprimentos com nota fiscal, data, quantidade e valor de aquisição, fornecendo esses materiais ao `INSUMO` (`ID_Insumo`, `Nome_Insumo`, `Estoque_Atual`, `Estoque_Minimo`, `Unidade_Medida`) para que estejam sempre disponíveis e padronizados para o atendimento. 
+
+Para ligar o consumo do menu ao estoque físico, utiliza-se a `FICHA TÉCNICA` (`ID_FICHA`, `Quantidade`, `Unidade_Medida`), entidade associativa necessária para resolver a relação de muitos para muitos ($N:M$) entre pratos e insumos, permitindo a baixa automatizada de matérias-primas fracionadas e a prevenção de rupturas no estoque.
+
+Em razão de futuras melhorias propostas pelos integrantes deste trabalho, busca-se aprimorar a estrutura conceitual do sistema para atender de forma mais abrangente às necessidades operacionais e estratégicas da organização. Essa evolução visa expandir o alcance da modelagem de dados, garantindo que os fluxos de informação acompanhem o crescimento do negócio e proporcionem maior eficiência, precisão nos registros e suporte adequado às tomadas de decisão. Dentre as principais adequações futuras a serem implementadas, destacam-se o controle de acessos, o gerenciamento de dados sensíveis, a contabilização automática do caixa e o registro de clientes. Com isso, a Mont Ararat Burger House poderá crescer de forma organizada, íntegra e segura, prevenindo fraudes e perdas financeiras.
