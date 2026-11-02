@@ -18,7 +18,23 @@ Integrantes do Grupo (Nomes e RGMs):
 - GitHub: https://github.com/Yna-ribe
 
 -------------------------------------------------------------------------
-# **1\. Caracterização da Organização**
+# **1\. Revisão do Modelo Conceitual **
+
+([Modelo Conceitual.png](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/Modelo%20Conceitual.png))
+Única Exceção (Fora do Escopo): O processo de Marketing e Relacionamento com o Cliente (redes sociais e avaliações em plataformas como iFood e Instagram) foi mantido fora do banco de dados relacional por ser executado em ferramentas de terceiros e não gerar transações estruturadas diretas no sistema principal da empresa.
+
+### **DER:**
+
+**Software**: O Modelo Conceitual foi feito a partir do BRmodelo, por sua notação já ser recomenda nas instruções do professor.
+
+| Apontamento E1 | Correção | Por Quê | 
+|---------------|-----------------|------------|
+| Cada relacionamento tem uma única cardinalidade, de um lado só. | Carnalidade Adicionada dos dois lados de cada relacionamento. | Porque elas descrevem as regras de negócio de ambas as direções da relação. | 
+| Há chaves estrangeiras em cinco das nove entidades. | Chaves estrangeiras removidas do modelo conceitual. | Chaves Estrangeiras são representadas no Modelo lógico. |
+| Não há fornecedor nem compra, embora o problema nº 1 da organização seja a gestão de compras | Adição das Entidades: INSUMO, COMPRA, ITEM-COMPRA e FORNECEDOR. | Fundamental para estruturar o módulo de gestão de suprimentos e estoque da Hamburgueria. |
+| Ausência da entidade cliente, o grupo listou como problema Nº 2 a ausência de cadastro de clientes | Adição da Entidade Cliente e atributo Endereço (Logradouro, Bairro, Número, CEP, complemento). | Identificar o comprador, manter histórico de consumo e registar o destino exato para entregas. |
+
+# **Caracterização da Organização**
 
 ### **Nome e Natureza da Organização:**
 
@@ -40,11 +56,6 @@ Integrantes do Grupo (Nomes e RGMs):
 * **Google Maps:** [Mont Ararat Hamburgueria] (https://maps.app.goo.gl/tbeaWRYgZ4ftwdSMA)  
 * **Instagram:** [https://www.instagram.com/montararatburger/](https://www.instagram.com/montararatburger/)   
 * **Contato (telefone):** (11)2015-5871  
-* **Pesquisa de Campo:** Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais. 
-* **Imagem do Local:**
-<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
-
-* **Responsável pela Unidade:** Rafael Vieira. Contato: (11)95920-7522
 
 -------------------------------------------------------------------------
 
@@ -109,6 +120,15 @@ Fora do Escopo: Ficam excluídos do escopo deste projeto módulos de contabilida
 
 A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo acesso direto e irrestrito do grupo às rotinas operacionais (um dos integrantes é colaborador do local). O ambiente apresenta complexidade ideal para modelagem de dados: possui volumetria rica (30 mesas, 2 caixas, múltiplos turnos e ficha técnica artesanal) sem exceder o escopo da disciplina.
 
+---
+# ** Relato da Entrevista**
+
+* **Pesquisa de Campo:** Entrevista direta realizada com a gerência local e observação de campo, acompanhada de registros fotográficos do cardápio, fita de fechamento de caixa e planilhas operacionais. 
+* **Imagem do Local:**
+<img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
+
+* **Responsável pela Unidade:** Rafael Vieira. Contato: (11)95920-7522
+
 -------------------------------------------------------------------------
 # **Processos de Negócio**
 
@@ -134,19 +154,57 @@ A escolha da unidade São Mateus da Mont Ararat Burger House justifica-se pelo a
 * **Controle de Estoque:** Gestão contínua das entradas, saídas e saldos de insumos e produtos acabados. O sistema realiza a baixa automática de estoque com base na ficha técnica dos itens vendidos (ex: a venda de um hambúrguer desconta pão, carne, queijo e embalagem), além de permitir ajustes manuais para perdas, desperdícios, quebras e contagens periódicas de inventário físico.
 * **Controle Financeiro e Fechamento de Turno**: Apuração das entradas por meio de pagamento, registro de sangrias/suprimentos, conferência de divergências de caixa e fechamento do turno.
 
+
 ### **Justificativa:**
 Para garantir a máxima aderência à realidade do mercado, utilizamos Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear os processos padrão de uma hamburgueria artesanal:
 
 Processos Incluídos (100% das áreas operacionais): Optamos por contemplar a totalidade dos fluxos de Vendas, Compras e Apoio/Gestão (incluindo Fornecedores, Recebimento, Cancelamentos e Escala de Freelancers). Essa abordagem garante a baixa automática de estoque via ficha técnica, a rastreabilidade financeira e a auditoria completa no SGBD.
-# 7. **Modelagem Conceitual** (Entidades, Atributos, Relacionamentos)
-
-Única Exceção (Fora do Escopo): O processo de Marketing e Relacionamento com o Cliente (redes sociais e avaliações em plataformas como iFood e Instagram) foi mantido fora do banco de dados relacional por ser executado em ferramentas de terceiros e não gerar transações estruturadas diretas no sistema principal da empresa.
-
 -------------------------------------------------------------------------
 
 # 1.1 Requisitos:
+**Requisitos Funcionais** (o que o sistema deve fazer?)
 
----
+| Identificador | Descrição De... | Prioridade | 
+|---------------|-----------------|------------|
+| **RF01** | Gestão de Mesas e Comandas: O sistema deve permitir cadastrar e visualizar o status das 30 mesas (Livre, Ocupada, Aguardando Pagamento) e abrir/fechar comandas associadas a elas. | Alta |
+| **RF02** | Registro de Pedidos: O sistema deve permitir o lançamento de itens de pedido vinculados a uma comanda, com escolha de produtos, quantidade, observações personalizadas e gravação do preço unitário praticado. | Alta | 
+| **RF03** | Gestão de Pedidos de Delivery e Balcão: O sistema deve cadastrar pedidos vindos do balcão ou canais digitais (WhatsApp, apps), Coletando dados do cliente, endereço e taxa de entrega. | Alta |
+| **RF04** | Cadastro Cliente: O sistema deve permitir cadastrar cliente com nome completo, CPF, telefone e endereço (logradouro, número, bairro, CEP) | Média |
+| **RF05** | Divisão de Pagamento: O sistema deve permitir registrar múltiplos pagamentos parciais para uma mesma comanda, suportando diferentes formas de pagamento (Dinheiro, Cartão, PIX) até quitar o valor total. | Alta | 
+| **RF06** | Gestão da Taxa de Serviço: O sistema deve aplicar automaticamente a taxa de serviço de 10% sobre o subtotal da comanda, permitindo sua remoção manual mediante autorização do cliente. | Média | 
+| **RF07** | Gestão do Cardápio e Preços: O sistema deve permitir cadastrar, alterar preços, categorizar produtos e pausar a venda de itens esgotados em tempo real. | Alta | 
+| **RF08** | Controle de Sessão de Caixa: O sistema deve permitir a abertura de caixa informando o valor inicial (fundo de reserva - R$150,00) e o fechamento do caixa com o cálculo automático de diferenças entre o valor esperado e o valor informado. | Alta | 
+| **RF09** | Ficha Técnica dos Produtos: O sistema deve permitir associar cada item do cardápio a uma ficha técnica estruturada, detalhando a quantidade exata de cada insumo utilizado (ex: 1 pão, 180g de carne, 2 fatias de queijo).| Alta| 
+| **RF10** | Cancelamento de Itens e Pedidos: O sistema deve permitir o cancelamento de itens ou pedidos completos e registrar cada realizado | Alta |
+| **RF11** | Cadastro de Fornecedores: O sistema deve permitir o registro, alteração e consulta de fornecedores de insumos (carnes, pães, hortifrúti, bebidas e embalagens), armazenando dados cadastrais, CNPJ, prazos e insumos fornecidos. | Média |
+| **RF12** | Entrada de Mercadorias: O sistema deve registrar a entrada de novos lotes de insumos via conferência de nota fiscal ou pedido de compra, atualizando saldo e custo unitário. | Alta | 
+| **RF13** | Baixa Automática de Estoque: O sistema deve realizar a baixa de matérias-primas no estoque de forma automática ao concluir a venda de um produto, utilizando sua ficha técnica. | Alta | 
+| **RF14** | Registro de Escala e Horários: O sistema deve permitir o cadastro de turnos e a alocação da equipe fixa e de colaboradores freelancers por dia/horário.| Baixa | 
+
+
+
+-----------------------------
+
+**Requisitos Não Funcionais** (tipicamente, restrições a serem obedecidas em relação a: segurança, portabilidade, desempenho, usabilidade,
+interoperabilidade…)
+
+| Identificador | Descrição De... | Prioridade | 
+|---------------|-----------------|------------|
+| **RNF01** | Disponibilidade: O sistema deve apresentar disponibilidade contínua de 99,5% durante o horário de funcionamento do estabelecimento (terça a domingo, das 18h às 00h) | Alta | 
+| **RNF02** | Desempenho: O tempo de resposta para o lançamento de pedidos e impressão/envio para a cozinha não deve exceder 2 segundos em pico operacional. | Média |
+| **RNF03** | Usabilidade e Acessibilidade Operacional: A interface de lançamento deve ser otimizada para terminais touch e dispositivos móveis dos garçons no salão. | Média |
+| **RNF04** | Integridade Referencial no SGBD: O banco de dados deve garantir a integridade referencial de forma que a exclusão de um produto do cardápio não apague o histórico de vendas antigas associadas a ele. | Alta |
+| **RNF05** | Rastreabilidade e Auditoria: Todas as operações de cancelamento, alteração de preço, desconto e sangria de caixa devem registrar um log auditável contendo data, hora, usuário e motivo. | Média |
+
+### **Justificativa:**
+Com base no reestudo do escopo operacional e no benchmarking dos processos de uma hamburgueria artesanal, procedemos à seguinte revisão no conjunto de requisitos do sistema:
+
+Inclusão de Novos Requisitos: Foram adicionados novos Requisitos Funcionais (RFs) e Não Funcionais (RNFs) para cobrir integralmente as crises operacionais apontadas no Trabalho (como cadastro de clientes, fichas técnicas, Fornecedor e compras). Sugestões adicionais levantadas na pesquisa de mercado que possuíam equivalência com os itens já existentes foram descartadas para evitar redundâncias na especificação.
+
+Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi descontinuado do escopo principal, visto que o foco da modelagem relacional prioriza as transações estruturais de persistência (vendas, caixa, controle de estoque e financeiro), otimizando a abrangência do banco de dados.
+
+-------------------------------------------------------------------------
+
 
 ## Proposta de Arquitetura Analítica para BI e IA
 
@@ -246,47 +304,6 @@ Com atributos que reúnem cada registro diário e calculam a diferença de caixa
 
 Do lado do cardápio e vendas, a transformação de dados brutos em decisões estratégicas de negócio é assegurada pela entidade `PEDIDOS` (`ID_PEDIDO`, `Quantidade`, `Observacao`, `Valor_Unitario`), que garante que cada item seja produzido exatamente conforme a solicitação do cliente. Os pedidos compõem o `MENU` (`ID_Produto`, `Nome_Produto`, `Preco_Venda`, `Disponibilidade`, `Descricao`), entidade responsável pelo controle e registro dos produtos. 
 
-**Requisitos Funcionais** (o que o sistema deve fazer?)
-
-| Identificador | Descrição De... | Prioridade | 
-|---------------|-----------------|------------|
-| **RF01** | Gestão de Mesas e Comandas: O sistema deve permitir cadastrar e visualizar o status das 30 mesas (Livre, Ocupada, Aguardando Pagamento) e abrir/fechar comandas associadas a elas. | Alta |
-| **RF02** | Registro de Pedidos: O sistema deve permitir o lançamento de itens de pedido vinculados a uma comanda, com escolha de produtos, quantidade, observações personalizadas e gravação do preço unitário praticado. | Alta | 
-| **RF03** | Gestão de Pedidos de Delivery e Balcão: O sistema deve cadastrar pedidos vindos do balcão ou canais digitais (WhatsApp, apps), Coletando dados do cliente, endereço e taxa de entrega. | Alta |
-| **RF04** | Cadastro Cliente: O sistema deve permitir cadastrar cliente com nome completo, CPF, telefone e endereço (logradouro, número, bairro, CEP) | Média |
-| **RF05** | Divisão de Pagamento: O sistema deve permitir registrar múltiplos pagamentos parciais para uma mesma comanda, suportando diferentes formas de pagamento (Dinheiro, Cartão, PIX) até quitar o valor total. | Alta | 
-| **RF06** | Gestão da Taxa de Serviço: O sistema deve aplicar automaticamente a taxa de serviço de 10% sobre o subtotal da comanda, permitindo sua remoção manual mediante autorização do cliente. | Média | 
-| **RF07** | Gestão do Cardápio e Preços: O sistema deve permitir cadastrar, alterar preços, categorizar produtos e pausar a venda de itens esgotados em tempo real. | Alta | 
-| **RF08** | Controle de Sessão de Caixa: O sistema deve permitir a abertura de caixa informando o valor inicial (fundo de reserva - R$150,00) e o fechamento do caixa com o cálculo automático de diferenças entre o valor esperado e o valor informado. | Alta | 
-| **RF09** | Ficha Técnica dos Produtos: O sistema deve permitir associar cada item do cardápio a uma ficha técnica estruturada, detalhando a quantidade exata de cada insumo utilizado (ex: 1 pão, 180g de carne, 2 fatias de queijo).| Alta| 
-| **RF10** | Cancelamento de Itens e Pedidos: O sistema deve permitir o cancelamento de itens ou pedidos completos e registrar cada realizado | Alta |
-| **RF11** | Cadastro de Fornecedores: O sistema deve permitir o registro, alteração e consulta de fornecedores de insumos (carnes, pães, hortifrúti, bebidas e embalagens), armazenando dados cadastrais, CNPJ, prazos e insumos fornecidos. | Média |
-| **RF12** | Entrada de Mercadorias: O sistema deve registrar a entrada de novos lotes de insumos via conferência de nota fiscal ou pedido de compra, atualizando saldo e custo unitário. | Alta | 
-| **RF13** | Baixa Automática de Estoque: O sistema deve realizar a baixa de matérias-primas no estoque de forma automática ao concluir a venda de um produto, utilizando sua ficha técnica. | Alta | 
-| **RF14** | Registro de Escala e Horários: O sistema deve permitir o cadastro de turnos e a alocação da equipe fixa e de colaboradores freelancers por dia/horário.| Baixa | 
-
-
-
------------------------------
-
-**Requisitos Não Funcionais** (tipicamente, restrições a serem obedecidas em relação a: segurança, portabilidade, desempenho, usabilidade,
-interoperabilidade…)
-
-| Identificador | Descrição De... | Prioridade | 
-|---------------|-----------------|------------|
-| **RNF01** | Disponibilidade: O sistema deve apresentar disponibilidade contínua de 99,5% durante o horário de funcionamento do estabelecimento (terça a domingo, das 18h às 00h) | Alta | 
-| **RNF02** | Desempenho: O tempo de resposta para o lançamento de pedidos e impressão/envio para a cozinha não deve exceder 2 segundos em pico operacional. | Média |
-| **RNF03** | Usabilidade e Acessibilidade Operacional: A interface de lançamento deve ser otimizada para terminais touch e dispositivos móveis dos garçons no salão. | Média |
-| **RNF04** | Integridade Referencial no SGBD: O banco de dados deve garantir a integridade referencial de forma que a exclusão de um produto do cardápio não apague o histórico de vendas antigas associadas a ele. | Alta |
-| **RNF05** | Rastreabilidade e Auditoria: Todas as operações de cancelamento, alteração de preço, desconto e sangria de caixa devem registrar um log auditável contendo data, hora, usuário e motivo. | Média |
-
-### **Justificativa:**
-Com base no reestudo do escopo operacional e no benchmarking dos processos de uma hamburgueria artesanal, procedemos à seguinte revisão no conjunto de requisitos do sistema:
-
-Inclusão de Novos Requisitos: Foram adicionados novos Requisitos Funcionais (RFs) e Não Funcionais (RNFs) para cobrir integralmente as crises operacionais apontadas no Trabalho (como cadastro de clientes, fichas técnicas, Fornecedor e compras). Sugestões adicionais levantadas na pesquisa de mercado que possuíam equivalência com os itens já existentes foram descartadas para evitar redundâncias na especificação.
-
-Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi descontinuado do escopo principal, visto que o foco da modelagem relacional prioriza as transações estruturais de persistência (vendas, caixa, controle de estoque e financeiro), otimizando a abrangência do banco de dados.
-
 -----------------------------
 
 ## **Regras de Negócio** (regras que devem ser obedecidas pelo sistema)
@@ -313,36 +330,8 @@ Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi 
 
 Para garantir a máxima aderência à realidade do mercado, Novamente foi utilizado a Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear as regras de negocio padrão de uma hamburgueria artesanal: De acordo com o resposta da IA, todas regras que uma Hamburgueria possui, está presente nesta seção. O conjunto de regras de negócio foi estruturado para abranger integralmente o ciclo de vida operacional da hamburgueria artesanal, Adicionalmente, foram incorporadas restrições organizacionais e normativas cruciais — como a obrigatoriedade fiscal, as normas sanitárias de manipulação de insumos e as diretrizes de privacidade de dados (LGPD). Essa amplitude garante que o banco de dados não apenas processe transações, mas também assegure a integridade operacional, a auditoria gerencial e a conformidade legal da empresa.
 
----
-
-## **Dicionário Conceitual** Justificativa técnica e uso da IA:
-
-Os comandos foram elaborados com o objetivo de identificar inconsistências nos arquivos existentes, complementar informações e estruturar os documentos de acordo com os requisitos solicitados.
-Os prompts foram utilizados de maneira progressiva, fornecendo contexto sobre o projeto, apresentando os documentos desenvolvidos e solicitando ajustes específicos. Essa abordagem permitiu utilizar a IA como ferramenta de apoio à análise técnica, sem substituir a participação humana na definição das regras de negócio e na validação das informações.
-. O que não foi utilizado
-- Geração automática de informações reais: não foram considerados como fatos os dados que não estavam presentes nos documentos ou levantamentos fornecidos.
-- Definição autônoma de regras de negócio: as regras não confirmadas foram identificadas como propostas ou informações a definir.
-- Implementação de banco de dados: a atividade concentrou-se na documentação e modelagem conceitual, não na criação de um banco de dados funcional.
-- Execução de operações no sistema da hamburgueria: não foram realizadas alterações em sistemas operacionais ou comerciais reais.
-- Validação jurídica da LGPD: as sugestões de tratamento de dados foram organizadas como documentação preliminar, sem representar um parecer jurídico.
-- Confirmação de tecnologias não informadas: não foram inventados SGBD, collation, versões ou padrões físicos de implementação.
-
-A ferramenta Claude foi utilizada como apoio à análise e estruturação da documentação técnica, por meio de prompts direcionados à identificação de inconsistências, complementação de requisitos e padronização dos documentos. Foram utilizados recursos de engenharia de prompts, análise de HTML, organização de entidades e relacionamentos, revisão de regras de negócio e classificação de informações. Não foram utilizados recursos para implementação de banco de dados, execução de operações reais ou definição automática de requisitos não levantados. As informações ausentes foram sinalizadas como propostas ou pendentes de confirmação, garantindo maior transparência e confiabilidade ao desenvolvimento do projeto.
 
 ---
-
-# **Modelo Conceitual (DER)**
-
-### **DER:**
-
-**Software**: O Modelo Conceitual foi feito a partir do BRmodelo, por sua notação já ser recomenda nas instruções do professor.
-
-| Apontamento E1 | Correção | Por Quê | 
-|---------------|-----------------|------------|
-| Cada relacionamento tem uma única cardinalidade, de um lado só. | Carnalidade Adicionada dos dois lados de cada relacionamento. | Porque elas descrevem as regras de negócio de ambas as direções da relação. | 
-| Há chaves estrangeiras em cinco das nove entidades. | Chaves estrangeiras removidas do modelo conceitual. | Chaves Estrangeiras são representadas no Modelo lógico. |
-| Não há fornecedor nem compra, embora o problema nº 1 da organização seja a gestão de compras | Adição das Entidades: INSUMO, COMPRA, ITEM-COMPRA e FORNECEDOR. | Fundamental para estruturar o módulo de gestão de suprimentos e estoque da Hamburgueria. |
-| Ausência da entidade cliente, o grupo listou como problema Nº 2 a ausência de cadastro de clientes | Adição da Entidade Cliente e atributo Endereço (Logradouro, Bairro, Número, CEP, complemento). | Identificar o comprador, manter histórico de consumo e registar o destino exato para entregas. |
 
 
 #  **1.2 Conversão ao Modelo Lógico**
@@ -452,3 +441,103 @@ Por fim, no módulo de estoque e suprimentos, a entidade `FORNECEDOR` (`ID_Forne
 Para ligar o consumo do menu ao estoque físico, utiliza-se a `FICHA TÉCNICA` (`ID_FICHA`, `Quantidade`, `Unidade_Medida`), entidade associativa necessária para resolver a relação de muitos para muitos ($N:M$) entre pratos e insumos, permitindo a baixa automatizada de matérias-primas fracionadas e a prevenção de rupturas no estoque.
 
 Em razão de futuras melhorias propostas pelos integrantes deste trabalho, busca-se aprimorar a estrutura conceitual do sistema para atender de forma mais abrangente às necessidades operacionais e estratégicas da organização. Essa evolução visa expandir o alcance da modelagem de dados, garantindo que os fluxos de informação acompanhem o crescimento do negócio e proporcionem maior eficiência, precisão nos registros e suporte adequado às tomadas de decisão. Dentre as principais adequações futuras a serem implementadas, destacam-se o controle de acessos, o gerenciamento de dados sensíveis, a contabilização automática do caixa e o registro de clientes. Com isso, a Mont Ararat Burger House poderá crescer de forma organizada, íntegra e segura, prevenindo fraudes e perdas financeiras.
+
+## ** Modelo Lógico Relacional**
+Diagrama separado
+
+# 9. Uso de Inteligência Artificial
+
+**IA utilizada:** Google Gemini
+
+## Preparação para a Entrevista
+O Gemini foi utilizado para estruturar o roteiro de entrevista e orientar a coleta de dados com a gerência do estabelecimento.
+
+**Prompts utilizados:**
+> "Esse banco de dados precisa ser baseado em uma empresa, tenho a base, mas que dados, baseado nesse mapa, devo buscar com o gerente para produzir o banco de dados?"
+
+> "De verde são as informações que eu tenho já por trabalhar lá e de vermelho são as que vou buscar. Com as informações que já tenho, o que mais posso adicionar?"
+
+## Diagramas, Requisitos e Regras de Negócio
+
+### Diagrama de Entidade e Relacionamento (DER)
+Validação do primeiro esboço das tabelas criadas no DBDesigner, revisando atributos, redundâncias de dados e tirando dúvidas sobre a arquitetura do sistema de caixa.
+
+**Prompts utilizados:**
+> "Estou utilizando o DBDesigner para ter uma base e ele está ficando assim: o que mais posso melhorá-lo de acordo com sua sugestão dita agora?"
+
+> "A parte dos caixas seria um sistema à parte do banco de dados, certo? Então ele não seria necessário ou deixo e coloco uma observação dizendo que é à parte?"
+
+> "O preço unitário em pedido seria desnecessário, certo? Já que possui a comanda."
+
+### Processos de Negócio
+Para garantir a máxima aderência à realidade do mercado, utilizamos Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear os processos padrão de uma hamburgueria artesanal:
+
+Processos Incluídos (100% das áreas operacionais): Optamos por contemplar a totalidade dos fluxos de Vendas, Compras e Apoio/Gestão (incluindo Fornecedores, Recebimento, Cancelamentos e Escala de Freelancers). Essa abordagem garante a baixa automática de estoque via ficha técnica, a rastreabilidade financeira e a auditoria completa no SGBD.
+
+**Prompts utilizados:**
+>"quais os processos de negocio padrão de um Restaurante hamburgueria, que não seja a penas parcial, tendo em vista que faz atendimento por entrega e presencial"
+
+Traçamos um checklist para refazer a entrevista a partir da primeira resposta da IA
+
+### Regras de Negócio
+**Prompts utilizados:**
+>"Agora quais as regras de negocio padrão?"
+
+A IA fez o mesmo formato de lista de requisitos e traçamos as regras que existem e não existem na organização.
+
+### Requisitos e Regras de Negócio
+Definição do escopo do projeto e identificação de quais entidades (tabelas) e regras de negócio fariam parte do banco de dados.
+
+**Prompts utilizados:**
+> "Para a construção de um banco de dados para uma hamburgueria, quais informações eu deveria obter?"
+
+> "No caso desta hamburgueria, não possui o cadastro de cliente. Eu deveria colocar as informações dos funcionários? Também deve conter fornecedores ou não seria necessário?"
+
+> "Na hamburgueria os pedidos são feitos por Mesa (possui 30 mesas ao todo), deveria ser adicionado?"
+
+> "O caixa deveria ser incluído também?"
+---
+## Redação de Textos e Documentação
+
+### Documentação do Projeto Acadêmico
+Redação da fundamentação teórica e descritiva para a documentação, abordando conceitos operacionais como volume de atividades e tamanho da operação.
+
+**Prompts utilizados:**
+> "Estou fazendo a documentação da Hamburgueria, como eu colocaria o volume das atividades da Hamburgueria na documentação?"
+
+> "E tamanho da operação, do que se trataria?"
+
+### Edição e Formatação
+Análise e documentação do modelo de dados para refinar a redação técnica com transições fluidas e descrever o uso das ferramentas.
+
+**Prompts utilizados:**
+> "Como eu posso justificar os detalhes, entidades e relacionamentos etc.?"
+
+> "Eu preciso justificar tudo e colocar a parte de elementos em um único texto, o que você recomenda?"
+
+> "Faça uma breve descrição sobre essas ferramentas: brModeler, MySQL, Workbench, Draw.io, Lucidchart, Miro."
+
+### Massa de dados:
+Utilizamos um site gerador de dados fictícios para fazer os dados de clientes, fornecedores e funcionarios.
+
+### Dicionário Conceitual:
+
+>processo de criação:
+
+Os comandos foram elaborados com o objetivo de identificar inconsistências nos arquivos existentes, complementar informações e estruturar os documentos de acordo com os requisitos solicitados.
+Os prompts foram utilizados de maneira progressiva, fornecendo contexto sobre o projeto, apresentando os documentos desenvolvidos e solicitando ajustes específicos. Essa abordagem permitiu utilizar a IA como ferramenta de apoio à análise técnica, sem substituir a participação humana na definição das regras de negócio e na validação das informações.
+. O que não foi utilizado
+- Geração automática de informações reais: não foram considerados como fatos os dados que não estavam presentes nos documentos ou levantamentos fornecidos.
+- Definição autônoma de regras de negócio: as regras não confirmadas foram identificadas como propostas ou informações a definir.
+- Implementação de banco de dados: a atividade concentrou-se na documentação e modelagem conceitual, não na criação de um banco de dados funcional.
+- Execução de operações no sistema da hamburgueria: não foram realizadas alterações em sistemas operacionais ou comerciais reais.
+- Validação jurídica da LGPD: as sugestões de tratamento de dados foram organizadas como documentação preliminar, sem representar um parecer jurídico.
+- Confirmação de tecnologias não informadas: não foram inventados SGBD, collation, versões ou padrões físicos de implementação.
+
+A ferramenta Claude foi utilizada como apoio à análise e estruturação da documentação técnica, por meio de prompts direcionados à identificação de inconsistências, complementação de requisitos e padronização dos documentos. Foram utilizados recursos de engenharia de prompts, análise de HTML, organização de entidades e relacionamentos, revisão de regras de negócio e classificação de informações. Não foram utilizados recursos para implementação de banco de dados, execução de operações reais ou definição automática de requisitos não levantados. As informações ausentes foram sinalizadas como propostas ou pendentes de confirmação, garantindo maior transparência e confiabilidade ao desenvolvimento do projeto.
+
+---
+
+# Reflexão crítica 
+
+A principal motivação para o uso da IA nesses casos foi compreender detalhes técnicos, a construção e a estrutura do banco de dados necessários para a realização deste trabalho. Por essa razão, evitamos utilizar IA na elaboração dos textos (como justificativas, introdução, entre outros), buscando aprofundar o aprendizado, revisar as decisões tomadas e evitar generalizações incorretas.
