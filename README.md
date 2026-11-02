@@ -206,76 +206,9 @@ Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi 
 -------------------------------------------------------------------------
 
 
-## Proposta de Arquitetura Analítica para BI e IA
 
-| Tipo | Indicador / Problema | Fórmula / Regra de Negócio | Período | Tabelas Envolvidas |
-|--------|---------------------|----------------------------|---------|-------------------|
-| Problema | P1 – Compras sem controle | Gasto total por fornecedor | Mensal | FORNECEDOR, COMPRA, ITEM_COMPRA |
-| KPI | Valor de compras pendentes de pagamento | Soma da quantidade × valor unitário das compras com status "Pendente" | Semanal | COMPRA, ITEM_COMPRA, FORNECEDOR |
-| Problema | P1 – Ruptura de insumos | Insumos com estoque atual ≤ estoque mínimo | Diário | INSUMO |
-| KPI | Custo teórico do lanche | Soma de (quantidade da ficha técnica × custo médio do insumo) por produto | Contínuo | MENU, FICHA_TECNICA, INSUMO, ITEM_COMPRA |
-| KPI | Ticket médio | Total das comandas fechadas ÷ número de comandas | Semanal | COMANDA, PEDIDO |
-| KPI | Faturamento por canal | Soma do total das comandas por tipo de atendimento | Mensal | COMANDA |
-| Problema | P3 – Divergência de caixa | Média e soma da diferença de caixa por terminal e turno | Diário | CAIXA, TERMINAL |
-| KPI | Composição dos pagamentos | Percentual do valor recebido por forma de pagamento | Mensal | PAGAMENTO, CAIXA |
-| KPI | Adesão à taxa de serviço | Comandas com taxa aceita ÷ total de comandas | Mensal | COMANDA |
-| Problema | P2 – Cadastro de clientes | Percentual de comandas com cliente identificado | Mensal | COMANDA, CLIENTE |
-| KPI | Vendas por responsável | Faturamento por funcionário | Semanal | COMANDA, FUNCIONARIO |
-| KPI | Produtos mais vendidos e margem | Quantidade vendida e (preço de venda − custo teórico) por produto | Mensal | PEDIDO, MENU, CATEGORIA, FICHA_TECNICA |
-| KPI | Taxa de serviço | Valor da comanda + (valor da comanda × 10%). A cobrança da taxa é opcional. | Por comanda | COMANDA, PEDIDO |
-| KPI | Taxa de entrega | Valor do pedido + R$ 10,00 (taxa fixa de entrega) | Por pedido | PEDIDO, ENTREGA |
-| KPI | Desconto aniversário | Cliente aniversariante não paga o valor do combo. A taxa de serviço permanece opcional. | Por comanda | CLIENTE, COMANDA, MENU |
 
----
 
-##Problemas Declarados
-
-| Código | Descrição |
-|---------|-----------|
-| P1 | Gestão descentralizada de compras e estoque |
-| P2 | Ausência de cadastro centralizado de pessoas |
-| P3 | Falta de padronização e rastreabilidade do caixa |
-
----
-
-## Visão Analítica por Área
-
-| Área | Indicadores |
-|------|------------|
-| Compras e Estoque | Compras por fornecedor, compras pendentes, ruptura de insumos, custo teórico |
-| Vendas | Ticket médio, faturamento por canal, produtos mais vendidos e margem |
-| Financeiro | Composição dos pagamentos, divergência de caixa, taxa de serviço |
-| Clientes | Cadastro de clientes, desconto de aniversário |
-| Operação | Vendas por responsável, taxa de entrega |
-
----
-
-## Justificativa das decisões técnicas
-Foi solicitado apoio para compreender o cálculo percentual de 10%, referente à taxa de serviço da hamburgueria, incluindo a utilização de operações matemáticas e da função ROUND() em SQL para trabalhar com valores monetários.
-
-As aplicações de BI e IA, como análise de produtos mais vendidos, acompanhamento de custos, controle de estoque e previsão de demanda, foram consideradas possibilidades futuras, sem afirmar que foram implementadas.
-
----
-
-## Atendimento e Clientes
-
-No módulo de atendimento e clientes, a entidade `CLIENTE` (`ID_Cliente`, `CPF`, `Data_Nascimento`, `Telefone`, `Endereco`, `Nome_cliente`) serve para registrar e manter o controle das informações cadastrais do consumidor, viabilizando estratégias de fidelização. A sua conexão com a `COMANDA` (`ID_COMANDA`, `Hora_Abert_Fech`, `Taxa_Servico_S/N`, `Tipo_atendimento`, `Total_Comanda`) ocorre de forma assertiva para enviar dados do cliente e manter o controle das mesas e do atendimento. 
-
-A cardinalidade opcional (`0, n` para `0, 1`) entre cliente e comanda foi adotada justamente para permitir tanto a identificação de clientes cadastrados quanto o atendimento anônimo e ágil no balcão; impor o cadastro obrigatório seria uma alternativa inviável para a fluidez do restaurante. Em paralelo, a entidade `MESA` (`ID_MESA`, `Numero`, `Status`) conecta-se à comanda em uma relação `0, 1` para `0, 1`, garantindo que uma mesa ocupe apenas uma comanda ativa por vez, evitando conflitos de atendimento na praça.
-
----
-
-## Financeiro, Caixa e Terminais
-
-A `COMANDA` consolida o valor consumido e os itens solicitados, direcionando essas informações para `PAGAMENTOS` (`ID_PAGAMENTOS`, `Forma_Pagamento`, `Valor_Pago`, `Data_Hora`), entidade que garante o controle das receitas e possibilita a quitação fracionada da conta. Essa estrutura conecta-se ao `CAIXA` (`ID_CAIXA`, `Status`, `Data_Hora_Abert_Fech`, `Diferenca`, `Saldo_Inicial`, `Saldo_informado`, `Saldo_Calculado`), permitindo controlar o início da movimentação financeira de cada turno. 
-
-Com atributos que reúnem cada registro diário e calculam a diferença de caixa automaticamente, o sistema é capaz de auditar os saldos e transparecer essas informações aos operadores por meio da conexão com a entidade `TERMINAL` (`ID_TERMINAL`, `Nome_Terminal`). A alternativa de controlar as finanças diretamente na comanda, sem a abstração de caixa e terminal, impediria a auditoria e o fechamento por turno.
-
----
-
-## de Cardápio e Vendas
-
-Do lado do cardápio e vendas, a transformação de dados brutos em decisões estratégicas de negócio é assegurada pela entidade `PEDIDOS` (`ID_PEDIDO`, `Quantidade`, `Observacao`, `Valor_Unitario`), que garante que cada item seja produzido exatamente conforme a solicitação do cliente. Os pedidos compõem o `MENU` (`ID_Produto`, `Nome_Produto`, `Preco_Venda`, `Disponibilidade`, `Descricao`), entidade responsável pelo controle e registro dos produtos. 
 
 -----------------------------
 
@@ -373,6 +306,86 @@ Para garantir a máxima aderência à realidade do mercado, Novamente foi utiliz
 - O isolamento de entidades como FORNECEDOR, FUNCIONARIO, CAIXA e MESA assegurou que dados específicos de entidades secundárias não ficassem transitivamente acoplados (por exemplo, dados de contato do fornecedor pertencem exclusivamente à tabela FORNECEDOR e não se misturam com os dados da COMPRA).
 - A 3FN blinda o banco de dados contra anomalias de atualização, assegurando que cada dado esteja estritamente no seu lugar de origem e dependa apenas da chave primária da tabela onde está alocado.
 
+# **1.5 Justificativas Técnicas das Decisões**
+
+# **1.6 Proposta de Arquitetura Analítica para BI e IA**
+
+| Tipo | Indicador / Problema | Fórmula / Regra de Negócio | Período | Tabelas Envolvidas |
+|--------|---------------------|----------------------------|---------|-------------------|
+| Problema | P1 – Compras sem controle | Gasto total por fornecedor | Mensal | FORNECEDOR, COMPRA, ITEM_COMPRA |
+| KPI | Valor de compras pendentes de pagamento | Soma da quantidade × valor unitário das compras com status "Pendente" | Semanal | COMPRA, ITEM_COMPRA, FORNECEDOR |
+| Problema | P1 – Ruptura de insumos | Insumos com estoque atual ≤ estoque mínimo | Diário | INSUMO |
+| KPI | Custo teórico do lanche | Soma de (quantidade da ficha técnica × custo médio do insumo) por produto | Contínuo | MENU, FICHA_TECNICA, INSUMO, ITEM_COMPRA |
+| KPI | Ticket médio | Total das comandas fechadas ÷ número de comandas | Semanal | COMANDA, PEDIDO |
+| KPI | Faturamento por canal | Soma do total das comandas por tipo de atendimento | Mensal | COMANDA |
+| Problema | P3 – Divergência de caixa | Média e soma da diferença de caixa por terminal e turno | Diário | CAIXA, TERMINAL |
+| KPI | Composição dos pagamentos | Percentual do valor recebido por forma de pagamento | Mensal | PAGAMENTO, CAIXA |
+| KPI | Adesão à taxa de serviço | Comandas com taxa aceita ÷ total de comandas | Mensal | COMANDA |
+| Problema | P2 – Cadastro de clientes | Percentual de comandas com cliente identificado | Mensal | COMANDA, CLIENTE |
+| KPI | Vendas por responsável | Faturamento por funcionário | Semanal | COMANDA, FUNCIONARIO |
+| KPI | Produtos mais vendidos e margem | Quantidade vendida e (preço de venda − custo teórico) por produto | Mensal | PEDIDO, MENU, CATEGORIA, FICHA_TECNICA |
+| KPI | Taxa de serviço | Valor da comanda + (valor da comanda × 10%). A cobrança da taxa é opcional. | Por comanda | COMANDA, PEDIDO |
+| KPI | Taxa de entrega | Valor do pedido + R$ 10,00 (taxa fixa de entrega) | Por pedido | PEDIDO, ENTREGA |
+| KPI | Desconto aniversário | Cliente aniversariante não paga o valor do combo. A taxa de serviço permanece opcional. | Por comanda | CLIENTE, COMANDA, MENU |
+
+---
+
+## Problemas Declarados
+
+| Código | Descrição |
+|---------|-----------|
+| P1 | Gestão descentralizada de compras e estoque |
+| P2 | Ausência de cadastro centralizado de Clientes |
+| P3 | Falta de padronização e rastreabilidade do caixa |
+
+---
+
+## Visão Analítica por Área
+
+| Área | Indicadores |
+|------|------------|
+| Compras e Estoque | Compras por fornecedor, compras pendentes, ruptura de insumos, custo teórico |
+| Vendas | Ticket médio, faturamento por canal, produtos mais vendidos e margem |
+| Financeiro | Composição dos pagamentos, divergência de caixa, taxa de serviço |
+| Clientes | Cadastro de clientes, desconto de aniversário |
+| Operação | Vendas por responsável, taxa de entrega |
+
+---
+
+## Justificativa das decisões técnicas
+Foi solicitado apoio para compreender o cálculo percentual de 10%, referente à taxa de serviço da hamburgueria, incluindo a utilização de operações matemáticas e da função ROUND() em SQL para trabalhar com valores monetários.
+
+As aplicações de BI e IA, como análise de produtos mais vendidos, acompanhamento de custos, controle de estoque e previsão de demanda, foram consideradas possibilidades futuras, sem afirmar que foram implementadas.
+
+---
+
+## Atendimento e Clientes
+
+No módulo de atendimento e clientes, a entidade `CLIENTE` (`ID_Cliente`, `CPF`, `Data_Nascimento`, `Telefone`, `Endereco`, `Nome_cliente`) serve para registrar e manter o controle das informações cadastrais do consumidor, viabilizando estratégias de fidelização. A sua conexão com a `COMANDA` (`ID_COMANDA`, `Hora_Abert_Fech`, `Taxa_Servico_S/N`, `Tipo_atendimento`, `Total_Comanda`) ocorre de forma assertiva para enviar dados do cliente e manter o controle das mesas e do atendimento. 
+
+A cardinalidade opcional (`0, n` para `0, 1`) entre cliente e comanda foi adotada justamente para permitir tanto a identificação de clientes cadastrados quanto o atendimento anônimo e ágil no balcão; impor o cadastro obrigatório seria uma alternativa inviável para a fluidez do restaurante. Em paralelo, a entidade `MESA` (`ID_MESA`, `Numero`, `Status`) conecta-se à comanda em uma relação `0, 1` para `0, 1`, garantindo que uma mesa ocupe apenas uma comanda ativa por vez, evitando conflitos de atendimento na praça.
+
+---
+
+## Financeiro, Caixa e Terminais
+
+A `COMANDA` consolida o valor consumido e os itens solicitados, direcionando essas informações para `PAGAMENTOS` (`ID_PAGAMENTOS`, `Forma_Pagamento`, `Valor_Pago`, `Data_Hora`), entidade que garante o controle das receitas e possibilita a quitação fracionada da conta. Essa estrutura conecta-se ao `CAIXA` (`ID_CAIXA`, `Status`, `Data_Hora_Abert_Fech`, `Diferenca`, `Saldo_Inicial`, `Saldo_informado`, `Saldo_Calculado`), permitindo controlar o início da movimentação financeira de cada turno. 
+
+Com atributos que reúnem cada registro diário e calculam a diferença de caixa automaticamente, o sistema é capaz de auditar os saldos e transparecer essas informações aos operadores por meio da conexão com a entidade `TERMINAL` (`ID_TERMINAL`, `Nome_Terminal`). A alternativa de controlar as finanças diretamente na comanda, sem a abstração de caixa e terminal, impediria a auditoria e o fechamento por turno.
+
+---
+
+## de Cardápio e Vendas
+
+Do lado do cardápio e vendas, a transformação de dados brutos em decisões estratégicas de negócio é assegurada pela entidade `PEDIDOS` (`ID_PEDIDO`, `Quantidade`, `Observacao`, `Valor_Unitario`), que garante que cada item seja produzido exatamente conforme a solicitação do cliente. Os pedidos compõem o `MENU` (`ID_Produto`, `Nome_Produto`, `Preco_Venda`, `Disponibilidade`, `Descricao`), entidade responsável pelo controle e registro dos produtos. 
+
+---
+
+# **2. Modelo Lógico Relacional**
+([ModeloLogico.png](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/ModeloLogico.png))
+
+---
+
 ## Justificativa
 A justificativa técnica deste trabalho fundamenta-se na necessidade de estruturar, de forma padronizada e eficiente, o fluxo de informações operacionais e financeiras da Mont Ararat Burger House, considerando os problemas e as necessidades identificadas, como a inexistência de registros formais de clientes e a gestão descentralizada de compras e estoque. Esses fatores dificultavam a rastreabilidade das operações e impediam a identificação precisa do funcionário responsável pelo controle de insumos e compras, resultando na ausência do cálculo automatizado da Ficha Técnica, em compras imprecisas e em custos operacionais não contabilizados em tempo real. Contudo, a estrutura desenvolvida apresenta pontos positivos consolidados, como a vinculação direta dos funcionários a comandas, pedidos e caixa, elementos que contribuem para o registro de dados essenciais para a padronização organizacional da empresa.
 
@@ -415,8 +428,7 @@ Para ligar o consumo do menu ao estoque físico, utiliza-se a `FICHA TÉCNICA` (
 
 Em razão de futuras melhorias propostas pelos integrantes deste trabalho, busca-se aprimorar a estrutura conceitual do sistema para atender de forma mais abrangente às necessidades operacionais e estratégicas da organização. Essa evolução visa expandir o alcance da modelagem de dados, garantindo que os fluxos de informação acompanhem o crescimento do negócio e proporcionem maior eficiência, precisão nos registros e suporte adequado às tomadas de decisão. Dentre as principais adequações futuras a serem implementadas, destacam-se o controle de acessos, o gerenciamento de dados sensíveis, a contabilização automática do caixa e o registro de clientes. Com isso, a Mont Ararat Burger House poderá crescer de forma organizada, íntegra e segura, prevenindo fraudes e perdas financeiras.
 
-## ** Modelo Lógico Relacional**
-Diagrama separado
+
 
 # 9. Uso de Inteligência Artificial
 
