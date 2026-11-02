@@ -22,15 +22,36 @@ CREATE TABLE mesa (
   FOREIGN KEY (cliente_id) REFERENCES cliente(cpf_cliente)
 );
 
+CREATE TABLE menu (
+  id_produto INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  nome_produto VARCHAR(255) NOT NULL,
+  preco_tabela DECIMAL(10,2) NOT NULL CHECK (preco_tabela >= 0),
+  quantidade INT NOT NULL,
+  disponibilidade CHAR(20) NOT NULL CHECK (disponibilidade IN ('Disnonivel', 'Indisponivel')),
+  descricao VARCHAR(255) NOT NULL,
+  categoria CHAR NOT NULL
+);
+
+CREATE TABLE pedido (
+  id_pedido INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  cliente_id INT NOT NULL,
+  produto_id INT NOT NULL,
+  hora_pedido DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  status_pedido VARCHAR(20) NOT NULL CHECK (status_pedido IN ('Entregue', 'Em preparo', 'Cancelado')),
+  FOREIGN KEY (cliente_id) REFERENCES cliente(cpf_cliente)
+);
+
 CREATE TABLE comanda (
   id_comanda INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  mesa_id INT,
-  cliente_id INT,
+  mesa_id INT NULL,
+  cliente_id INT NOT NULL,
+  pedido_id INT NOT NULL,
   tipo_cliente CHAR(20) NOT NULL CHECK (tipo_cliente IN ('Restaurante', 'Entrega')),
   hora_abert_fech DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   status_comanda CHAR(20) NOT NULL CHECK (status_comanda IN ('Aberto', 'Fechado')),
   FOREIGN KEY (cliente_id) REFERENCES cliente(cpf_cliente),
-  FOREIGN KEY ( mesa_id) REFERENCES mesa(id_mesa)
+  FOREIGN KEY (mesa_id) REFERENCES mesa(id_mesa),
+  FOREIGN KEY (pedido_id) REFERENCES pedido(id_pedido)
 );
 
 
