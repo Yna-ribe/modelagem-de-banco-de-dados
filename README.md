@@ -480,18 +480,177 @@ Redação da fundamentação teórica e descritiva para a documentação, aborda
 
 > "E tamanho da operação, do que se trataria?"
 
-### Edição e Formatação
-Análise e documentação do modelo de dados para refinar a redação técnica com transições fluidas e descrever o uso das ferramentas.
+### Edição e estrutura
 
-**Prompts utilizados:**
+Análise e documentação do modelo de dados para refinar a redação técnica com transições fluidas e descrever o uso das ferramentas. Estudando e revisando os conceitos pelo https://lucid.co/pt/diagrama/entidade-relacionamento/tutorial e pelas apresentações disponibilizadas pelo professor, pude entender melhor e fez a resposta ter mais sentido. Para justificar cada coisa você deve dizer o pq ele ser aquilo e não outra coisa, pq a entidade é independente, pq se relacionam daquela forma e não de outra?
+
+---
+
+**Prompts utilizado:**
 > "Como eu posso justificar os detalhes, entidades e relacionamentos etc.?"
+
+---
+
+**Resposta:**
+A justificativa da estrutura de dados — que engloba as **entidades, atributos, relacionamentos, tipos de dados e cardinalidades** — deve ser baseada nos **requisitos de negócio**, nas **regras de domínio** e nos **critérios de eficiência/escalabilidade**.
+
+Quando você documenta ou defende o modelo de dados para stakeholders, arquitetos ou desenvolvedores, a lógica deve responder a uma pergunta central: *Por que a informação foi organizada exatamente dessa forma?*
+
+
+ Estrutura para Justificar cada Elemento
+
+ 1. Justificando as Entidades
+
+Uma entidade representa um conceito do mundo real ou do negócio que possui existência própria.
+
+* **O que justificar:** Por que essa entidade existe de forma separada em vez de ser apenas um atributo de outra?
+* **Como argumentar:**
+* **Independência:** "A entidade `Cliente` existe de forma independente porque um cliente pode ser cadastrado antes de realizar qualquer `Pedido`."
+* **Ciclo de Vida:** "O `Contrato` é uma entidade separada porque possui status próprio, histórico de alterações e datas de vigência independentes do `Cliente`."
+* **Reutilização e Não Repetição:** "Dividimos `Endereço` em uma entidade à parte para permitir múltiplos endereços por cliente (cobrança, entrega)."
+
+
+
+ 2. Justificando os Relacionamentos e Cardinalidades
+
+Os relacionamentos mostram como os conceitos se conectam e impõem as regras do negócio.
+
+* **O que justificar:** Por que a relação é 1:1, 1:N ou N:M? Por que ela é obrigatória (1) ou opcional (0)?
+* **Como argumentar:**
+* **Relacionamento 1:N (Um para Muitos):** "Um `Departamento` possui múltiplos `Funcionários`, mas cada funcionário pertence a apenas um departamento por limitações de estrutura organizacional."
+* **Relacionamento N:M (Muitos para Muitos):** "A relação entre `Aluno` e `Disciplina` é N:M porque um aluno pode cursar várias disciplinas e cada disciplina possui múltiplos alunos matriculados."
+* **Opcionalidade (0..1 vs 1..1):** "O relacionamento entre `Pedido` e `CupomDeDesconto` é opcional (0..1) porque o cliente não é obrigado a aplicar um cupom para finalizar a compra."
+
+
+
+ 3. Justificando Atributos e Tipos de Dados
+
+Os atributos armazenam o estado das entidades.
+
+* **O que justificar:** A escolha de guardar o dado bruto, o grau de normalização e o tipo do dado.
+* **Como argumentar:**
+* **Atributos Derivados vs. Calculados:** "Não armazenamos `Idade` como atributo fixo na entidade `Pessoa`, apenas `DataDeNascimento`, para evitar inconsistência de dados com o passar do tempo."
+* **Desnormalização consciente (Snapshot):** "O atributo `PreçoUnitario` existe na tabela `ItemDoPedido` para congelar o valor do produto no momento exato da compra, garantindo a integridade histórica mesmo se o preço do `Produto` mudar no futuro."
+* **Tipagem de dados:** "O atributo `CPF` é um `VARCHAR` em vez de `INT` para preservar os zeros à esquerda e evitar problemas de estouro numérico (*overflow*)."
+
+---
+
+**Fonte de consulta:**
+> https://lucid.co/pt/diagrama/entidade-relacionamento/tutorial
+
+---
+
+### Modelo Prático de Definição (Matriz de Justificativa)
+
+Utilizando a estrutura básica de introdução e desenvolvimento e conclusão juntou a estrutura do trabalho e deixou mais simples de compreender, focando sempre em cumprir com os requisitos
+
+---
+
+**Prompts utilizado:**
 
 > "Eu preciso justificar tudo e colocar a parte de elementos em um único texto, o que você recomenda?"
 
-> "Faça uma breve descrição sobre essas ferramentas: brModeler, MySQL, Workbench, Draw.io, Lucidchart, Miro."
+---
 
-### Massa de dados:
-Utilizamos um site gerador de dados fictícios para fazer os dados de clientes, fornecedores e funcionarios.
+**Resposta:**
+
+Para consolidar a justificativa do seu modelo de dados em um **texto único e fluido** — sem parecer uma lista solta ou uma tabela picada —, a melhor abordagem é estruturar o texto em **três blocos narrativos**: **Contexto/Objetivo**, **Arquitetura de Entidades e Relacionamentos**, e **Decisões Técnicas de Atributos/Integridade**.
+
+Abaixo está o modelo de estrutura recomendado e um exemplo pronto de como encadear essa explicação em um único texto contínuo.
+
+
+ Estrutura Recomendada para o Texto
+
+1. **Introdução (O Propósito):** Declara o objetivo do modelo e o problema de negócio que ele resolve.
+2. **Corpo Central (Entidades e Conexões):** Apresenta as entidades principais e encadeia os relacionamentos (1:N, N:M) junto com as regras de negócio que justificam as cardinalidades e opcionalidades.
+3. **Fechamento Técnico (Atributos e Histórico):** Consolida os detalhes de atributos-chave, tipos de dados escolhidos, dados congelados (*snapshots*) e estratégias para garantir a integridade e auditoria.
+
+ Exemplo Prático de Texto Único Ajustável
+
+ *"O modelo de dados foi desenvolvido com o objetivo de garantir a integridade, o rastreamento e a eficiência no gerenciamento de [**Nome do Domínio/Sistema**]. A estrutura baseia-se na separação das entidades principais — **[Entidade A]**, **[Entidade B]** e **[Entidade C]** —, refletindo conceitos independentes do domínio. A entidade **[Entidade A]** representa os sujeitos primários e existe de forma autônoma para permitir o cadastro prévio mesmo antes da ocorrência de transações.*
+ *Os relacionamentos foram mapeados de acordo com as regras de negócio vigentes: a ligação entre **[Entidade A]** e **[Entidade B]** ocorre em uma cardinalidade 1:N opcional, garantindo que um **[Entidade A]** possa registrar múltiplos **[Entidades B]**, sem obrigatoriedade de vínculo imediato no momento do cadastro. Para mapear a relação de muitos-para-muitos entre **[Entidade B]** e **[Entidade C]**, criou-se a entidade associativa **[Entidade BC]**, que além de resolver a dependência N:M, armazena os atributos específicos da relação, como **[Atributo X]** e **[Atributo Y]**.*
+ *No nível dos atributos, priorizou-se a consistência temporal e a otimização de consultas. Informações como a data de nascimento foram mantidas como atributos fundamentais para evitar redundâncias calculadas, enquanto dados de valor e preço unitário foram desnormalizados pontualmente dentro de **[Entidade de Transação]** como snapshots históricos, preservando o registro exato do momento da operação. Por fim, a tipagem de dados (como a escolha de tipos alfanuméricos para identificadores formatados) e a implementação de registros de status dedicados garantem auditoria completa e escalabilidade para o sistema."*
+
+ Dicas para personalizar seu texto:
+
+* **Substitua os termos entre colchetes** pelas entidades e atributos do seu projeto.
+* **Mantenha os conectivos de causa e efeito:** Use expressões como *"com o objetivo de"*, *"para resolver a dependência de"*, *"garantindo que"* e *"a fim de preservar"*. Elas mostram ao leitor que cada escolha técnica atende a uma razão prática.
+
+---
+
+**Fonte de consulta:**
+> https://www.todamateria.com.br/como-fazer-um-bom-texto-dissertativo-argumentativo/
+
+---
+
+### Descrição de Ferramentas Utilizadas
+
+Para ter uma melhor descrição que se adapta-se ao modelo deste trabalho, foi necessário construir descrições simples e com detalhes que importam para se aprofundar nos temas defendidos e para isso as descrições apresentadas na resposta a baixo foi verificada através das fontes descritas abaixo.
+
+---
+
+**Prompts utilizado:**
+
+> "Faça uma breve descrição sobre essas ferramentas: brModeler, Workbench, Draw.io, Lucidchart, Miro."
+
+---
+
+**Resposta:**
+
+Resumo das principais características e do propósito de cada uma das ferramentas:
+
+ 1. brModeler (ou brModelo)
+
+Ferramenta focada em **modelagem conceitual e lógica de bancos de dados relacionais**. É amplamente utilizada no meio acadêmico e por profissionais para criar Diagramas Entidade-Relacionamento (DER), definir cardinalidades e gerar os scripts iniciais de tabelas em SQL.
+
+ 2. Draw.io (diagrams.net)
+
+Ferramenta **gratuita e open-source de diagramação geral**. Bastante flexível, é usada para desenhar desde fluxogramas simples e arquiteturas de rede até diagramas UML e mapas mentais, integrando-se facilmente com drives de nuvem como Google Drive e OneDrive.
+
+ 3. Lucidchart
+
+Plataforma corporativa de **diagramação inteligente baseada em nuvem**. É voltada para a criação de diagramas técnicos, processos de negócios, arquiteturas de sistemas e organogramas, oferecendo recursos avançados de colaboração em tempo real e automação a partir de dados.
+
+ 4. Miro
+
+Lousa digital infinita (*whiteboard*) projetada para **colaboração visual em equipe**. É ideal para sessões de *brainstorming*, mapeamento de jornadas, workshops ágeis, dinâmicas de UX/UI e organização de ideias de forma livre por meio de post-its, formas geométricas e conexões.
+
+
+| Ferramenta | Foco Principal | Tipo de Uso |
+| --- | --- | --- |
+| **brModeler** | Modelagem de Banco de Dados (DER) | Acadêmico / Design de BD |
+| **Draw.io** | Diagramação Geral e Gratuita | Desenho de Processos / UML / Estruturas |
+| **Lucidchart** | Diagramação Técnica e Corporativa | Arquitetura de Sistemas / Processos |
+| **Miro** | Colaboração Visual e *Brainstorming* | Planejamento / Ideação em Equipe |
+
+---
+
+**Fonte de consulta:**
+> www.brmodeloweb.com/
+> 
+> www.drawio.com/docs/about/
+>
+> https://play.google.com/store/apps/detailsid=com.lucidchart.android.chart&hl=pt_BR
+>
+> https://miro.com/templates/data-mapping/
+ 
+---
+
+### Massa de Dados 
+
+Foi utilizado Gemini para criar a massa de dados afim de popular a massa de dados de maneira mais consistente, realista e que respeitasse todas as regras de negócio, sem precisar inventar dados manualmente um a um. Pensando nas restrições de banco de dados a visualização de como cada tabela ficaria foi essencial para finalização deste trabalho, o que me ajudou a bolar o prompt descrito abaixo e ter uma resposta útil e adaptável para o modelo físico deste trabalho.
+
+---
+
+**Prompt:**
+
+Faça INSERT para essas tabelas, inclua apenas dados, não informações, quero que nas descrições tenha dados como 200g de hamburguer, nada de histórias, na parte de auto_increment não coloque valor, o banco de dados coloca sozinho. Deixe o CPF realista, mas não coloque dados verdadeiros. Quero no minimo 30 registro em cada tabela, mas quero exemplo de pedido cancelado, pedido que não será levado a comanda ou pago no final.
+
+---
+
+**Resposta:**
+
+Tudo o que está incluído em INSERT no arquivo: [massa_de_dados.sql](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/massa_de_dados.sql)
 
 ### Dicionário Conceitual:
 
