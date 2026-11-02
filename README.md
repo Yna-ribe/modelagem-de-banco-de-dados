@@ -249,36 +249,9 @@ Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi 
 | Operação | Vendas por responsável, taxa de entrega |
 
 ---
-## Justificativa Técnica
-
-A ferramenta Claude foi utilizada como apoio à elaboração da proposta de arquitetura analítica para Business Intelligence (BI) e Inteligência Artificial (IA), com o objetivo de identificar indicadores estratégicos que pudessem contribuir para a gestão da Mont Ararat Hamburgueria.
-
-Inicialmente, foi elaborado um prompt solicitando a interpretação dos requisitos da seção 1.6 do trabalho, com foco na identificação de problemas organizacionais, definição de indicadores-chave de desempenho (KPIs), possibilidades de utilização dos dados em dashboards e aplicações analíticas.
-
-Posteriormente, foram utilizados prompts específicos para estruturar uma proposta com indicadores relacionados ao controle de compras, estoque, faturamento, pagamentos, atendimento e movimentações de caixa. Também foi solicitada a criação de uma tabela de rastreabilidade em Markdown, relacionando cada problema ou KPI às tabelas do banco de dados e aos códigos das consultas SQL responsáveis por apresentar os resultados.
-Recursos não utilizados
-
-Os códigos de identificação G01 a G12 sugeridos pela IA, pois não correspondiam ao padrão de nomenclatura e à sintaxe adotados no script SQL do projeto.
-
-Consultas SQL sugeridas que não estavam adequadas à estrutura e aos relacionamentos efetivamente desenvolvidos.
-
--Implementação de dashboards funcionais em Power BI ou outras ferramentas de visualização.
-
--Desenvolvimento de modelos de Machine Learning ou algoritmos preditivos.
-
--Integração automatizada entre o banco de dados e ferramentas de BI.
-
--Utilização de dados operacionais reais para validação dos indicadores.
-
----
 
 ## Justificativa das decisões técnicas
-
-Durante a elaboração da proposta de arquitetura analítica, a ferramenta Claude foi utilizada para auxiliar na identificação de indicadores gerenciais e na organização da rastreabilidade entre problemas organizacionais, tabelas do banco de dados e consultas SQL.
-
-Entretanto, as sugestões de identificação das consultas por meio dos códigos G01 a G12 não foram aproveitadas, pois não estavam de acordo com a sintaxe e o padrão de organização adotados no projeto. Da mesma forma, as consultas sugeridas foram consideradas apenas referências, sendo necessária a adequação à estrutura real do banco de dados.
-
-Também foi solicitado apoio para compreender o cálculo percentual de 10%, referente à taxa de serviço da hamburgueria, incluindo a utilização de operações matemáticas e da função ROUND() em SQL para trabalhar com valores monetários.
+Foi solicitado apoio para compreender o cálculo percentual de 10%, referente à taxa de serviço da hamburgueria, incluindo a utilização de operações matemáticas e da função ROUND() em SQL para trabalhar com valores monetários.
 
 As aplicações de BI e IA, como análise de produtos mais vendidos, acompanhamento de custos, controle de estoque e previsão de demanda, foram consideradas possibilidades futuras, sem afirmar que foram implementadas.
 
@@ -535,6 +508,28 @@ Os prompts foram utilizados de maneira progressiva, fornecendo contexto sobre o 
 - Confirmação de tecnologias não informadas: não foram inventados SGBD, collation, versões ou padrões físicos de implementação.
 
 A ferramenta Claude foi utilizada como apoio à análise e estruturação da documentação técnica, por meio de prompts direcionados à identificação de inconsistências, complementação de requisitos e padronização dos documentos. Foram utilizados recursos de engenharia de prompts, análise de HTML, organização de entidades e relacionamentos, revisão de regras de negócio e classificação de informações. Não foram utilizados recursos para implementação de banco de dados, execução de operações reais ou definição automática de requisitos não levantados. As informações ausentes foram sinalizadas como propostas ou pendentes de confirmação, garantindo maior transparência e confiabilidade ao desenvolvimento do projeto.
+
+## KPIs
+
+A ferramenta Claude foi utilizada como apoio à elaboração da proposta de arquitetura analítica para Business Intelligence (BI) e Inteligência Artificial (IA), com o objetivo de identificar indicadores estratégicos que pudessem contribuir para a gestão da Mont Ararat Hamburgueria.
+
+Inicialmente, foi elaborado um prompt solicitando a interpretação dos requisitos da seção 1.6 do trabalho, com foco na identificação de problemas organizacionais, definição de indicadores-chave de desempenho (KPIs), possibilidades de utilização dos dados em dashboards e aplicações analíticas.
+
+Posteriormente, foram utilizados prompts específicos para estruturar uma proposta com indicadores relacionados ao controle de compras, estoque, faturamento, pagamentos, atendimento e movimentações de caixa. Também foi solicitada a criação de uma tabela de rastreabilidade em Markdown, relacionando cada problema ou KPI às tabelas do banco de dados e aos códigos das consultas SQL responsáveis por apresentar os resultados.
+Recursos não utilizados
+
+Os códigos de identificação G01 a G12 sugeridos pela IA, pois não correspondiam ao padrão de nomenclatura e à sintaxe adotados no script SQL do projeto.
+
+Consultas SQL sugeridas que não estavam adequadas à estrutura e aos relacionamentos efetivamente desenvolvidos.
+
+-Implementação de dashboards funcionais em Power BI ou outras ferramentas de visualização.
+
+-Desenvolvimento de modelos de Machine Learning ou algoritmos preditivos.
+
+-Integração automatizada entre o banco de dados e ferramentas de BI.
+
+-Utilização de dados operacionais reais para validação dos indicadores.
+
 
 ---
 
