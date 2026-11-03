@@ -63,6 +63,7 @@ Integrantes do Grupo (Nomes e RGMs):
 # **Contexto e Porte:**
 
 A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Classifica-se formalmente como Microempresa (ME) / Empresa de Pequeno Porte (EPP). Fundada originalmente em 2016, a marca conta com unidades em São Paulo (unidade de estudo em São Mateus), Suzano e Mogi das Cruzes.
+---
 # **Tamanho da Operação:**
 
 * **Infraestrutura Física:** Salão com capacidade para 30 mesas presenciais, com gestão dinâmica de ocupação e comandas.  
@@ -217,13 +218,6 @@ Inclusão de Novos Requisitos: Foram adicionados novos Requisitos Funcionais (RF
 Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi descontinuado do escopo principal, visto que o foco da modelagem relacional prioriza as transações estruturais de persistência (vendas, caixa, controle de estoque e financeiro), otimizando a abrangência do banco de dados.
 
 -------------------------------------------------------------------------
-
-
-
-
-
-
------------------------------
 
 ## **Regras de Negócio** (regras que devem ser obedecidas pelo sistema)
 
@@ -387,6 +381,8 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 - Lucidchart: Plataforma intuitiva de criação de diagramas para mapear visualmente a arquitetura de dados, esquemas de entidades e fluxogramas do negócio, facilitando a documentação clara do projeto.
 - Miro: Quadro branco digital colaborativo utilizado nas etapas iniciais de brainstorming, ideal para reunir os integrantes do grupo, mapear a crise operacional da empresa e levantar os requisitos do sistema antes da modelagem final.
 
+---
+
 # **1.6 Proposta de Arquitetura Analítica para BI e IA**
 
 | Tipo | Indicador / Problema | Fórmula / Regra de Negócio | Período | Tabelas Envolvidas |
@@ -479,8 +475,6 @@ Traçamos um checklist para refazer a entrevista a partir da primeira resposta d
 >"Agora quais as regras de negocio padrão?"
 
 A IA fez o mesmo formato de lista de requisitos e traçamos as regras que existem e não existem na organização.
-
-### Requisitos e Regras de Negócio
 Definição do escopo do projeto e identificação de quais entidades (tabelas) e regras de negócio fariam parte do banco de dados.
 
 **Prompts utilizados:**
