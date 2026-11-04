@@ -1,3 +1,6 @@
+CREATE DATABASE Mont_Ararat;
+USE Mont_Ararat;
+
 CREATE TABLE cliente_telefone (
   cpf_cliente INT PRIMARY KEY NOT NULL,
   telefone VARCHAR(11) NOT NULL
@@ -16,7 +19,7 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE mesa (
-  id_mesa INT(2) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  id_mesa INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   status_mesa CHAR(20) NOT NULL CHECK (status_mesa IN ('Oculpada', 'Desoculpada')),
   cliente_id INT,
   FOREIGN KEY (cliente_id) REFERENCES cliente(cpf_cliente)
@@ -39,6 +42,16 @@ CREATE TABLE pedido (
   hora_pedido DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   status_pedido VARCHAR(20) NOT NULL CHECK (status_pedido IN ('Entregue', 'Em preparo', 'Cancelado')),
   FOREIGN KEY (cliente_id) REFERENCES cliente(cpf_cliente)
+);
+
+CREATE TABLE item_pedido (
+  pedido_id INT NOT NULL,
+  produto_id INT NOT NULL,
+  quantidade INT NOT NULL,
+  valor_unitario FLOAT NOT NULL,
+  observacao VARCHAR(100) NOT NULL,
+  FOREIGN KEY (pedido_id) REFERENCES pedido(id_pedido),
+  FOREIGN KEY (produto_id) REFERENCES menu(id_produto)
 );
 
 CREATE TABLE comanda (
@@ -107,6 +120,15 @@ CREATE TABLE insumo (
   data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE ficha_tecnica (
+  produto_id INT NOT NULL,
+  insumo_id INT NOT NULL,
+  quantidade INT NOT NULL,
+  unidade_medida VARCHAR(10) NOT NULL CHECK (unidade_medida IN ('kg', 'g', 'L', 'ml', 'un')),
+  FOREIGN KEY (produto_id) REFERENCES menu(id_produto),
+  FOREIGN KEY (insumo_id) REFERENCES insumo(id_insumo)
+);
+
 CREATE TABLE fornecedor (
   id_fornecedor INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   razao_social VARCHAR(100) NOT NULL,
@@ -126,4 +148,13 @@ CREATE TABLE compra (
   codigo_nf INT NOT NULL,
   FOREIGN KEY (insumo_id) REFERENCES insumo(id_insumo),
   FOREIGN KEY (fornecedor_id) REFERENCES fornecedor(id_fornecedor)
+);
+
+CREATE TABLE item_compra (
+  compra_id INT NOT NULL,
+  insumo_id INT NOT NULL,
+  quantidade INT NOT NULL,
+  valor_unitario DECIMAL(10,2) NOT NULL CHECK (valor_unitario > 0),
+  FOREIGN KEY (compra_id) REFERENCES compra(id_compra),
+  FOREIGN KEY (insumo_id) REFERENCES insumo(id_insumo)
 );
