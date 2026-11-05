@@ -134,7 +134,7 @@ A Entrevista foi realizada na Hamburgueria, Durante o funcionamento, o entrevist
 - *Realização de Pedidos:* O Estabelecimento funciona a partir das 18:00 Horas, Com a chegada do cliente, o funcionário que o receber leva-o até a mesa adequada e o entrega o cardápio. O Atendente abre a comanda, pergunta se irão pedir alguma entrada, se o lanche será individual ou combo, ponto da carne, se haverá adicional, se irá trocar ou remover algum item do lanche, e a bebida, por fim lança o pedido a cozinha.
 - *Restrições Sanitárias:* No mesmo dia que o Integrante compareceu a entrevista, a Nutricionista que comparece semanalmente na Hamburgueria estava presente. Foi presenciado como é manipulado os alimentos, com data de validade, exigências de vestimentas adequadas, remoção de piercings, mascarás se necessario, luvas, toucas, etc.
 
-### **Levantamento:** ([Levantamento](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/Levantamento.md))
+### **Levantamento:** ([Levantamento](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/Levantamento.md))
 
 ### *Resumo do Levantamento:*
 - Não há sistema automatizado de baixa; o controle é feito manualmente por contagem (pelo Maitre) para verificar quantidades baixas e suficientes.   
@@ -146,7 +146,7 @@ A Entrevista foi realizada na Hamburgueria, Durante o funcionamento, o entrevist
 
 <img width="300" height="400" alt="WhatsApp Image 2026-09-23 at 15 08 19 (1)" src="https://github.com/user-attachments/assets/a6625e83-51d5-4677-bf67-05a1d79f6d68" />
 
-*Foto com o Responsável da Unidade:*  ([Foto com Entrevistado](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/FotoEntrevista.png))
+*Foto com o Responsável da Unidade:*  ([Foto com Entrevistado](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/FotoEntrevista.png))
 
 -------------------------------------------------------------------------
 
@@ -437,7 +437,7 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 # **2. Modelo Lógico Relacional**
 
 - **Software**: O Modelo Lógico foi feito a partir do BrModelo Também, por sua notação também ser recomenda pelo professor.
-### **MODELO LÓGICO RELACIONAL:** ([Modelo Lógico](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/ModeloLogico.png))
+### **MODELO LÓGICO RELACIONAL:** ([Modelo Lógico](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/ModeloLogico.png))
 
 
 ---
