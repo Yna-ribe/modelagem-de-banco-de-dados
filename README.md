@@ -463,44 +463,120 @@ O Gemini foi utilizado para estruturar o roteiro de entrevista e orientar a cole
 
 > "De verde são as informações que eu tenho já por trabalhar lá e de vermelho são as que vou buscar. Com as informações que já tenho, o que mais posso adicionar?"
 
-## Diagramas, Requisitos e Regras de Negócio
+## Diagramas, Requisitos e Regras de Negócio - Entrega 2
 
-### Diagrama de Entidade e Relacionamento (DER)
-Validação do primeiro esboço das tabelas criadas no DBDesigner, revisando atributos, redundâncias de dados e tirando dúvidas sobre a arquitetura do sistema de caixa.
+### *Modelo Conceitual*
 
-**Prompts utilizados:**
-> "Estou utilizando o DBDesigner para ter uma base e ele está ficando assim: o que mais posso melhorá-lo de acordo com sua sugestão dita agora?"
+- A ferramenta IA utilizada foi o Gemini, para a correção do modelo conceitual para a entrega 2, a motivação foi encontrar os erros, entende-los e com auxilio da IA fazer uma diagrama superior.
 
-> "A parte dos caixas seria um sistema à parte do banco de dados, certo? Então ele não seria necessário ou deixo e coloco uma observação dizendo que é à parte?"
+Prompts: 
 
-> "O preço unitário em pedido seria desnecessário, certo? Já que possui a comanda."
+> (Imagem do DER da entrega 1) Eu já havia feito outro DER porém foi corregido e meu professor me deu algumas orientações porém não estou entendendo muito bem, gostaria que me apontasse o que exatamente devo melhorar neste meu DER de acordo com estas orientações: ( Todas observações que o professor passou que estava faltando no diagrama antigo ).
 
-### Processos de Negócio
-Para garantir a máxima aderência à realidade do mercado, utilizamos Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear os processos padrão de uma hamburgueria artesanal:
+> Posso substituir produto por item-pedido, item-produto não me parece certo, e o que seria uma entidade associativa.
 
-Processos Incluídos (100% das áreas operacionais): Optamos por contemplar a totalidade dos fluxos de Vendas, Compras e Apoio/Gestão (incluindo Fornecedores, Recebimento, Cancelamentos e Escala de Freelancers). Essa abordagem garante a baixa automática de estoque via ficha técnica, a rastreabilidade financeira e a auditoria completa no SGBD.
+> Eu tenho as seguintes entidades, Pedidos, Item-Pedidos, Menu e Estoque, devo criar uma tabela Ficha-Tecnica e fazer um relacionamento de N:N com menu certo? A entidade estoque devo fazer relacionamento com menu? porém estoque possui outros produtos além do menu, como produtos de limpeza, palitos, papel, etc, o que devo fazer.
 
-**Prompts utilizados:**
->"quais os processos de negocio padrão de um Restaurante hamburgueria, que não seja a penas parcial, tendo em vista que faz atendimento por entrega e presencial"
+> Eu fiz o seguinte então, me corrija caso esteja errado, a entidade Menu possui o relacionamento entidade associativa com ficha tecnica que se associa que com Ingredientes, a partir disso fiz o seguinte criei Estoque-Insumos que se associa com ingredientes, e estoque-insumos se associa com estoqur, isso estaria correto?
 
-Traçamos um checklist para refazer a entrevista a partir da primeira resposta da IA
+> Gemini, vi algumas instruções e gostaria de perguntar e mostrar o que mudei, remover a entidade categoria e colocar apenas o atributo de categoria em menu seria mais adequado ? ou devo manter a entidade? Outra, vi que meu professor instruiu sobre Pedidos e Menu, seria ideal fazer uma entidade associativa entre Pedido e menu? se sim, que atributos deve adicionar corretamente em pedidos, item-pedido, menu e ficha-tecnica, e no modelo anterior tinha o relacionamento entre caixa e terminal, pois o estabelecimento possui 2 caixas 1 para o salão e outro para o delivery, como posso introduzir o delivery nisto também.
 
-### Regras de Negócio
-**Prompts utilizados:**
->"Agora quais as regras de negocio padrão?"
+> Na sessão 3, nesta hamburgueria, a pessoa que faz a compra do estoque é o "Gerente" da hamburgueria entretanto ele não é registrado no estabelecimento, ele é sobrinho do dono, e administra esta unidade, outra, um dos nossos problemas apontados para a empresa é a falta de cadastro de cliente e funcionários freelances, em funcionários deve adicionar um atributo freelance? ou faço outro método? e como posso incluir o cliente neste modelo.
 
-A IA fez o mesmo formato de lista de requisitos e traçamos as regras que existem e não existem na organização.
-Definição do escopo do projeto e identificação de quais entidades (tabelas) e regras de negócio fariam parte do banco de dados.
+> Perfeito, mas uma duvida, o atributo endereço, ele seria multivalorado certo? ou composto pelo o que meu professor me orientou, o que eu devo fazer, me oriente, e faça uma análise bem profunda do modelo conceitual e caso encontre algum outro atributo multivalorado/composto, por favor me oriente a normaliza-lo. 
 
-**Prompts utilizados:**
-> "Para a construção de um banco de dados para uma hamburgueria, quais informações eu deveria obter?"
+- Foram feitos outros prompts, entretanto estes foram que mais impactaram na realização do diagrama, Também foi pedido auxilio para fazer as carnalidades do diagrama entretanto, minha fonte para correção foram o professor seus artefatos de carnalidade, a IA usou outros critérios para o desenvolvimento das carnalidades por tanto foi descartado e feito com base apenas do artefato. Logo após a vistoria do professor fiz a correçaõ.
+- A IA é uma ferramenta dos dias atuais extremamente útil para auxiliar nos trabalhos entretanto a IA falha, por isso se deve fazer o uso responsavél, buscando as fontes e conferindo se esta certa ou não a resposta, ela não deve nos substituir e sim nos auxiliar.
 
-> "No caso desta hamburgueria, não possui o cadastro de cliente. Eu deveria colocar as informações dos funcionários? Também deve conter fornecedores ou não seria necessário?"
-
-> "Na hamburgueria os pedidos são feitos por Mesa (possui 30 mesas ao todo), deveria ser adicionado?"
-
-> "O caixa deveria ser incluído também?"
 ---
+
+### *Modelo Lógico*
+
+O modelo lógico é convertido do modelo conceitual pelo próprio BrModelo, entretanto ela não sai 100% correta, por exemplo o tipo dos atributos vem todos definidos como INT, por isto a IA foi utilizada para ajustar a conversão.
+
+Prompts:
+
+ > Ok gemini, agora gostaria de ajuda para desenvolver o modelo lógico, com base no modelo conceitual o BrModelo ele mesmo já transforma o Conceitual no Lógico mas não sai 100%, as carnalidades iriei concertar copiando o do modelo conceitual, porém a entidade associativa não foi convertida, como posso para faze-la no modelo lógico, faça por favor uma analise bem profunda e caso encontre algum erro que eu não identifiquei por favor fale-me para me corrigir.
+
+> Está correto? é necessário mesmo colocar mais uma tabela item-compra? no modelo conceitual não possui, e gostaria de uma dica para poder arrumar os tipos dos atributos.
+
+> Gemini, fiz alterações no modelo conceitual e agora fiz novamente a conversação do conceitual para o lógico, gostaria que me dissesse o que faço quando tenho entidades associativas, aqui no lógico viraram tabelas mas está correto, São a Item-Pedido, Ficha-Tecnica e Item-Compra, elas estão com 2 chaves primarias isso interfere em uma das regras de normalização certo? o que devo fazer, fora elas, gostaria que fizesse uma análise completa do modelo lógico completo e me dissesse e à algo que devo alterar. 
+
+> Nas tabelas associativas elas devem conter chave primaria?, ou apenas as FKs conectando as outras tabelas podem ser suficiente ?
+
+- Para o Modelo Lógico foram usados poucos prompts, pois a maior dificuldade era averiguar se estava correto ou não seus tipos e carnalidades, fizemos a correção com nosso professor e estava correto de acordo com ele, apenas claro as carnalidades que a IA não possui boas respostas para auxiliar.
+
+---
+
+### *Requisitos Funcionais / Não Funcionais*
+
+Os requisitos funcionais e não funcionais foram considerados "Certos" na ultima entrega, entretanto, com alguns erros neles -- porém gostaria de fazer algo mais elaborado e cobrindo os erros apontados pelo professor com o auxilio da IA.
+
+Prompts:
+
+> Agora devo descobrir sobre os requisitos funcionais e não funcionais, quais são os requisitos que normalmente Hamburguerias Artesanais possuem ?
+- Resp : O levantamento dos Requisitos Funcionais (RF) e Não Funcionais (RNF) para o sistema de uma hamburgueria artesanal:
+RF: Vendas e Atendimento: Ações de frente de caixa e delivery (ex.: gestão de comandas, cancelamento com justificativa e pagamento fracionado). Cozinha e Produção: Controle de preparo (ex.: vinculação de ficha técnica aos lanches e envio automático de pedidos para a chapa).
+RNFs: Desempenho: Processamento rápido nos horários de pico (ex.: lançar itens em menos de 2 segundos).
+Disponibilidade e Usabilidade: Operação estável e ágil (ex.: 99,5% de disponibilidade e no máximo 3 toques para lançar um pedido). Cozinha e Produção: Controle de preparo (ex.: vinculação de ficha técnica aos lanches e envio automático de pedidos para a chapa).
+
+> Nas RF por favor adicione dois campos apenas o cadastro de fornecedores e o de compras, que seria o registro de cada compra para reposição do estoque.
+- Resp: RF08 -> Cadastro de Fornecedores: O sistema deve permitir o registro, alteração e consulta de fornecedores de insumos (carnes, pães, hortifrúti, bebidas e embalagens), armazenando dados cadastrais, CNPJ, prazos e insumos fornecidos.
+RF09 -> Registro de Compras (Reposição de Estoque): O sistema deve permitir o lançamento de ordens e notas de compra de insumos associadas a um fornecedor cadastrado, atualizando automaticamente o saldo físico do estoque e os custos unitários dos itens.
+
+> A imagem com 7 requisitos Funcionais foi a que eu fiz na primeira entrega ela foi avaliada como certa apenas com 2 erros, a falta dos requisitos de cadastro de cliente, compras e ficha técnica, e esta com 14 requisitos é a que fiz agora com seu apoio, o que acha? Acha que ficou mais completo? Devo fazer alguma alteração? Um detalhe, removi o relacionamento pois o professor nunca deixo claro a obrigação dela, então optei por deixa-la sem, apenas com a prioridade, e por favor me ajude a definir as prioridades corretas.
+- Resp: avalia positivamente a expansão da tabela para 14 Requisitos Funcionais e a remoção da coluna de relacionamentos para simplificar a apresentação visual. Além disso, propõe o ajuste das prioridades dos requisitos em uma escala de três níveis (Alta, Média e Baixa):
+Prioridade Alta (Funcionalidades vitais): Atribui nível máximo aos processos indispensáveis para o funcionamento contínuo do negócio, como gestão de mesas/comandas (RF01), registro de pedidos (RF02), divisão de pagamentos (RF05), gestão de cardápio (RF07), sessão de caixa (RF08), ficha técnica (RF09), cancelamentos (RF10), entrada de mercadorias (RF12) e baixa automática de estoque (RF13).
+Prioridade Média (Operação diária e apoio): Reclassifica recursos operacionais que não impedem diretamente a realização de uma venda inicial, incluindo transferência de mesas (RF03), cadastro de clientes (RF04), taxa de serviço (RF06) e cadastro de fornecedores (RF11).
+Prioridade Baixa (Apoio secundário): Define como secundárias as rotinas administrativas que não impactam a frente de caixa, representada pelo registro de escalas e horários da equipe (RF14).
+
+> "remoção RF 3 transferência de mesa por não ser necessariamente um recurso do banco de dados, adição de 7 RFs e 2 RNFs, como na seção anterior foi levantado pela IA os requisitos que uma hamburgueria possui, com base nesses requisitos propostos foram adicionados alguns, outros que foram citados foram excluídos por já fazerem parte dos requisitos presentes" Esta foi a justificativa que coloquei por favor formate ela para ficar mais apropriada para o trabalho, se achar necessário para se apropriar melhor altere a justificativa.
+- Resp: Justificativa de Atualização dos Requisitos.
+Com base no reestudo do escopo operacional e no benchmarking dos processos de uma hamburgueria artesanal, procedemos à seguinte revisão no conjunto de requisitos do sistema:
+Inclusão de Novos Requisitos: Foram adicionados novos Requisitos Funcionais (RFs) e Não Funcionais (RNFs) para cobrir integralmente as lacunas estruturais da operação (como cadastro de clientes, fichas técnicas e suprimentos). Sugestões adicionais levantadas na pesquisa de mercado que possuíam equivalência com os itens já existentes foram descartadas para evitar redundâncias na especificação.
+Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi descontinuado do escopo principal, visto que o foco da modelagem relacional prioriza as transações estruturais de persistência (vendas, caixa, controle de estoque e financeiro), otimizando a abrangência do banco de dados.
+- Como recomendado pelo professor, fizemos uma busca pela IA de quais são os requisitos de hamburgueria e com base neles eu fiz adição de 7 RFs e 2 RNFs, por cima achei que fico bem mais completo que a entrega anterior, a IA sugeriu RFs de marketing porém o banco de dados não possui esta opção e deixamos de fora.
+
+---
+
+### *Regras de Negócio*
+
+A regra de negócios foi uma das principais recomendações do professor para melhorarmos, havia apenas 6 regras anteriormente, porém eram insuficientes, e faltava para outros setores da hamburgueria, com auxilio da IA, buscamos deixar completo as regras de negócio.
+
+Prompt:
+
+> Agora gemini preciso fazer as Regras de negocio, foi um dos erros apontados na ultima entrega, o professor fez uma tabela apontado as regras ausentes. Estes foram os pontos que o professor nos orientou a melhorar e a tabela que fizemos o que devo fazer para melhorar e ficar de acordo com suas orientações.
+" Não há nenhuma restrição organizacional (fiscal, sanitária, trabalhista, LGPD), nenhuma explicação de por que as regras importam" esta frase também foi para melhorar".
+- Resp : a tabela de Regras de Negócio foi ampliada de 6 para 14 itens para abranger a retaguarda completa (estoque, compras e fichas técnicas). Além disso, incorporou restrições legais cruciais (fiscais, sanitárias e de LGPD) e incluiu explicitamente a justificativa e a importância de cada regra para o negócio, atendendo por completo aos apontamentos do professor.
+
+> Perfeito gemini, agora só gostaria que fizesse o mesmo que os prompts anteriores, quais regras de negócio normalmente uma hamburgueria artesanal possui para eu fazer uma comparação e se devo adicionar algo e por favor para esta ação desconsidere o contexto desta conversa puxe essas informações do zero.
+-Resp: panorama estruturado das regras de negócio de uma hamburgueria artesanal dividido em quatro categorias (Vendas e Atendimento Comercial, Caixa e Financeiro, Estoque e Produção, e Governança, Controle e Restrições Legais), finalizando com uma análise comparativa para verificar se o trabalho acadêmico contempla fluxos de exceção, restrições normativas, fiscais, sanitárias e de proteção de dados.
+- Resp: O texto apresenta as regras de negócio de uma hamburgueria artesanal organizadas em quatro áreas operacionais e legais, acompanhadas de uma recomendação final:
+1. Vendas e Atendimento Comercial: Regras para evitar conflitos na ocupação de mesas, congelar o preço dos itens no momento do pedido para proteger o histórico de vendas, tratar a taxa de serviço de 10% como opcional e exigir o pagamento total antes de fechar a conta.
+2. Caixa e Financeiro: Exigência de manter todas as transações vinculadas a um caixa aberto, aporte obrigatório de troco inicial (fundo de reserva) e cálculo automático de sobras ou faltas no encerramento do turno.
+3. Estoque e Produção: Controle de insumos através da baixa automática de matérias-primas por ficha técnica a cada venda realizada e emissão de alertas quando o estoque atinge o limite mínimo.
+4. Governança, Controle e Restrições Legais: Exigência de aprovação gerencial e justificativa para cancelamentos, obrigatoriedade de emissão fiscal, acompanhamento de lotes e validades de alimentos perecíveis segundo a vigilância sanitária e proteção de dados cadastrais conforme a LGPD.
+Análise Comparativa: Orientação para conferir se a modelagem do trabalho acadêmico cobre todos esses eixos, garantindo que os fluxos de exceção e as normas legais/organizacionais estejam devidamente contemplados.
+
+> A aparentemente todas regras ficaram dentro, que justificativa devo colocar ?
+- resp: O conjunto de regras de negócio foi estruturado para abranger integralmente o ciclo de vida operacional da hamburgueria artesanal, dividindo-se entre fluxos comerciais (vendas e atendimento), controles financeiros/caixa e processos de retaguarda (estoque e produção). Adicionalmente, foram incorporadas restrições organizacionais e normativas cruciais — como a obrigatoriedade fiscal, as normas sanitárias de manipulação de insumos e as diretrizes de privacidade de dados (LGPD). Essa amplitude garante que o banco de dados não apenas processe transações, mas também assegure a integridade operacional, a auditoria gerencial e a conformidade legal da empresa.
+
+- De acordo com a IA, a maioria das regras de negocio de uma hamburgueria foram inclusas, fizemos alguns ajustes, entretanto a parte descartada foi a justificativa, não achamos ela muito apropriada mas usamos ela de base para fazer a justificativa sobre a regra de negócios.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Redação de Textos e Documentação
 
 ### Documentação do Projeto Acadêmico
