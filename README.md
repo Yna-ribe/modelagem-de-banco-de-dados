@@ -439,10 +439,19 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 - **Software**: O Modelo Lógico foi feito a partir do BrModelo Também, por sua notação também ser recomenda pelo professor.
 ### **MODELO LÓGICO RELACIONAL:** ([Modelo Lógico](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/ModeloLogico.png))
 
+# **3. Script SQL Completo**
+
+### **SCRIPT SQL:** ([Script SQL](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/modelo_fisico.sql))
+
+# **4. Massa de Dados**
+
+### **MASSA DE DADOS:** ([Massa de Dados](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/main/massa_de_dados.sql)
+
+
 
 ---
 
-# 6. Uso de Inteligência Artificial
+# 5. Uso de Inteligência Artificial
 
 **IA utilizada:** Google Gemini
 
