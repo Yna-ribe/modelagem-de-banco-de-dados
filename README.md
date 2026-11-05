@@ -69,7 +69,7 @@ A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Cla
 * **Infraestrutura Física:** Salão com capacidade para 30 mesas presenciais, com gestão dinâmica de ocupação e comandas.  
 * **Terminais de Atendimento:** 2 Terminais de caixa físicos operando simultaneamente (Caixa 01: Salão / Caixa 02: Delivery e Balcão).  
 * **Arquitetura de Atendimento:** Operação híbrida de alta rotatividade em tempo real, integrando lançamentos presenciais e pedidos concorrentes via Delivery/Balcão com impressão na cozinha.  
-* **Equipe e Turnos:** Operação de terça a domingo e feriados (18h às 23h em dias úteis; 18h às 00h aos fins de semana). A equipe é composta por 13 funcionários fixos (CLT) e cerca de 15 freelancers ativados aos finais de semana, divididos entre turnos de pré-preparo (manhã) e operação/atendimento (tarde/noite).
+* **Equipe e Turnos:** Operação de terça a domingo e feriados (18h às 23h em dias úteis; 18h às 00h aos fins de semana). A equipe é composta por 15 funcionários fixos (CLT) e cerca de 15 freelancers ativados aos finais de semana, divididos entre turnos de pré-preparo (manhã) e operação/atendimento (tarde/noite).
 
 -------------------------------------------------------------------------
 
@@ -135,6 +135,12 @@ A Entrevista foi realizada na Hamburgueria, Durante o funcionamento, o entrevist
 - *Restrições Sanitárias:* No mesmo dia que o Integrante compareceu a entrevista, a Nutricionista que comparece semanalmente na Hamburgueria estava presente. Foi presenciado como é manipulado os alimentos, com data de validade, exigências de vestimentas adequadas, remoção de piercings, mascarás se necessario, luvas, toucas, etc.
 
 ### **Levantamento:** ([Levantamento](https://github.com/Yna-ribe/modelagem-de-banco-de-dados/blob/Veigasz-patch-1/Levantamento.md))
+
+### *Resumo do Levantamento:*
+- Não há sistema automatizado de baixa; o controle é feito manualmente por contagem (pelo Maitre) para verificar quantidades baixas e suficientes.   
+- Conta com 15 funcionários CLT (cargos: Auxiliares de Cozinha, Limpeza, Atendente, Caixa, Chapeiro e Maitre) e 15 freelancers (que trabalham de sexta a domingo e recebem por dia trabalhado).
+- O caixa pode ser manuseado por Maitre, Caixa e Atendente (com supervisão). Apenas o Maitre registra o reabastecimento, mas qualquer funcionário pode manipular os insumos do estoque.
+- O estabelecimento não possui nenhum sistema de cadastro de clientes. 
 
 *Imagem do estabelecimento:*
 
