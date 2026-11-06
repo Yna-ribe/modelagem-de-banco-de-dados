@@ -463,11 +463,53 @@ O Gemini foi utilizado para estruturar o roteiro de entrevista e orientar a cole
 
 > "De verde são as informações que eu tenho já por trabalhar lá e de vermelho são as que vou buscar. Com as informações que já tenho, o que mais posso adicionar?"
 
+---
+
+## Processos de Negócio - Entrega 2
+
+- A ferramenta IA utilizada foi o Gemini, com o intuito de realizar um trabalho superior ao anterior. Na E1 nos processos de negócio faltou processos do delivery onde é relatado como maior renda do estabelecimento, afim de melhorar a entrega, utilizamos a IA para nos auxiliar.  
+
+
+> Prompts: (Imagem da correção do professor sobre o processo de negócios E1) Gemini, estou desenvolvendo um banco de dados para um trabalho acadêmico, eu preciso fazer os processos de negocio da empresa em que escolhemos para fazer, nos fizemos na primeiro entrega e o nosso professor fez as correção e apontou orientações este foi o nosso entregue: (Todos Processos de Negócios presentes na E1) E este foi o que nosso professor apontou como melhorias (A imagem)
+Me me passe orientações detalhadas de o que devo melhorar deste tópico, quais parágrafos devo adicionar e o que adicionar neles
+- Resp: 1. Grupo: Vendas (Ajustes e Inclusões): Adiciona a formalização do atendimento via delivery e balcão, descreve o processo administrativo de gestão do cardápio e preços (com controle de adicionais e disponibilidade) e estabelece o fluxo de exceção para cancelamento de itens ou pedidos com registro de auditoria e estorno.
+2. Grupo: Compras (Inclusões Obrigatórias): Introduz os processos essenciais para o abastecimento da cozinha, contemplando o cadastro de fornecedores (com CNPJ, prazos e insumos), a compra de insumos baseada no estoque mínimo para gerar ordens de reposição, e o recebimento e conferência de mercadorias vinculando notas fiscais ao estoque físico.
+3. Grupo: Apoio (Ajustes e Inclusões): Detalha a gestão contínua do controle de estoque (com baixa automática por ficha técnica de insumos e registros de perdas) e formaliza o planejamento e alocação na escala de funcionários e freelancers para os turnos e dias de maior movimento.
+
+> Perfeito, agora gemini, devo colocar o escopo do sistema, mas não entendi muito bem do que se trata, essas foram as orientações do professor, o que devo colocar, me ajude.
+Escopo do sistema: o banco de dados deve reunir todos os dados da organização, não só os de um setor ou processo. Mesmo que os problemas declarados se concentrem em uma área, o modelo não pode servir somente a um recorte (ex.: só o estoque de uma clínica, deixando de fora pacientes e atendimentos).
+- Resp: O Escopo do Sistema é a seção do seu trabalho acadêmico onde você define quais os limites e a abrangência do seu banco de dados.
+O aviso do seu professor é muito importante: um banco de dados corporativo não pode ser "pontual" ou focado em um único setor isolado. Como você está modelando o sistema para uma hamburgueria, o erro comum que os alunos cometem é criar um banco de dados que só resolve o problema do estoque (ou só o de vendas). O professor está exigindo que o seu banco seja global para a empresa inteira, integrando todos os setores que conversamos agora pouco (Vendas, Compras e Apoio).
+O que você deve colocar nesta seção?
+Para estruturar o Escopo do Sistema no seu documento, você deve escrever um texto explicando de forma clara:
+O Objetivo Geral: Dizer que o banco de dados foi projetado para centralizar e integrar as informações de toda a hamburgueria.
+A Abrangência (O que o sistema engloba): Listar os três grandes pilares que o seu banco vai abranger (Operações Comerciais/Vendas, Suprimentos/Compras e Gestão/Apoio).
+O que fica de fora (Limites/Fora do Escopo): Explicar brevemente o que não faz parte do sistema (ex: contabilidade fiscal avançada, folha de pagamento trabalhista detalhada, etc.), delimitando o projeto.
+
+> Meu professor deu a seguinte sugestão " É recomendável usar
+pesquisas e ferramentas de IA para descobrir quais processos são comuns em
+organizações do mesmo tipo (ex.: o que toda pizzaria, ONG de doação de alimentos
+ou oficina mecânica costuma fazer) e conferir se eles existem na organização
+escolhida." De acordo com esta descrição por favor, em uma hamburgueria artesanal o que se costuma fazer ?
+- Resp: 1. Vendas e Atendimento ao Cliente (Comercial): Abrange o atendimento de salão (mesas e comandas), delivery e canais digitais, pedidos de balcão, controle de cancelamentos com auditoria, gestão de cardápio e preços, e fechamento de conta com pagamento fracionado e taxa de serviço opcional.
+2. Suprimentos e Compras (Logística): Compreende o cadastro e homologação de fornecedores, a geração de ordens de compra baseada em níveis de estoque mínimo, e o recebimento/conferência de mercadorias com notas fiscais e pesagens.
+3. Apoio e Produção (Retaguarda / Backoffice): Inclui o pré-preparo diário na cozinha (como porcionamento de blends e molhos), controle de estoque com baixa automática via ficha técnica, abertura e fechamento de caixa com conferência de turno, e a gestão de escalas de funcionários e freelancers.
+
+> Nosso professor pediu para fazermos isto e por fim uma justificativa de nossas escolhas
+" se um processo comum nesse tipo de organização ficou de fora (ex.: compras de fornecedores, cancelamentos, escala da equipe), explique por quê — por exemplo, a organização não o realiza, ou
+ele é feito por terceiros." Portanto, a ultima mensagem acima é a justificativa que dei, por favor melhore ela para uma boa justificativa dos processos presentes na sessão
+- Resp: Conteúdo da Justificativa: Declara o uso da IA (Gemini) para benchmarking e confirma a inclusão de 100% dos processos identificados nas áreas de Vendas, Compras e Apoio. Justifica a manutenção de fluxos avançados (como fornecedores, cancelamentos e freelancers) para assegurar a rastreabilidade financeira, o controle de insumos e a auditoria no banco de dados.
+O que Entrega ao Professor: Garante transparência metodológica, responde diretamente que nenhum processo essencial foi omitido e fundamenta as decisões técnicas com conceitos de integridade e gestão de dados.
+
+
+---
+
+
 ## Diagramas, Requisitos e Regras de Negócio - Entrega 2
 
 ### *Modelo Conceitual*
 
-- A ferramenta IA utilizada foi o Gemini, para a correção do modelo conceitual para a entrega 2, a motivação foi encontrar os erros, entende-los e com auxilio da IA fazer uma diagrama superior.
+- Para a correção do modelo conceitual para a entrega 2, a motivação foi encontrar os erros, entende-los e com auxilio da IA fazer uma diagrama superior.
 
 Prompts: 
 
@@ -527,7 +569,7 @@ Complemento
 
 ### *Modelo Lógico*
 
-O modelo lógico é convertido do modelo conceitual pelo próprio BrModelo, entretanto ela não sai 100% correta, por exemplo o tipo dos atributos vem todos definidos como INT, por isto a IA foi utilizada para ajustar a conversão.
+- O modelo lógico é convertido do modelo conceitual pelo próprio BrModelo, entretanto ela não sai 100% correta, por exemplo o tipo dos atributos vem todos definidos como INT, por isto a IA foi utilizada para ajustar a conversão.
 
 Prompts:
 
@@ -561,7 +603,7 @@ Ou seja, as FKs juntas já formam a Chave Primária (PK, FK). Na maioria dos cas
 
 ### *Requisitos Funcionais / Não Funcionais*
 
-Os requisitos funcionais e não funcionais foram considerados "Certos" na ultima entrega, entretanto, com alguns erros neles -- porém gostaria de fazer algo mais elaborado e cobrindo os erros apontados pelo professor com o auxilio da IA.
+- Os requisitos funcionais e não funcionais foram considerados "Certos" na ultima entrega, entretanto, com alguns erros neles -- porém gostaria de fazer algo mais elaborado e cobrindo os erros apontados pelo professor com o auxilio da IA.
 
 Prompts:
 
