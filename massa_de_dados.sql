@@ -1,4 +1,5 @@
--- TABELA: cliente
+USE Mont_Ararat;
+
 INSERT INTO cliente (cpf_cliente, nome, logradouro, bairro, numero, complemento, cep, email, data_nasc) VALUES
 (111222333, 'Carlos Silva', 'Rua das Flores', 'Centro', 123, 'Apto 101', '01001000', 'carlos.silva@email.com', '1985-04-12'),
 (222333444, 'Ana Souza', 'Avenida Paulista', 'Bela Vista', 1500, 'Bloco B', '01310100', 'ana.souza@email.com', '1990-08-22'),
@@ -160,6 +161,39 @@ INSERT INTO pedido (cliente_id, produto_id, status_pedido) VALUES
 (292929291, 28, 'Entregue'),
 (303030301, 29, 'Entregue'),
 (111222333, 30, 'Cancelado');
+
+-- TABELA: item_pedido
+INSERT INTO item_pedido (pedido_id, produto_id, quantidade, valor_unitario, observacao) VALUES
+(1, 1, 1, 25.00, 'Sem cebola'),
+(2, 2, 2, 28.00, 'Ponto da casa'),
+(3, 3, 1, 35.00, 'Bem passado'),
+(4, 4, 1, 32.00, 'Bacon extra bem frito'),
+(5, 5, 1, 27.00, 'Sem tomate'),
+(6, 6, 2, 12.00, 'Com bastante sal'),
+(7, 7, 1, 20.00, 'Molho a parte'),
+(8, 8, 3, 6.00, 'Gelada com gelo e limao'),
+(9, 9, 1, 8.00, 'Sem acucar'),
+(10, 10, 2, 4.00, 'Sem gelo'),
+(11, 11, 2, 10.00, 'Garrafa trincando'),
+(12, 12, 1, 15.00, 'Com chantilly'),
+(13, 13, 2, 5.00, 'Sabor baunilha'),
+(14, 14, 1, 9.00, 'Sem calda extra'),
+(15, 15, 1, 18.00, 'Sorvete de creme'),
+(16, 16, 1, 26.00, 'Maionese vegana'),
+(17, 17, 2, 29.00, 'Gema mole'),
+(18, 18, 1, 40.00, 'Caprichar no cheddar'),
+(19, 19, 1, 16.00, 'Molho especial a parte'),
+(20, 20, 2, 14.00, 'Crocante'),
+(21, 21, 1, 7.00, 'Com muito gelo'),
+(22, 22, 1, 12.00, 'Lata fechada'),
+(23, 23, 1, 22.00, 'Molho caesar separado'),
+(24, 24, 1, 30.00, 'Bem frito'),
+(25, 25, 2, 15.00, 'Servir bem quente'),
+(26, 26, 1, 15.00, 'Sem sal'),
+(27, 27, 1, 10.00, 'Fatia grande'),
+(28, 28, 2, 11.00, 'Com calda de chocolate'),
+(29, 29, 1, 4.50, 'Com rodela de limao'),
+(30, 30, 1, 38.00, 'Ao ponto para mal passado');
 
 -- TABELA: comanda (incluindo comanda não levada à comanda/fechada sem fluxo padrão)
 INSERT INTO comanda (mesa_id, cliente_id, pedido_id, tipo_cliente, status_comanda) VALUES
@@ -326,6 +360,48 @@ INSERT INTO insumo (nm_produto, descricao, unidade_medida, estoque_atual, estoqu
 ('Chocolate em Pó', 'Chocolate 50%', 'kg', 15.00, 4.00, 25.00),
 ('Embalagem Delivery', 'Caixa para hamburguer', 'un', 300.00, 50.00, 0.80);
 
+-- TABELA: ficha_tecnica
+INSERT INTO ficha_tecnica (produto_id, insumo_id, quantidade, unidade_medida) VALUES
+(1, 1, 200, 'g'),
+(1, 2, 1, 'un'),
+(2, 1, 200, 'g'),
+(2, 2, 1, 'un'),
+(2, 3, 50, 'g'),
+(3, 1, 400, 'g'),
+(3, 2, 1, 'un'),
+(4, 1, 200, 'g'),
+(4, 2, 1, 'un'),
+(4, 4, 60, 'g'),
+(5, 1, 200, 'g'),
+(5, 5, 30, 'g'),
+(5, 6, 40, 'g'),
+(6, 7, 150, 'g'),
+(7, 7, 350, 'g'),
+(8, 9, 1, 'un'),
+(9, 10, 300, 'g'),
+(10, 11, 1, 'un'),
+(11, 12, 1, 'un'),
+(12, 13, 200, 'g'),
+(13, 13, 100, 'g'),
+(14, 14, 1, 'un'),
+(15, 29, 100, 'g'),
+(16, 2, 1, 'un'),
+(17, 1, 200, 'g'),
+(17, 15, 1, 'un'),
+(18, 1, 400, 'g'),
+(19, 17, 180, 'g'),
+(20, 16, 200, 'g'),
+(21, 19, 15, 'g'),
+(22, 20, 1, 'un'),
+(23, 16, 150, 'g'),
+(24, 16, 500, 'g'),
+(25, 26, 250, 'g'),
+(26, 27, 250, 'g'),
+(27, 28, 50, 'g'),
+(28, 29, 80, 'g'),
+(29, 11, 1, 'un'),
+(30, 1, 300, 'g');
+
 -- TABELA: fornecedor
 INSERT INTO fornecedor (razao_social, cnpj, email, telefone) VALUES
 ('Frigorifico Bovino Ltda', '12345678000199', 'contato@frigorifico.com', '1133334444'),
@@ -392,6 +468,39 @@ INSERT INTO compra (insumo_id, fornecedor_id, valor_pago, status_fornecedor, qua
 (29, 10, 375.00, 'Pago', 15, 5029),
 (30, 6, 240.00, 'Pago', 300, 5030);
 
+-- TABELA: item_compra
+INSERT INTO item_compra (compra_id, insumo_id, quantidade, valor_unitario) VALUES
+(1, 1, 50, 35.00),
+(2, 2, 200, 1.00),
+(3, 3, 25, 30.00),
+(4, 4, 15, 45.00),
+(5, 5, 10, 8.00),
+(6, 6, 12, 7.00),
+(7, 7, 80, 12.00),
+(8, 8, 30, 9.00),
+(9, 9, 150, 3.50),
+(10, 10, 40, 5.00),
+(11, 11, 200, 1.80),
+(12, 12, 90, 5.50),
+(13, 13, 20, 22.00),
+(14, 14, 40, 6.00),
+(15, 15, 120, 15.00),
+(16, 16, 30, 18.00),
+(17, 17, 25, 6.00),
+(18, 18, 15, 5.00),
+(19, 19, 10, 14.00),
+(20, 20, 60, 6.00),
+(21, 21, 50, 4.50),
+(22, 22, 30, 3.00),
+(23, 23, 12, 40.00),
+(24, 24, 15, 12.00),
+(25, 25, 10, 13.00),
+(26, 26, 40, 8.00),
+(27, 27, 25, 5.00),
+(28, 28, 20, 6.00),
+(29, 29, 15, 25.00),
+(30, 30, 300, 0.80);
+
 -- Consultas
 
 -- Todas as tabelas
@@ -400,13 +509,16 @@ SELECT * FROM cliente;
 SELECT * FROM mesa;
 SELECT * FROM menu;
 SELECT * FROM pedido;
+SELECT * FROM item_pedido;
 SELECT * FROM comanda;
 SELECT * FROM funcionario;
 SELECT * FROM cupom_fiscal;
 SELECT * FROM caixa;
 SELECT * FROM insumo;
+SELECT * FROM ficha_tecnica;
 SELECT * FROM fornecedor;
 SELECT * FROM compra;
+SELECT * FROM item_compra;
 
 -- Valor pendente do fornecedor
 SELECT 
@@ -445,7 +557,11 @@ ORDER BY ano_mes DESC;
 SELECT 
   YEAR(data_emissao) AS ano,
   WEEK(data_emissao, 1) AS semana,
-  AVG(valor_pago) AS media_valor_semanal
+  ROUND(SUM(valor_pago) / COUNT(DISTINCT DATE(data_emissao)), 2) AS media_diaria_da_semana
 FROM cupom_fiscal
-GROUP BY YEAR(data_emissao), WEEK(data_emissao, 1)
-ORDER BY ano DESC, semana DESC;
+GROUP BY 
+  YEAR(data_emissao), 
+  WEEK(data_emissao, 1)
+ORDER BY 
+  ano DESC, 
+  semana DESC;
