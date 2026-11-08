@@ -390,25 +390,26 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 ---
 
 # **1.6 Proposta de Arquitetura Analítica para BI e IA**
+## Indicadores e KPIs
 
-| Tipo | Indicador / Problema | Fórmula / Regra de Negócio | Período | Tabelas Envolvidas |
-|--------|---------------------|----------------------------|---------|-------------------|
-| Problema | P1 – Compras sem controle | Gasto total por fornecedor | Mensal | FORNECEDOR, COMPRA, ITEM_COMPRA |
-| KPI | Valor de compras pendentes de pagamento | Soma da quantidade × valor unitário das compras com status "Pendente" | Semanal | COMPRA, ITEM_COMPRA, FORNECEDOR |
-| Problema | P1 – Ruptura de insumos | Insumos com estoque atual ≤ estoque mínimo | Diário | INSUMO |
-| KPI | Custo teórico do lanche | Soma de (quantidade da ficha técnica × custo médio do insumo) por produto | Contínuo | MENU, FICHA_TECNICA, INSUMO, ITEM_COMPRA |
-| KPI | Ticket médio | Total das comandas fechadas ÷ número de comandas | Semanal | COMANDA, PEDIDO |
-| KPI | Faturamento por canal | Soma do total das comandas por tipo de atendimento | Mensal | COMANDA |
-| Problema | P3 – Divergência de caixa | Média e soma da diferença de caixa por terminal e turno | Diário | CAIXA, TERMINAL |
-| KPI | Composição dos pagamentos | Percentual do valor recebido por forma de pagamento | Mensal | PAGAMENTO, CAIXA |
-| KPI | Adesão à taxa de serviço | Comandas com taxa aceita ÷ total de comandas | Mensal | COMANDA |
-| Problema | P2 – Cadastro de clientes | Percentual de comandas com cliente identificado | Mensal | COMANDA, CLIENTE |
-| KPI | Vendas por responsável | Faturamento por funcionário | Semanal | COMANDA, FUNCIONARIO |
-| KPI | Produtos mais vendidos e margem | Quantidade vendida e (preço de venda − custo teórico) por produto | Mensal | PEDIDO, MENU, CATEGORIA, FICHA_TECNICA |
-| KPI | Taxa de serviço | Valor da comanda + (valor da comanda × 10%). A cobrança da taxa é opcional. | Por comanda | COMANDA, PEDIDO |
-| KPI | Taxa de entrega | Valor do pedido + R$ 10,00 (taxa fixa de entrega) | Por pedido | PEDIDO, ENTREGA |
-| KPI | Desconto aniversário | Cliente aniversariante não paga o valor do combo. A taxa de serviço permanece opcional. | Por comanda | CLIENTE, COMANDA, MENU |
-
+| Nome do Indicador | Categoria | Meta | Resultado Atual (Simulação) | Unidade | Polaridade | Fórmula de Cálculo | Responsável |
+|-------------------|-----------|------|----------------------------|----------|-------------|-------------------|-------------|
+| Compras sem Controle | Compras | 50.000 | 68.500 | R$ | Menor é melhor | Soma dos gastos por fornecedor | Compras |
+| Compras Pendentes | Financeiro | 10.000 | 15.700 | R$ | Menor é melhor | Σ(Quantidade × Valor Unitário) das compras pendentes | Financeiro |
+| Ruptura de Insumos | Estoque | 0 | 12 | Insumos | Menor é melhor | Estoque Atual ≤ Estoque Mínimo | Estoque |
+| Custo Teórico do Lanche | Custos | 8,50 | 9,20 | R$ | Menor é melhor | Σ(Qtd. ficha técnica × custo médio) | Produção |
+| Ticket Médio | Vendas | 45 | 52 | R$ | Maior é melhor | Valor total das comandas ÷ nº de comandas | Comercial |
+| Faturamento por Canal | Vendas | 120.000 | 135.000 | R$ | Maior é melhor | Soma das comandas por canal | Comercial |
+| Divergência de Caixa | Financeiro | 0 | 320 | R$ | Menor é melhor | Soma das diferenças de caixa | Financeiro |
+| Composição dos Pagamentos PIX | Financeiro | 50 | 63 | % | Maior é melhor | (Valor PIX ÷ Total recebido) × 100 | Financeiro |
+| Adesão à Taxa de Serviço | Atendimento | 80 | 72 | % | Maior é melhor | (Comandas com taxa ÷ Total de comandas) × 100 | Atendimento |
+| Cadastro de Clientes | CRM | 90 | 65 | % | Maior é melhor | (Comandas identificadas ÷ Total de comandas) × 100 | Marketing |
+| Vendas por Responsável | Comercial | 15.000 | 18.200 | R$ | Maior é melhor | Faturamento por funcionário | Comercial |
+| Produtos Mais Vendidos | Vendas | 1.000 | 1.240 | Unidades | Maior é melhor | Quantidade vendida por produto | Comercial |
+| Margem por Produto | Custos | 65 | 58 | % | Maior é melhor | ((Preço Venda − Custo) ÷ Preço Venda) × 100 | Gestão |
+| Taxa de Serviço Cobrada | Atendimento | 10 | 8,3 | % | Maior é melhor | Valor da taxa ÷ Valor das comandas × 100 | Atendimento |
+| Taxa de Entrega | Delivery | 10 | 10 | R$ | Maior é melhor | Valor do Pedido + Taxa Fixa | Delivery |
+| Desconto Aniversário | Marketing | 30 | 22 | Clientes | Maior é melhor | Clientes aniversariantes beneficiados | Marketing |
 ---
 
 ## Problemas Declarados
