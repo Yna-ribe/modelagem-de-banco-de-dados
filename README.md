@@ -411,7 +411,146 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 | Taxa de Entrega | Delivery | 10 | 10 | R$ | Maior é melhor | Valor do Pedido + Taxa Fixa | Delivery |
 | Desconto Aniversário | Marketing | 30 | 22 | Clientes | Maior é melhor | Clientes aniversariantes beneficiados | Marketing |
 ---
+# Relatório de Desempenho de KPIs
+---
 
+## Resumo Executivo
+
+- Total de Indicadores: 16
+- Desempenho Médio: 93%
+- KPIs Atingidos: 8 (50%)
+- KPIs em Atenção: 3 (19%)
+- KPIs Críticos: 3 (19%)
+
+---
+
+## Análise Detalhada por KPI
+
+### Indicadores Atingidos (Meta Alcançada)
+
+#### Compras sem Controle
+- Categoria: Compras
+- Meta: 50.000
+- Resultado: 68.500
+- Atingimento: 137%
+- Status: Meta alcançada
+
+#### Compras Pendentes
+- Categoria: Financeiro
+- Meta: 10.000
+- Resultado: 15.700
+- Atingimento: 157%
+- Status: Meta alcançada
+
+#### Ticket Médio
+- Categoria: Vendas
+- Meta: 45
+- Resultado: 52
+- Atingimento: 116%
+- Responsável: Comercial
+- Status: Meta alcançada
+
+#### Faturamento por Canal
+- Categoria: Vendas
+- Meta: 120.000
+- Resultado: 135.000
+- Atingimento: 113%
+- Responsável: Comercial
+- Status: Meta alcançada
+
+#### Composição dos Pagamentos PIX
+- Categoria: Financeiro
+- Meta: 50%
+- Resultado: 63%
+- Atingimento: 126%
+- Status: Meta alcançada
+
+#### Vendas por Responsável
+- Categoria: Comercial
+- Meta: R$ 15.000
+- Resultado: R$ 18.200
+- Atingimento: 121%
+- Status: Meta alcançada
+
+#### Produtos Mais Vendidos
+- Categoria: Vendas
+- Meta: 1.000 unidades
+- Resultado: 1.240 unidades
+- Atingimento: 124%
+- Status: Meta alcançada
+
+#### Taxa de Entrega
+- Categoria: Delivery
+- Meta: R$ 10,00
+- Resultado: R$ 10,00
+- Atingimento: 100%
+- Status: Meta alcançada
+
+---
+
+### Indicadores em Atenção
+
+#### Custo Teórico do Lanche
+- Categoria: Custos
+- Meta: R$ 8,50
+- Resultado: R$ 9,18
+- Atingimento: 93%
+- Responsável: Produção
+- Status: Requer atenção
+
+#### Adesão à Taxa de Serviço
+- Categoria: Atendimento
+- Meta: 80%
+- Resultado: 72%
+- Atingimento: 90%
+- Status: Requer atenção
+
+#### Margem por Produto
+- Categoria: Custos
+- Meta: 65%
+- Resultado: 58,01%
+- Atingimento: 89%
+- Status: Requer atenção
+
+---
+
+### Indicadores Críticos
+
+#### Cadastro de Clientes
+- Categoria: CRM
+- Meta: 90%
+- Resultado: 65%
+- Atingimento: 72%
+- Responsável: Marketing
+- Status: Ação imediata necessária
+
+#### Taxa de Serviço Cobrada
+- Categoria: Atendimento
+- Meta: 10%
+- Resultado: 8,03%
+- Atingimento: 80%
+- Status: Ação imediata necessária
+
+#### Desconto Aniversário
+- Categoria: Marketing
+- Meta: 30 clientes
+- Resultado: 22 clientes
+- Atingimento: 73%
+- Status: Ação imediata necessária
+
+---
+
+## Análise Estratégica
+
+### Desempenho Bom (85% a 94%)
+
+- Resultado satisfatório, mas há espaço para melhorias.
+- Identificar as causas dos KPIs não atingidos.
+- Implementar planos de ação para os indicadores críticos.
+
+---
+
+*Documento gerado a partir da simulação de indicadores do projeto Mont_Ararat.*
 ## Problemas Declarados
 
 | Código | Descrição |
