@@ -18,6 +18,10 @@ Integrantes do Grupo (Nomes e RGMs):
 - GitHub: https://github.com/Yna-ribe
 
 -------------------------------------------------------------------------
+
+# **Link do YouTube(Não Listado) da Apresentação:
+
+
 # **1\. Revisão do Modelo Conceitual**
 
 Única Exceção (Fora do Escopo): O processo de Marketing e Relacionamento com o Cliente (redes sociais e avaliações em plataformas como iFood e Instagram) foi mantido fora do banco de dados relacional por ser executado em ferramentas de terceiros e não gerar transações estruturadas diretas no sistema principal da empresa.
