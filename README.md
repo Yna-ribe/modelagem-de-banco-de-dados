@@ -101,11 +101,16 @@ A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Cla
 
 # **Problemas e Necessidades Identificados (Crise Operacional):**
 
-* **1. Gestão Descentralizada de Compras e Estoque:** O controle de insumos e compras é realizado manualmente por planilhas avulsas e não integradas. A ausência de cálculo automatizado de Ficha Técnica resulta em compras imprecisas e custos operacionais não contabilizados em tempo real.
-* **2. Ausência de Cadastro Centralizado de Pessoas:** Inexistência de registros formais de clientes para ações de fidelização/aniversariantes e ausência de vinculação formal de colaboradores/freelancers aos lançamentos de vendas.
-* **3. Falta de padronização e Rastreabilidade do Caixa:** Necessidade de vincular as vendas fracionadas (divisão de contas) e sangrias aos terminais e operadores responsáveis.
+## Problemas Declarados
 
--------------------------------------------------------------------------
+| Código | Problema Declarado |Descrição |
+|---------|-----------|----------|
+| P1 | Gestão descentralizada de compras e estoque | O controle de insumos e compras é realizado manualmente por planilhas avulsas e não integradas. A ausência de cálculo automatizado de Ficha Técnica resulta em compras imprecisas e custos operacionais não contabilizados em tempo real.|
+| P2 | Ausência de cadastro centralizado de Clientes |Inexistência de registros formais de clientes para ações de fidelização/aniversariantes e ausência de vinculação formal de colaboradores/freelancers aos lançamentos de vendas.|
+| P3 | Falta de padronização e rastreabilidade do caixa |Necessidade de vincular as vendas fracionadas (divisão de contas) e sangrias aos terminais e operadores responsáveis.|
+
+
+---
 
 # **Escopo do Sistema**
 
@@ -405,26 +410,166 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 ---
 
 # **1.6 Proposta de Arquitetura Analítica para BI e IA**
-## Indicadores e KPIs
 
-| Nome do Indicador | Categoria | Meta | Resultado Atual (Simulação) | Unidade | Polaridade | Fórmula de Cálculo | Responsável |
-|-------------------|-----------|------|----------------------------|----------|-------------|-------------------|-------------|
-| Compras sem Controle | Compras | 50.000 | 68.500 | R$ | Menor é melhor | Soma dos gastos por fornecedor | Compras |
-| Compras Pendentes | Financeiro | 10.000 | 15.700 | R$ | Menor é melhor | Σ(Quantidade × Valor Unitário) das compras pendentes | Financeiro |
-| Ruptura de Insumos | Estoque | 0 | 12 | Insumos | Menor é melhor | Estoque Atual ≤ Estoque Mínimo | Estoque |
-| Custo Teórico do Lanche | Custos | 8,50 | 9,20 | R$ | Menor é melhor | Σ(Qtd. ficha técnica × custo médio) | Produção |
-| Ticket Médio | Vendas | 45 | 52 | R$ | Maior é melhor | Valor total das comandas ÷ nº de comandas | Comercial |
-| Faturamento por Canal | Vendas | 120.000 | 135.000 | R$ | Maior é melhor | Soma das comandas por canal | Comercial |
-| Divergência de Caixa | Financeiro | 0 | 320 | R$ | Menor é melhor | Soma das diferenças de caixa | Financeiro |
-| Composição dos Pagamentos PIX | Financeiro | 50 | 63 | % | Maior é melhor | (Valor PIX ÷ Total recebido) × 100 | Financeiro |
-| Adesão à Taxa de Serviço | Atendimento | 80 | 72 | % | Maior é melhor | (Comandas com taxa ÷ Total de comandas) × 100 | Atendimento |
-| Cadastro de Clientes | CRM | 90 | 65 | % | Maior é melhor | (Comandas identificadas ÷ Total de comandas) × 100 | Marketing |
-| Vendas por Responsável | Comercial | 15.000 | 18.200 | R$ | Maior é melhor | Faturamento por funcionário | Comercial |
-| Produtos Mais Vendidos | Vendas | 1.000 | 1.240 | Unidades | Maior é melhor | Quantidade vendida por produto | Comercial |
-| Margem por Produto | Custos | 65 | 58 | % | Maior é melhor | ((Preço Venda − Custo) ÷ Preço Venda) × 100 | Gestão |
-| Taxa de Serviço Cobrada | Atendimento | 10 | 8,3 | % | Maior é melhor | Valor da taxa ÷ Valor das comandas × 100 | Atendimento |
-| Taxa de Entrega | Delivery | 10 | 10 | R$ | Maior é melhor | Valor do Pedido + Taxa Fixa | Delivery |
-| Desconto Aniversário | Marketing | 30 | 22 | Clientes | Maior é melhor | Clientes aniversariantes beneficiados | Marketing |
+## 1.6.1 Objetivo da Arquitetura Analítica
+
+A proposta de arquitetura analítica para a Mont Ararat Burger House tem como objetivo transformar os dados operacionais da organização em informações estratégicas, utilizando recursos de Business Intelligence (BI) e Inteligência Artificial (IA).
+
+A solução considera a estrutura do banco de dados relacional desenvolvido no projeto, contemplando informações de vendas, comandas, produtos, clientes, funcionários, fornecedores, compras, estoque, pagamentos e movimentações financeiras.
+
+A implementação dessa arquitetura busca solucionar problemas identificados durante o levantamento de requisitos, como a descentralização das compras, a ausência de controle eficiente de estoque, a dificuldade de rastreamento financeiro e a falta de informações consolidadas sobre os clientes.
+
+A proposta será dividida em duas frentes complementares:
+
+- **Business Intelligence (BI):** organização, integração, análise e visualização dos dados por meio de indicadores e dashboards.
+- **Inteligência Artificial (IA):** utilização de modelos analíticos e preditivos para identificar padrões, antecipar demandas e auxiliar na tomada de decisões.
+
+---
+## 1.6.2 Indicadores e KPIs
+
+Referencia| Nome do Indicador | Categoria | Meta | Resultado Atual (Simulação) | Unidade | Polaridade | Fórmula de Cálculo | Responsável |
+|---------|-------------------|-----------|------|----------------------------|----------|-------------|-------------------|-------------|
+P1| Compras sem Controle | Compras | 50.000 | 68.500 | R$ | Menor é melhor | Soma dos gastos por fornecedor | Compras |
+P1| Compras Pendentes | Financeiro | 10.000 | 15.700 | R$ | Menor é melhor | Σ(Quantidade × Valor Unitário) das compras pendentes | Financeiro |
+P1| Ruptura de Insumos | Estoque | 0 | 12 | Insumos | Menor é melhor | Estoque Atual ≤ Estoque Mínimo | Estoque |
+-| Custo Teórico do Lanche | Custos | 8,50 | 9,20 | R$ | Menor é melhor | Σ(Qtd. ficha técnica × custo médio) | Produção |
+P3| Ticket Médio | Vendas | 45 | 52 | R$ | Maior é melhor | Valor total das comandas ÷ nº de comandas | Comercial |
+P3| Faturamento por Canal | Vendas | 120.000 | 135.000 | R$ | Maior é melhor | Soma das comandas por canal | Comercial |
+P3| Divergência de Caixa | Financeiro | 0 | 320 | R$ | Menor é melhor | Soma das diferenças de caixa | Financeiro |
+P3| Composição dos Pagamentos PIX | Financeiro | 50 | 63 | % | Maior é melhor | (Valor PIX ÷ Total recebido) × 100 | Financeiro |
+P3| Adesão à Taxa de Serviço | Atendimento | 80 | 72 | % | Maior é melhor | (Comandas com taxa ÷ Total de comandas) × 100 | Atendimento |
+P2| Cadastro de Clientes | CRM | 90 | 65 | % | Maior é melhor | (Comandas identificadas ÷ Total de comandas) × 100 | Marketing |
+-| Vendas por Responsável | Comercial | 15.000 | 18.200 | R$ | Maior é melhor | Faturamento por funcionário | Comercial |
+-| Produtos Mais Vendidos | Vendas | 1.000 | 1.240 | Unidades | Maior é melhor | Quantidade vendida por produto | Comercial |
+P3| Margem por Produto | Custos | 65 | 58 | % | Maior é melhor | ((Preço Venda − Custo) ÷ Preço Venda) × 100 | Gestão |
+-| Taxa de Serviço Cobrada | Atendimento | 10 | 8,3 | % | Maior é melhor | Valor da taxa ÷ Valor das comandas × 100 | Atendimento |
+-| Taxa de Entrega | Delivery | 10 | 10 | R$ | Maior é melhor | Valor do Pedido + Taxa Fixa | Delivery |
+P2| Desconto Aniversário | Marketing | 30 | 22 | Clientes | Maior é melhor | Clientes aniversariantes beneficiados | Marketing |
+
+---
+
+## 1.6.3 Arquitetura de Business Intelligence (BI)
+
+A arquitetura de BI proposta utilizará os dados armazenados no banco relacional como fonte principal para a construção de relatórios gerenciais e indicadores de desempenho.
+
+O processo será organizado em cinco etapas:
+
+### 1. Fontes de Dados
+
+A primeira etapa corresponde à extração das informações armazenadas no banco de dados do projeto.
+
+As principais fontes serão:
+
+| **Módulo** | **Dados utilizados** |
+| --- | --- |
+| Vendas | Comandas, pedidos, produtos, quantidades e valores. |
+| Compras | Compras realizadas, fornecedores, quantidades e custos. |
+| Estoque | Insumos, entradas, saídas, perdas e saldos. |
+| Financeiro | Pagamentos, sessões de caixa, sangrias e fechamentos. |
+| Clientes | Cadastro, identificação e histórico de consumo. |
+| Funcionários | Responsáveis pelas operações e vendas. |
+| Produtos | Cardápio, categorias, preços e fichas técnicas. |
+
+### 2. ETL – Extração, Transformação e Carga
+
+O processo ETL será responsável por preparar os dados para utilização analítica.
+
+**Extração:** coleta das informações provenientes das tabelas do banco de dados relacional.
+
+**Transformação:** limpeza, padronização e integração dos registros, incluindo:
+
+- Identificação de registros duplicados.
+- Correção de inconsistências.
+- Padronização de datas e valores monetários.
+- Integração de informações de produtos, compras e fornecedores.
+- Tratamento de dados ausentes.
+- Verificação da integridade dos registros.
+
+**Carga:** armazenamento dos dados tratados em uma estrutura analítica centralizada, permitindo consultas históricas e geração de indicadores.
+
+### 3. Data Warehouse (DW)
+
+Será proposta a criação de um Data Warehouse para centralizar os dados históricos e facilitar as análises gerenciais.
+
+Sua estrutura poderá utilizar o modelo dimensional, organizado em tabelas de fatos e dimensões.
+
+**Tabelas de fatos:**
+
+| **Tabela** | **Finalidade** |
+| --- | --- |
+| Fato_Vendas | Armazenar quantidades vendidas, faturamento, descontos e valores das comandas. |
+| Fato_Pagamentos | Registrar valores recebidos, formas de pagamento e diferenças financeiras. |
+| Fato_Compras | Consolidar quantidades adquiridas, custos e fornecedores. |
+| Fato_Estoque | Registrar entradas, saídas, perdas e movimentações de insumos. |
+
+**Tabelas de dimensões:**
+
+| **Dimensão** | **Informações** |
+| --- | --- |
+| Dim_Tempo | Dia, mês, ano, semana e período. |
+| Dim_Produto | Nome, categoria e características dos produtos. |
+| Dim_Cliente | Identificação e informações cadastrais autorizadas. |
+| Dim_Fornecedor | Identificação e dados dos fornecedores. |
+| Dim_Funcionario | Responsáveis pelas operações. |
+| Dim_Canal | Salão, delivery e balcão. |
+
+Essa organização permitirá relacionar diferentes áreas da empresa, possibilitando análises por período, produto, fornecedor, cliente e funcionário.
+
+---
+## 1.6.4 Aplicação de Inteligência Artificial (IA)
+
+A Inteligência Artificial será proposta como uma camada complementar à arquitetura de BI, utilizando os dados históricos da organização para identificar padrões, realizar previsões e auxiliar na antecipação de problemas operacionais.
+
+Diferentemente do BI, que apresenta informações sobre o desempenho atual e passado, a IA poderá contribuir com análises preditivas, permitindo que a gestão se prepare para situações futuras.
+
+### Aplicações propostas
+
+| **Aplicação de IA** | **Dados utilizados** | **Benefício esperado** |
+| --- | --- | --- |
+| Previsão de demanda | Histórico de vendas, produtos, datas e horários. | Estimar a procura futura pelos produtos. |
+| Previsão de estoque | Histórico de consumo, estoque e fichas técnicas. | Antecipar a necessidade de reposição de insumos. |
+| Segmentação de clientes | Cadastro e histórico de compras. | Identificar grupos de consumidores com comportamentos semelhantes. |
+| Detecção de anomalias financeiras | Pagamentos, sessões e fechamentos de caixa. | Identificar movimentações fora do padrão. |
+| Análise de rentabilidade | Custos dos ingredientes, fichas técnicas e preços. | Identificar produtos com margens reduzidas. |
+| Previsão de movimento | Comandas por dia e horário. | Auxiliar no planejamento das equipes de atendimento e produção. |
+
+### 1. Previsão de demanda de produtos
+
+A IA poderá utilizar modelos de previsão de séries temporais para analisar o histórico de vendas e identificar padrões de consumo.
+Serão considerados fatores como:
+- Dias da semana.
+- Horários de maior movimento.
+- Produtos mais vendidos.
+- Variações de demanda.
+- Datas comemorativas.
+Com essas informações, o sistema poderá estimar a quantidade de produtos que deverão ser comercializados em determinados períodos, auxiliando no planejamento da produção.
+
+### 2. Previsão de reposição de estoque
+
+A partir da integração entre vendas, fichas técnicas e movimentações de estoque, modelos preditivos poderão estimar o consumo futuro de ingredientes.
+Essa aplicação permitirá identificar insumos com maior probabilidade de ruptura, contribuindo para a organização das compras e redução de desperdícios.
+
+### 3. Segmentação e comportamento dos clientes
+
+Com a ampliação do cadastro de clientes e o armazenamento do histórico de compras, poderão ser utilizados algoritmos de agrupamento, como K-Means, para identificar grupos de consumidores com características semelhantes.
+Essa análise poderá auxiliar na identificação de clientes frequentes, consumidores ocasionais e preferências por determinados produtos.
+Os resultados poderão ser utilizados para desenvolver campanhas de marketing, promoções direcionadas e estratégias de fidelização.
+
+### 4. Detecção de anomalias financeiras
+
+Modelos de detecção de anomalias poderão analisar registros de pagamentos e fechamentos de caixa para identificar movimentações que apresentem diferenças em relação aos padrões habituais.
+Por exemplo, o sistema poderá sinalizar divergências recorrentes em determinados turnos ou sessões de caixa, permitindo que a gerência investigue possíveis inconsistências.
+Os alertas deverão funcionar como apoio à análise humana, não como confirmação automática de irregularidades.
+
+### 5. Análise de rentabilidade dos produtos
+
+A IA poderá analisar os custos dos ingredientes, as fichas técnicas e os preços de venda para identificar produtos que apresentam margens reduzidas.
+Essa aplicação permitirá avaliar possibilidades de reajuste de preços, negociação com fornecedores e alterações na composição dos produtos.
+
+### 6. Previsão de movimento operacional
+
+A análise histórica das comandas permitirá identificar os dias e horários de maior movimento.
+Com modelos preditivos, será possível estimar a demanda de atendimento e auxiliar no planejamento das escalas de funcionários e freelancers, buscando equilibrar a quantidade de colaboradores com o volume esperado de pedidos.
 
 ---
 
@@ -444,23 +589,24 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 
 ## Análise Detalhada por KPI
 
-### Indicadores Atingidos (Meta Alcançada)
+## 1\. Indicadores Atingidos (Meta Alcançada)
 
-#### Compras sem Controle
+#### P1 | Compras sem Controle 
+
 - Categoria: Compras
 - Meta: 50.000
 - Resultado: 68.500
 - Atingimento: 137%
 - Status: Meta alcançada
 
-#### Compras Pendentes
+#### P1 | Compras Pendentes 
 - Categoria: Financeiro
 - Meta: 10.000
 - Resultado: 15.700
 - Atingimento: 157%
 - Status: Meta alcançada
 
-#### Ticket Médio
+#### - | Ticket Médio
 - Categoria: Vendas
 - Meta: 45
 - Resultado: 52
@@ -468,7 +614,7 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 - Responsável: Comercial
 - Status: Meta alcançada
 
-#### Faturamento por Canal
+#### P3 | Faturamento por Canal
 - Categoria: Vendas
 - Meta: 120.000
 - Resultado: 135.000
@@ -476,28 +622,28 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 - Responsável: Comercial
 - Status: Meta alcançada
 
-#### Composição dos Pagamentos PIX
+#### P3 | Composição dos Pagamentos PIX
 - Categoria: Financeiro
 - Meta: 50%
 - Resultado: 63%
 - Atingimento: 126%
 - Status: Meta alcançada
 
-#### Vendas por Responsável
+#### P3 | Vendas por Responsável
 - Categoria: Comercial
 - Meta: R$ 15.000
 - Resultado: R$ 18.200
 - Atingimento: 121%
 - Status: Meta alcançada
 
-#### Produtos Mais Vendidos
+#### - | Produtos Mais Vendidos
 - Categoria: Vendas
 - Meta: 1.000 unidades
 - Resultado: 1.240 unidades
 - Atingimento: 124%
 - Status: Meta alcançada
 
-#### Taxa de Entrega
+#### - | Taxa de Entrega
 - Categoria: Delivery
 - Meta: R$ 10,00
 - Resultado: R$ 10,00
@@ -506,9 +652,9 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 
 ---
 
-### Indicadores em Atenção
+## 2\. Indicadores em Atenção
 
-#### Custo Teórico do Lanche
+#### P2/P3 | Custo Teórico do Lanche
 - Categoria: Custos
 - Meta: R$ 8,50
 - Resultado: R$ 9,18
@@ -516,14 +662,14 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 - Responsável: Produção
 - Status: Requer atenção
 
-#### Adesão à Taxa de Serviço
+#### P2 | Adesão à Taxa de Serviço
 - Categoria: Atendimento
 - Meta: 80%
 - Resultado: 72%
 - Atingimento: 90%
 - Status: Requer atenção
 
-#### Margem por Produto
+#### - | Margem por Produto
 - Categoria: Custos
 - Meta: 65%
 - Resultado: 58,01%
@@ -532,9 +678,9 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 
 ---
 
-### Indicadores Críticos
+## 3\. Indicadores Críticos
 
-#### Cadastro de Clientes
+#### P2 | Cadastro de Clientes
 - Categoria: CRM
 - Meta: 90%
 - Resultado: 65%
@@ -542,14 +688,14 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 - Responsável: Marketing
 - Status: Ação imediata necessária
 
-#### Taxa de Serviço Cobrada
+#### - | Taxa de Serviço Cobrada
 - Categoria: Atendimento
 - Meta: 10%
 - Resultado: 8,03%
 - Atingimento: 80%
 - Status: Ação imediata necessária
 
-#### Desconto Aniversário
+#### P2 | Desconto Aniversário
 - Categoria: Marketing
 - Meta: 30 clientes
 - Resultado: 22 clientes
@@ -560,22 +706,11 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 
 ## Análise Estratégica
 
-### Desempenho Bom (85% a 94%)
+#### Desempenho Bom (85% a 94%)
 
 - Resultado satisfatório, mas há espaço para melhorias.
 - Identificar as causas dos KPIs não atingidos.
 - Implementar planos de ação para os indicadores críticos.
-
----
-
-*Documento gerado a partir da simulação de indicadores do projeto Mont_Ararat.*
-## Problemas Declarados
-
-| Código | Descrição |
-|---------|-----------|
-| P1 | Gestão descentralizada de compras e estoque |
-| P2 | Ausência de cadastro centralizado de Clientes |
-| P3 | Falta de padronização e rastreabilidade do caixa |
 
 ---
 
