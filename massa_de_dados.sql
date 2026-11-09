@@ -504,8 +504,17 @@ INSERT INTO item_compra (compra_id, insumo_id, quantidade, valor_unitario) VALUE
 -- Consultas
 
 -- Todas as tabelas
-SELECT * FROM cliente_telefone;
+
+-- Consulta de dados cadastrais de clientes
+-- (P2 - Ausência de Cadastro Centralizado de Pessoas) Exibe todos os registros formais da tabela `cliente`, permitindo o acesso direto aos dados pessoais, endereços e datas de nascimento. Permite que a hamburgueria mantenha um cadastro estruturado para ações de fidelização, mapeamento de aniversariantes e contato direto, eliminando o anonimato dos consumidores.
+
 SELECT * FROM cliente;
+
+-- Consulta de telefones de clientes
+-- (P2 - Ausência de Cadastro Centralizado de Pessoas) Lista todos os números de telefone vinculados aos CPFs na tabela `cliente_telefone`. Garante a centralização dos meios de contato dos consumidores, facilitando o suporte, o envio de promoções via WhatsApp e o relacionamento direto.
+
+SELECT * FROM cliente_telefone;
+
 SELECT * FROM mesa;
 SELECT * FROM menu;
 SELECT * FROM pedido;
@@ -520,17 +529,22 @@ SELECT * FROM fornecedor;
 SELECT * FROM compra;
 SELECT * FROM item_compra;
 
--- Valor pendente do fornecedor
+-- Valor Pendente de Pagamento por Fornecedor
+-- (P1 - Gestão descentralizada de compras e estoque) Realiza a junção entre as tabelas `fornecedor` e `compra`, filtrando estritamente onde o `status_fornecedor` é igual a `'Pendente'`, e agrupa o somatório dos valores devidos para cada fornecedor. Eliminando de esquecimento de faturas e permitindo visualizar instantaneamente quanto dinheiro está compremetido em compras de insumo.
+
 SELECT 
   f.id_fornecedor,
   f.razao_social,
   SUM(c.valor_pago) AS valor_pendente
 FROM fornecedor f
 JOIN compra c ON f.id_fornecedor = c.fornecedor_id
-WHERE c.status_fornecedor = 'Pendente' -- (Adicionar caso crie a coluna de status)
+WHERE c.status_fornecedor = 'Pendente'
 GROUP BY f.id_fornecedor, f.razao_social;
 
+
 -- Gasto total por fornecedor
+-- (P1 - Gestão descentralizada de compras e estoque) Soma o valor total investido em compras agrupado por cada fornecedor, ordenando o resultado de forma decrescente, ele  Permite identificar quais fornecedores representam o maior peso no orçamento da hamburgueria, servindo de base para futuras negociações de volume e controle de custos operacionais.
+
 SELECT 
     f.id_fornecedor,
     f.razao_social,
@@ -540,12 +554,20 @@ JOIN compra c ON f.id_fornecedor = c.fornecedor_id
 GROUP BY f.id_fornecedor, f.razao_social
 ORDER BY gasto_total DESC;
 
--- Valor total pedidos
+SELECT 
+
+
+-- Valor total de pedidos
+-- (P3 - Falta de padronização e rastreabilidade do caixa) Executa uma função de agregação (`SUM`) em cima de todos os registros de pagamentos efetuados na tabela `cupom_fiscal`,  Oferece ao gestor a visão macro e consolidação imediata de quanto o negócio faturou.
+
 SELECT 
   SUM(valor_pago) AS valor_total_pedidos
 FROM cupom_fiscal;
 
+
 -- Média de valores mensais
+-- (P3 - Falta de padronização e rastreabilidade do caixa) Extrai o ano e o mês exatos da data de emissão do cupom, agrupando as transações por competência mensal e calcula o ticket médio de faturamento 
+
 SELECT 
   DATE_FORMAT(data_emissao, '%Y-%m') AS ano_mes,
   AVG(valor_pago) AS media_valor_mensal
@@ -553,7 +575,10 @@ FROM cupom_fiscal
 GROUP BY DATE_FORMAT(data_emissao, '%Y-%m')
 ORDER BY ano_mes DESC;
 
+
 -- Média de valores semanais
+-- (P3 - Falta de padronização e rastreabilidade do caixa) Separa o ano e o número da semana e calcula o total faturado na semana e divide pela contagem de dias distintos em que houve operação, ambos tem análise estátisca sobre desempenho de vendas, porém a média por semana permite planejar escalas de funcionários e volumes de insumos necessários para os dias de pico da semana.
+
 SELECT 
   YEAR(data_emissao) AS ano,
   WEEK(data_emissao, 1) AS semana,
