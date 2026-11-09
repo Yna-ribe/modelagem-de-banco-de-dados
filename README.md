@@ -66,8 +66,10 @@ Integrantes do Grupo (Nomes e RGMs):
 
 # **Contexto e Porte:**
 
-A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Classifica-se formalmente como Microempresa (ME) / Empresa de Pequeno Porte (EPP). Fundada originalmente em 2016, a marca conta com unidades em São Paulo (unidade de estudo em São Mateus), Suzano e Mogi das Cruzes.
+A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Classifica-se formalmente como Microempresa (ME) / Empresa de Pequeno Porte (EPP). Fundada originalmente em 2016, a marca conta com unidades em São Paulo (unidade de estudo em São Mateus), Suzano e Mogi das Cruzes. 
+
 ---
+
 # **Tamanho da Operação:**
 
 * **Infraestrutura Física:** Salão com capacidade para 30 mesas presenciais, com gestão dinâmica de ocupação e comandas.  
@@ -75,7 +77,7 @@ A Mont Ararat Burger House é uma rede regional de hamburguerias artesanais. Cla
 * **Arquitetura de Atendimento:** Operação híbrida de alta rotatividade em tempo real, integrando lançamentos presenciais e pedidos concorrentes via Delivery/Balcão com impressão na cozinha.  
 * **Equipe e Turnos:** Operação de terça a domingo e feriados (18h às 23h em dias úteis; 18h às 00h aos fins de semana). A equipe é composta por 15 funcionários fixos (CLT) e cerca de 15 freelancers ativados aos finais de semana, divididos entre turnos de pré-preparo (manhã) e operação/atendimento (tarde/noite).
 
--------------------------------------------------------------------------
+---
 
 # **Volume de Atividades:**
 
@@ -183,6 +185,7 @@ A Entrevista foi realizada na Hamburgueria, Durante o funcionamento, o entrevist
 Para garantir a máxima aderência à realidade do mercado, utilizamos Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear os processos padrão de uma hamburgueria artesanal:
 
 Processos Incluídos (100% das áreas operacionais): Optamos por contemplar a totalidade dos fluxos de Vendas, Compras e Apoio/Gestão (incluindo Fornecedores, Recebimento, Cancelamentos e Escala de Freelancers). Essa abordagem garante a baixa automática de estoque via ficha técnica, a rastreabilidade financeira e a auditoria completa no SGBD.
+
 -------------------------------------------------------------------------
 
 # 1.1 Requisitos:
@@ -253,6 +256,14 @@ Refinamento e Adequação de Escopo: O requisito de transferência de mesas foi 
 
 Para garantir a máxima aderência à realidade do mercado, Novamente foi utilizado a Inteligência Artificial (Gemini) em uma pesquisa de benchmarking para mapear as regras de negocio padrão de uma hamburgueria artesanal: De acordo com o resposta da IA, todas regras que uma Hamburgueria possui, está presente nesta seção. O conjunto de regras de negócio foi estruturado para abranger integralmente o ciclo de vida operacional da hamburgueria artesanal, Adicionalmente, foram incorporadas restrições organizacionais e normativas cruciais — como a obrigatoriedade fiscal, as normas sanitárias de manipulação de insumos e as diretrizes de privacidade de dados (LGPD). Essa amplitude garante que o banco de dados não apenas processe transações, mas também assegure a integridade operacional, a auditoria gerencial e a conformidade legal da empresa.
 
+
+---
+
+## **Restrições legais e organizacionais**
+
+- LGPD (Lei nº 13.709/2018): os dados do cliente (nome, telefone, endereço) são usados só para a entrega, pelo princípio da minimização.
+- Normas sanitárias (RDC Anvisa nº 216/2004; Portaria CVS nº 5/2013): a pizzaria está sujeita a elas, mas não mantém registros sanitários; o modelo não guarda temperatura, validade ou lote.
+- Documento fiscal: emitido por aplicativo da Receita Federal, fora do banco.
 
 ---
 
@@ -414,8 +425,11 @@ Para organizar, desenhar e validar todas as entidades e conexões, foram utiliza
 | Taxa de Serviço Cobrada | Atendimento | 10 | 8,3 | % | Maior é melhor | Valor da taxa ÷ Valor das comandas × 100 | Atendimento |
 | Taxa de Entrega | Delivery | 10 | 10 | R$ | Maior é melhor | Valor do Pedido + Taxa Fixa | Delivery |
 | Desconto Aniversário | Marketing | 30 | 22 | Clientes | Maior é melhor | Clientes aniversariantes beneficiados | Marketing |
+
 ---
+
 # Relatório de Desempenho de KPIs
+
 ---
 
 ## Resumo Executivo
