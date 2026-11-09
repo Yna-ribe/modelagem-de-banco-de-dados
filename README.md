@@ -714,19 +714,6 @@ Com modelos preditivos, será possível estimar a demanda de atendimento e auxil
 
 ---
 
-## Visão Analítica por Área
-
-| Área | Indicadores |
-|------|------------|
-| Compras e Estoque | Compras por fornecedor, compras pendentes, ruptura de insumos, custo teórico |
-| Vendas | Ticket médio, faturamento por canal, produtos mais vendidos e margem |
-| Financeiro | Composição dos pagamentos, divergência de caixa, taxa de serviço |
-| Clientes | Cadastro de clientes, desconto de aniversário |
-| Operação | Vendas por responsável, taxa de entrega |
-
----
-
-
 # **2. Modelo Lógico Relacional**
 
 - **Software**: O Modelo Lógico foi feito a partir do BrModelo Também, por sua notação também ser recomenda pelo professor.
